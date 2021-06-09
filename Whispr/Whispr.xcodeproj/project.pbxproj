@@ -13,6 +13,8 @@
 		DADBD5C9266FE5A100E7DB8F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DADBD5C8266FE5A100E7DB8F /* Preview Assets.xcassets */; };
 		DADBD5D4266FE5A200E7DB8F /* WhisprTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD5D3266FE5A200E7DB8F /* WhisprTests.swift */; };
 		DADBD5DF266FE5A200E7DB8F /* WhisprUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD5DE266FE5A200E7DB8F /* WhisprUITests.swift */; };
+		DADBD5FF267112D800E7DB8F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DADBD5FE267112D800E7DB8F /* Colors.xcassets */; };
+		DADBD6072671179500E7DB8F /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD6062671179500E7DB8F /* ColorManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		DADBD5DA266FE5A200E7DB8F /* WhisprUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhisprUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DADBD5DE266FE5A200E7DB8F /* WhisprUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisprUITests.swift; sourceTree = "<group>"; };
 		DADBD5E0266FE5A200E7DB8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DADBD5FE267112D800E7DB8F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		DADBD6062671179500E7DB8F /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +99,10 @@
 		DADBD5C0266FE5A000E7DB8F /* Whispr */ = {
 			isa = PBXGroup;
 			children = (
+				DADBD5FE267112D800E7DB8F /* Colors.xcassets */,
 				DADBD5C1266FE5A000E7DB8F /* WhisprApp.swift */,
 				DADBD5C3266FE5A000E7DB8F /* ContentView.swift */,
+				DADBD6062671179500E7DB8F /* ColorManager.swift */,
 				DADBD5C5266FE5A100E7DB8F /* Assets.xcassets */,
 				DADBD5CA266FE5A100E7DB8F /* Info.plist */,
 				DADBD5C7266FE5A100E7DB8F /* Preview Content */,
@@ -233,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DADBD5FF267112D800E7DB8F /* Colors.xcassets in Resources */,
 				DADBD5C9266FE5A100E7DB8F /* Preview Assets.xcassets in Resources */,
 				DADBD5C6266FE5A100E7DB8F /* Assets.xcassets in Resources */,
 			);
@@ -259,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DADBD6072671179500E7DB8F /* ColorManager.swift in Sources */,
 				DADBD5C4266FE5A000E7DB8F /* ContentView.swift in Sources */,
 				DADBD5C2266FE5A000E7DB8F /* WhisprApp.swift in Sources */,
 			);
