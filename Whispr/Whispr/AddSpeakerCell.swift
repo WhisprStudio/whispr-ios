@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddSpeakerCell: View {
     private var action: (() -> ())
+    @State private var isClicked: Bool = false
     
     init(action: @escaping (() -> ())) {
         self.action = action
@@ -16,10 +17,14 @@ struct AddSpeakerCell: View {
 
     var body: some View {
         ButtonCell(label: "Nouvelle enceinte",
-                   action: action,
+                   action: {
+                    isClicked.toggle()
+                    action()
+                   },
                    rightView: {
                     HStack {
                         Image(systemName: "plus")
+                            .foregroundColor(isClicked ? .success : .primaryText)
                             .primaryFont(size: .XL, weight: .medium)
                     }
                    })

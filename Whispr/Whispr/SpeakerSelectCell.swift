@@ -11,6 +11,7 @@ struct SpeakerSelectCell: View {
     private var label: String
     private var speakerImage: String
     private var action: (() -> ())
+    @State private var isClicked: Bool = false
     
     init(label: String, speakerImage: String, action: @escaping (() -> ())) {
         self.label = label
@@ -20,7 +21,10 @@ struct SpeakerSelectCell: View {
 
     var body: some View {
         ButtonCell(label: label,
-                   action: action,
+                   action: {
+                    isClicked.toggle()
+                    action()
+                   },
                    leftView: {
                     Image(speakerImage)
                         .resizable()
@@ -28,6 +32,7 @@ struct SpeakerSelectCell: View {
                    },
                    rightView: {
                     Image(systemName: "chevron.right")
+                        .foregroundColor(isClicked ? .success : .primaryText)
                         .primaryFont(size: .XL, weight: .medium)
                    })
     }
