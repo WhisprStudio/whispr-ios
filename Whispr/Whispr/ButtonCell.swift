@@ -56,7 +56,7 @@ struct ButtonCell<LeftView: View, RightView: View>: View {
                             .padding(.trailing)
                     }
                 }
-                if (rightView != nil) {
+                if (rightView != nil && content == nil) {
                     Spacer()
                 }
                 rightView

@@ -19,28 +19,17 @@ struct SpeakerSelectCell: View {
     }
 
     var body: some View {
-        Button(action: action) {
-            HStack {
-                Image(speakerImage)
-                    .resizable()
-                    .frame(width: 100, height: 100, alignment: .center)
-                Spacer()
-                Text(label)
-                    .foregroundColor(.primaryText)
-                    .primaryFont(size: .L, weight: .medium)
-                    .padding(.trailing)
-                Image(systemName: "chevron.right")
-                    .primaryFont(size: .XL, weight: .medium)
-            }
-        }
-        .frame(minWidth: 0, maxWidth: 350 )
-        .padding()
-        .foregroundColor(.primaryText)
-        .overlay(
-            RoundedRectangle(cornerRadius: 5)
-                .stroke(Color.primaryText, lineWidth: 2)
-        )
-        .background(Color.background)
+        ButtonCell(label: label,
+                   action: action,
+                   leftView: {
+                    Image(speakerImage)
+                        .resizable()
+                        .frame(width: 100, height: 100, alignment: .center)
+                   },
+                   rightView: {
+                    Image(systemName: "chevron.right")
+                        .primaryFont(size: .XL, weight: .medium)
+                   })
     }
 }
 
