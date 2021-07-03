@@ -38,6 +38,7 @@ struct SpeakerSelectCellTestView: View {
                 SpeakerSelectCell(label: "Speaker 9",
                                   speakerImage: "portable2",
                                   action: {})
+                AddSpeakerCell(action: {})
             }
         }
     }
