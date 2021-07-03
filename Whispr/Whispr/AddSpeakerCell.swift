@@ -23,10 +23,6 @@ struct AddSpeakerCell: View {
                             .primaryFont(size: .XL, weight: .medium)
                     }
                    })
-//            .overlay(
-//                RoundedRectangle(cornerRadius: 5)
-//                    .stroke(Color.primaryText, lineWidth: 5)
-//            )
     }
 }
 

@@ -46,12 +46,12 @@ struct ButtonCell<LeftView: View, RightView: View>: View {
                 }
                 VStack(alignment: alignment) {
                     Text(label)
-                        .foregroundColor(.primaryText)
+                        .foregroundColor(isClicked ? .success : .primaryText)
                         .primaryFont(size: .L, weight: .medium)
                         .padding(.trailing)
                     if !(subLabel.isEmpty) {
                         Text(subLabel)
-                            .foregroundColor(.disabledText)
+                            .foregroundColor(isClicked ? .success : .disabledText)
                             .primaryFont(size: .S, weight: .medium)
                             .padding(.trailing)
                     }
