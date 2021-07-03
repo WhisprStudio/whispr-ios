@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA888DC52690AD5500C5734B /* SpeakerSelectCellTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA888DC42690AD5500C5734B /* SpeakerSelectCellTestView.swift */; };
 		DADBD5C2266FE5A000E7DB8F /* WhisprApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD5C1266FE5A000E7DB8F /* WhisprApp.swift */; };
 		DADBD5C4266FE5A000E7DB8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD5C3266FE5A000E7DB8F /* ContentView.swift */; };
 		DADBD5C6266FE5A100E7DB8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DADBD5C5266FE5A100E7DB8F /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 		DADBD61F267130CE00E7DB8F /* Barlow-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DADBD61C267130CE00E7DB8F /* Barlow-Medium.ttf */; };
 		DADBD620267130CE00E7DB8F /* Barlow-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DADBD61D267130CE00E7DB8F /* Barlow-ThinItalic.ttf */; };
 		DADBD621267130CE00E7DB8F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DADBD61E267130CE00E7DB8F /* Barlow-Regular.ttf */; };
+		DADBD62E2690A33700E7DB8F /* SpeakerSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD62D2690A33700E7DB8F /* SpeakerSelectCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA888DC42690AD5500C5734B /* SpeakerSelectCellTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerSelectCellTestView.swift; sourceTree = "<group>"; };
 		DADBD5BE266FE5A000E7DB8F /* Whispr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whispr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DADBD5C1266FE5A000E7DB8F /* WhisprApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisprApp.swift; sourceTree = "<group>"; };
 		DADBD5C3266FE5A000E7DB8F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +60,7 @@
 		DADBD61C267130CE00E7DB8F /* Barlow-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Medium.ttf"; sourceTree = "<group>"; };
 		DADBD61D267130CE00E7DB8F /* Barlow-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-ThinItalic.ttf"; sourceTree = "<group>"; };
 		DADBD61E267130CE00E7DB8F /* Barlow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Regular.ttf"; sourceTree = "<group>"; };
+		DADBD62D2690A33700E7DB8F /* SpeakerSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerSelectCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,10 +115,11 @@
 				DADBD5C1266FE5A000E7DB8F /* WhisprApp.swift */,
 				DADBD5C3266FE5A000E7DB8F /* ContentView.swift */,
 				DADBD60B267122E800E7DB8F /* FontManager.swift */,
-				DADBD625267130D300E7DB8F /* Fonts */,
 				DADBD6062671179500E7DB8F /* ColorManager.swift */,
+				DADBD62C2690A2FC00E7DB8F /* Fields */,
 				DADBD5C5266FE5A100E7DB8F /* Assets.xcassets */,
 				DADBD5CA266FE5A100E7DB8F /* Info.plist */,
+				DADBD625267130D300E7DB8F /* Fonts */,
 				DADBD5C7266FE5A100E7DB8F /* Preview Content */,
 			);
 			path = Whispr;
@@ -154,6 +159,15 @@
 				DADBD61D267130CE00E7DB8F /* Barlow-ThinItalic.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		DADBD62C2690A2FC00E7DB8F /* Fields */ = {
+			isa = PBXGroup;
+			children = (
+				DADBD62D2690A33700E7DB8F /* SpeakerSelectCell.swift */,
+				DA888DC42690AD5500C5734B /* SpeakerSelectCellTestView.swift */,
+			);
+			name = Fields;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,7 +305,9 @@
 			files = (
 				DADBD6072671179500E7DB8F /* ColorManager.swift in Sources */,
 				DADBD5C4266FE5A000E7DB8F /* ContentView.swift in Sources */,
+				DADBD62E2690A33700E7DB8F /* SpeakerSelectCell.swift in Sources */,
 				DADBD60C267122E800E7DB8F /* FontManager.swift in Sources */,
+				DA888DC52690AD5500C5734B /* SpeakerSelectCellTestView.swift in Sources */,
 				DADBD5C2266FE5A000E7DB8F /* WhisprApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
