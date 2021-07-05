@@ -40,7 +40,7 @@ struct ButtonCell<LeftView: View, RightView: View>: View {
         }) {
             HStack {
                 content
-                    .padding(.leading)
+//                    .padding(.leading)
                 if (content != nil) {
                     Spacer()
                 }
@@ -62,8 +62,10 @@ struct ButtonCell<LeftView: View, RightView: View>: View {
                 rightView
             }
         }
-        .frame(minWidth: 0, maxWidth: 350 )
+        .frame(minWidth: 0, maxWidth: 350)
         .padding()
+        .padding(.leading, 10)
+        .padding(.trailing, 10)
         .foregroundColor(.primaryText)
         .overlay(
             RoundedRectangle(cornerRadius: 5)
