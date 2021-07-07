@@ -62,13 +62,13 @@ struct ButtonCell<LeftView: View, RightView: View>: View {
                 rightView
             }
         }
-        .frame(minWidth: 0, maxWidth: 350)
+        .frame(minWidth: 0, maxWidth: 300)
         .padding()
         .padding(.leading, 10)
         .padding(.trailing, 10)
         .foregroundColor(.primaryText)
         .overlay(
-            RoundedRectangle(cornerRadius: 5)
+            RoundedRectangle(cornerRadius: 15)
                 .stroke(isClicked ? Color.success : Color.primaryText, lineWidth: 2)
         )
         .background(Color.background)

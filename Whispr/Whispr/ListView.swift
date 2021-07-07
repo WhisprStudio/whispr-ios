@@ -37,6 +37,7 @@ fileprivate struct ListRow: View {
             }
             ForEach(0..<section.items.count) { index in
                 section.items[index]
+                    .frame(maxWidth: .infinity)
             }
             if !section.footer.isEmpty {
                 Text(section.footer.capitalized)
