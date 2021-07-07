@@ -9,38 +9,33 @@ import SwiftUI
 
 struct SpeakerSelectCellTestView: View {
     var body: some View {
-        ScrollView {
-            VStack {
-                SpeakerSelectCell(label: "Speaker 1",
-                                  speakerImage: "portable2",
-                                  action: {})
-                SpeakerSelectCell(label: "Speaker 2",
-                                  speakerImage: "portable2",
-                                  action: {})
-                SpeakerSelectCell(label: "Speaker 3",
-                                  speakerImage: "salon3",
-                                  action: {})
-                SpeakerSelectCell(label: "Speaker 4",
-                                  speakerImage: "portable2",
-                                  action: {})
-                SpeakerSelectCell(label: "Speaker 5",
-                                  speakerImage: "salon3",
-                                  action: {})
-                SpeakerSelectCell(label: "Speaker 6",
-                                  speakerImage: "salon3",
-                                  action: {})
-                SpeakerSelectCell(label: "Speaker 7",
-                                  speakerImage: "portable2",
-                                  action: {})
-                SpeakerSelectCell(label: "Speaker 8",
-                                  speakerImage: "salon3",
-                                  action: {})
-                SpeakerSelectCell(label: "Speaker 9",
-                                  speakerImage: "portable2",
-                                  action: {})
-                AddSpeakerCell(action: {})
-            }
-        }
+        ListView(sections: [
+            Section(items: [
+                AnyView(SpeakerSelectCell(label: "Speaker 1",
+                                          speakerImage: "portable2",
+                                          action: {})),
+                AnyView(SpeakerSelectCell(label: "Speaker 2",
+                                          speakerImage: "portable2",
+                                          action: {}))
+            ], header: "header", footer: "footer"),
+            Section(items: [
+                AnyView(SpeakerSelectCell(label: "Speaker 3",
+                                          speakerImage: "salon3",
+                                          action: {})),
+                AnyView(SpeakerSelectCell(label: "Speaker 4",
+                                          speakerImage: "portable2",
+                                          action: {})),
+                AnyView(SpeakerSelectCell(label: "Speaker 5",
+                                          speakerImage: "salon3",
+                                          action: {})),
+                AnyView(SpeakerSelectCell(label: "Speaker 6",
+                                          speakerImage: "portable2",
+                                          action: {})),
+            ], header: "header", footer: "footer"),
+            Section(items: [
+                AnyView(AddSpeakerCell(action: {}))
+            ])
+        ])
     }
 }
 
