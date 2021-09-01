@@ -62,16 +62,16 @@ struct ButtonCell<LeftView: View, RightView: View>: View {
                 rightView
             }
         }
-        .frame(minWidth: 0, maxWidth: 300)
-        .padding()
-        .padding(.leading, 10)
-        .padding(.trailing, 10)
         .foregroundColor(.primaryText)
-        .overlay(
-            RoundedRectangle(cornerRadius: 15)
-                .stroke(isClicked ? Color.success : Color.primaryText, lineWidth: 2)
-        )
-        .background(Color.background)
+//        .frame(minWidth: 0, maxWidth: 300)
+//        .padding()
+//        .padding(.leading, 10)
+//        .padding(.trailing, 10)
+//        .overlay(
+//            RoundedRectangle(cornerRadius: 15)
+//                .stroke(isClicked ? Color.success : Color.primaryText, lineWidth: 2)
+//        )
+//        .background(Color.background)
     }
 }
 
@@ -153,6 +153,25 @@ struct ButtonCell_Previews: PreviewProvider {
                             .primaryFont(size: .L, weight: .regular)
                        })
             ButtonCell(label: "label",
+                       subLabel: "subLabel",
+                       action: {},
+                       leftView: {
+                        Image("portable2")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                       },
+                       rightView: {
+                        Image(systemName: "chevron.right")
+                            .primaryFont(size: .L, weight: .regular)
+                       })
+            ButtonCell(label: "label",
+                       action: {},
+                       rightView: {
+                        Image(systemName: "chevron.right")
+                            .primaryFont(size: .L, weight: .regular)
+                       })
+            ButtonCell(label: "label",
+                       subLabel: "subLabel",
                        action: {},
                        rightView: {
                         Image(systemName: "chevron.right")

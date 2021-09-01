@@ -35,7 +35,7 @@ struct SpeakerSelectCellTestView: View {
             Section(items: [
                 AnyView(AddSpeakerCell(action: {}))
             ])
-        ])
+        ], style: .plain)
     }
 }
 

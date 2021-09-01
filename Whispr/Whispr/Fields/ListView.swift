@@ -20,55 +20,48 @@ struct Section: Identifiable {
     }
 }
 
-fileprivate struct ListRow: View {
-    
-    var section: Section
-    
-    init(section: Section) {
-        self.section = section
-    }
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            if !section.header.isEmpty {
-                Text(section.header.capitalized )
-                    .primaryFont(size: .L, weight: .medium)
-                    .padding(.top)
-            }
-            ForEach(0..<section.items.count) { index in
-                section.items[index]
-                    .frame(maxWidth: .infinity)
-            }
-            if !section.footer.isEmpty {
-                Text(section.footer.capitalized)
-                    .primaryFont(size: .M, weight: .medium)
-            }
-        }
-    }
-}
-
 struct ListView: View {
     
     var sections: [Section]
+    var style: ListStyle
     
-    init(sections: [Section]) {
-        self.sections = sections
+    enum ListStyle {
+        case rounded, plain
     }
-    
+
+    init(sections: [Section], style: ListStyle = .rounded) {
+        self.sections = sections
+        self.style = style
+    }
+
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
-                ForEach(sections) { section in
-                    ListRow(section: section)
+            VStack(alignment: .leading, spacing: 10) {
+                ForEach( Array(sections.enumerated()), id: \.offset) { index, section in
+                    if style == .rounded {
+                        RoundedListView(section: section)
+                    } else {
+                        PlainListView(section: section)
+                    }
                 }
-                .padding(.top)
-                .padding(.bottom)
             }
+            .padding(.bottom, 35)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
+        .padding(.top)
         .background(Color.background.edgesIgnoringSafeArea(.all))
         .edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct ListDivider: View {
+    var height: CGFloat = 2
+    var body: some View {
+        Rectangle()
+            .fill(Color.primaryText)
+            .frame(height: height)
+            .padding(.leading, 30)
+            .padding(.trailing, 30)
     }
 }
 
@@ -77,7 +70,8 @@ struct Cell_Previews: PreviewProvider {
         ListView(sections: [Section(items: [AnyView(Text("1")), AnyView(Text("2")), AnyView(Text("3"))], header: "header1", footer: "footer1"),
                             Section(items: [AnyView(Text("4")), AnyView(Text("5")), AnyView(Text("6"))], header: "header2", footer: "footer2"),
                             Section(items: [AnyView(Text("7")), AnyView(Text("8")), AnyView(Text("9"))], header: "header3", footer: "footer3"),
-        ])
+                            Section(items: [AnyView(Text("10")), AnyView(Text("11")), AnyView(Text("12"))], header: "header4", footer: "footer4"),
+        ], style: .rounded)
         .preferredColorScheme(.dark)
     }
 }
