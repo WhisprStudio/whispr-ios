@@ -16,4 +16,5 @@ extension Color {
     static let LED = Color("LED")
     static let success = Color("Success")
     static let FieldBackground = Color("FieldBackground")
+    static let WhisprYellow = Color("WhisprYellow")
 }
