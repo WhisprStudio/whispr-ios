@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct PlainListView: View {
+public struct PlainListView: View {
     var section: Section
 
-    init(section: Section) {
+    public init(section: Section) {
         self.section = section
     }
 
-    var body: some View {
+    public var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             if !section.header.isEmpty {
                 Text(section.header.capitalized )

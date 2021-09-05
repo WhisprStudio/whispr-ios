@@ -3,19 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA34B68F26DFEC9E00634F8F /* RoundedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34B68E26DFEC9E00634F8F /* RoundedListView.swift */; };
-		DA34B69126DFEE6500634F8F /* PlainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34B69026DFEE6500634F8F /* PlainListView.swift */; };
-		DA34B69326DFEF0100634F8F /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34B69226DFEF0100634F8F /* ListRowView.swift */; };
-		DA34B69726E148F600634F8F /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34B69626E148F600634F8F /* SliderCell.swift */; };
-		DA34B69926E29B7700634F8F /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34B69826E29B7700634F8F /* CustomSlider.swift */; };
 		DA888DC52690AD5500C5734B /* SpeakerSelectCellTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA888DC42690AD5500C5734B /* SpeakerSelectCellTestView.swift */; };
-		DA888DCA2690B45200C5734B /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA888DC92690B45200C5734B /* ButtonCell.swift */; };
 		DA888DCF2690DE1800C5734B /* AddSpeakerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA888DCE2690DE1800C5734B /* AddSpeakerCell.swift */; };
-		DA888DD426960C5900C5734B /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA888DD326960C5900C5734B /* ListView.swift */; };
 		DADBD5C2266FE5A000E7DB8F /* WhisprApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD5C1266FE5A000E7DB8F /* WhisprApp.swift */; };
 		DADBD5C4266FE5A000E7DB8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD5C3266FE5A000E7DB8F /* ContentView.swift */; };
 		DADBD5C6266FE5A100E7DB8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DADBD5C5266FE5A100E7DB8F /* Assets.xcassets */; };
@@ -23,12 +16,13 @@
 		DADBD5D4266FE5A200E7DB8F /* WhisprTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD5D3266FE5A200E7DB8F /* WhisprTests.swift */; };
 		DADBD5DF266FE5A200E7DB8F /* WhisprUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD5DE266FE5A200E7DB8F /* WhisprUITests.swift */; };
 		DADBD5FF267112D800E7DB8F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DADBD5FE267112D800E7DB8F /* Colors.xcassets */; };
-		DADBD6072671179500E7DB8F /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD6062671179500E7DB8F /* ColorManager.swift */; };
-		DADBD60C267122E800E7DB8F /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD60B267122E800E7DB8F /* FontManager.swift */; };
 		DADBD61F267130CE00E7DB8F /* Barlow-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DADBD61C267130CE00E7DB8F /* Barlow-Medium.ttf */; };
 		DADBD620267130CE00E7DB8F /* Barlow-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DADBD61D267130CE00E7DB8F /* Barlow-ThinItalic.ttf */; };
 		DADBD621267130CE00E7DB8F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DADBD61E267130CE00E7DB8F /* Barlow-Regular.ttf */; };
 		DADBD62E2690A33700E7DB8F /* SpeakerSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD62D2690A33700E7DB8F /* SpeakerSelectCell.swift */; };
+		DADCC21226E4C8BC00BBC66A /* WhisprDesignable in Frameworks */ = {isa = PBXBuildFile; productRef = DADCC21126E4C8BC00BBC66A /* WhisprDesignable */; };
+		DAE2091B26E4C272007C3DA4 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2091926E4C272007C3DA4 /* ColorManager.swift */; };
+		DAE2091C26E4C272007C3DA4 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2091A26E4C272007C3DA4 /* FontManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,15 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DA34B68E26DFEC9E00634F8F /* RoundedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedListView.swift; sourceTree = "<group>"; };
-		DA34B69026DFEE6500634F8F /* PlainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainListView.swift; sourceTree = "<group>"; };
-		DA34B69226DFEF0100634F8F /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
-		DA34B69626E148F600634F8F /* SliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
-		DA34B69826E29B7700634F8F /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		DA888DC42690AD5500C5734B /* SpeakerSelectCellTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerSelectCellTestView.swift; sourceTree = "<group>"; };
-		DA888DC92690B45200C5734B /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		DA888DCE2690DE1800C5734B /* AddSpeakerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpeakerCell.swift; sourceTree = "<group>"; };
-		DA888DD326960C5900C5734B /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		DADBD5BE266FE5A000E7DB8F /* Whispr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whispr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DADBD5C1266FE5A000E7DB8F /* WhisprApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisprApp.swift; sourceTree = "<group>"; };
 		DADBD5C3266FE5A000E7DB8F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,12 +58,13 @@
 		DADBD5DE266FE5A200E7DB8F /* WhisprUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisprUITests.swift; sourceTree = "<group>"; };
 		DADBD5E0266FE5A200E7DB8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DADBD5FE267112D800E7DB8F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		DADBD6062671179500E7DB8F /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
-		DADBD60B267122E800E7DB8F /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		DADBD61C267130CE00E7DB8F /* Barlow-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Medium.ttf"; sourceTree = "<group>"; };
 		DADBD61D267130CE00E7DB8F /* Barlow-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-ThinItalic.ttf"; sourceTree = "<group>"; };
 		DADBD61E267130CE00E7DB8F /* Barlow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Regular.ttf"; sourceTree = "<group>"; };
 		DADBD62D2690A33700E7DB8F /* SpeakerSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerSelectCell.swift; sourceTree = "<group>"; };
+		DAE2091526E3F5A2007C3DA4 /* WhisprDesignable */ = {isa = PBXFileReference; lastKnownFileType = folder; name = WhisprDesignable; path = ../WhisprDesignable; sourceTree = "<group>"; };
+		DAE2091926E4C272007C3DA4 /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		DAE2091A26E4C272007C3DA4 /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DADCC21226E4C8BC00BBC66A /* WhisprDesignable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,13 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				DADBD62D2690A33700E7DB8F /* SpeakerSelectCell.swift */,
-				DA888DC92690B45200C5734B /* ButtonCell.swift */,
-				DA888DD326960C5900C5734B /* ListView.swift */,
-				DA34B68E26DFEC9E00634F8F /* RoundedListView.swift */,
-				DA34B69226DFEF0100634F8F /* ListRowView.swift */,
-				DA34B69626E148F600634F8F /* SliderCell.swift */,
-				DA34B69826E29B7700634F8F /* CustomSlider.swift */,
-				DA34B69026DFEE6500634F8F /* PlainListView.swift */,
 				DA888DCE2690DE1800C5734B /* AddSpeakerCell.swift */,
 				DA888DC42690AD5500C5734B /* SpeakerSelectCellTestView.swift */,
 			);
@@ -124,10 +106,12 @@
 		DADBD5B5266FE5A000E7DB8F = {
 			isa = PBXGroup;
 			children = (
+				DAE2091526E3F5A2007C3DA4 /* WhisprDesignable */,
 				DADBD5C0266FE5A000E7DB8F /* Whispr */,
 				DADBD5D2266FE5A200E7DB8F /* WhisprTests */,
 				DADBD5DD266FE5A200E7DB8F /* WhisprUITests */,
 				DADBD5BF266FE5A000E7DB8F /* Products */,
+				DAE2091626E3F661007C3DA4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,11 +128,11 @@
 		DADBD5C0266FE5A000E7DB8F /* Whispr */ = {
 			isa = PBXGroup;
 			children = (
+				DAE2091926E4C272007C3DA4 /* ColorManager.swift */,
+				DAE2091A26E4C272007C3DA4 /* FontManager.swift */,
 				DADBD5FE267112D800E7DB8F /* Colors.xcassets */,
 				DADBD5C1266FE5A000E7DB8F /* WhisprApp.swift */,
 				DADBD5C3266FE5A000E7DB8F /* ContentView.swift */,
-				DADBD60B267122E800E7DB8F /* FontManager.swift */,
-				DADBD6062671179500E7DB8F /* ColorManager.swift */,
 				DA17263326DF7A0E009FBB3A /* Fields */,
 				DADBD5C5266FE5A100E7DB8F /* Assets.xcassets */,
 				DADBD5CA266FE5A100E7DB8F /* Info.plist */,
@@ -194,6 +178,13 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		DAE2091626E3F661007C3DA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -210,6 +201,9 @@
 			dependencies = (
 			);
 			name = Whispr;
+			packageProductDependencies = (
+				DADCC21126E4C8BC00BBC66A /* WhisprDesignable */,
+			);
 			productName = Whispr;
 			productReference = DADBD5BE266FE5A000E7DB8F /* Whispr.app */;
 			productType = "com.apple.product-type.application";
@@ -327,20 +321,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DADBD6072671179500E7DB8F /* ColorManager.swift in Sources */,
-				DA34B69926E29B7700634F8F /* CustomSlider.swift in Sources */,
 				DADBD5C4266FE5A000E7DB8F /* ContentView.swift in Sources */,
 				DADBD62E2690A33700E7DB8F /* SpeakerSelectCell.swift in Sources */,
+				DAE2091C26E4C272007C3DA4 /* FontManager.swift in Sources */,
 				DA888DCF2690DE1800C5734B /* AddSpeakerCell.swift in Sources */,
-				DADBD60C267122E800E7DB8F /* FontManager.swift in Sources */,
-				DA888DD426960C5900C5734B /* ListView.swift in Sources */,
-				DA34B68F26DFEC9E00634F8F /* RoundedListView.swift in Sources */,
+				DAE2091B26E4C272007C3DA4 /* ColorManager.swift in Sources */,
 				DA888DC52690AD5500C5734B /* SpeakerSelectCellTestView.swift in Sources */,
 				DADBD5C2266FE5A000E7DB8F /* WhisprApp.swift in Sources */,
-				DA34B69726E148F600634F8F /* SliderCell.swift in Sources */,
-				DA34B69126DFEE6500634F8F /* PlainListView.swift in Sources */,
-				DA888DCA2690B45200C5734B /* ButtonCell.swift in Sources */,
-				DA34B69326DFEF0100634F8F /* ListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +647,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DADCC21126E4C8BC00BBC66A /* WhisprDesignable */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WhisprDesignable;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DADBD5B6266FE5A000E7DB8F /* Project object */;
 }

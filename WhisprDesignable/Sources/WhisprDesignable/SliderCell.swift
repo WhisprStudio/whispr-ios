@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct SliderCell: View {
+public struct SliderCell: View {
     @Binding var value: CGFloat
     var onEditingChanged: ((Bool) -> ())
     var label: String
     var subLabel: String
     private let thumbRadius: CGFloat = 30
     
-    var body: some View {
+    public var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
                 Text(label)

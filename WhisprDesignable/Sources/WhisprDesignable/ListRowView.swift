@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct ListRowView: View {
+public struct ListRowView: View {
     var section: Section
 
-    init(section: Section) {
+    public init(section: Section) {
         self.section = section
     }
 
-    var body: some View {
+    public var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ForEach(0..<section.items.count) { index in
                 if index != 0 {

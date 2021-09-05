@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WhisprDesignable
 
 struct AddSpeakerCell: View {
     private var action: (() -> ())

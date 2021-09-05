@@ -7,34 +7,34 @@
 
 import SwiftUI
 
-struct Section: Identifiable {
-    let id = UUID()
+public struct Section: Identifiable {
+    public let id = UUID()
     var items: [AnyView]
     var header: String
     var footer: String
 
-    init(items: [AnyView], header: String = "", footer: String = "") {
+    public init(items: [AnyView], header: String = "", footer: String = "") {
         self.items = items
         self.header = header
         self.footer = footer
     }
 }
 
-struct ListView: View {
+public struct ListView: View {
     
     var sections: [Section]
     var style: ListStyle
     
-    enum ListStyle {
+    public enum ListStyle {
         case rounded, plain
     }
 
-    init(sections: [Section], style: ListStyle = .rounded) {
+    public init(sections: [Section], style: ListStyle = .rounded) {
         self.sections = sections
         self.style = style
     }
 
-    var body: some View {
+    public var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
                 ForEach( Array(sections.enumerated()), id: \.offset) { index, section in

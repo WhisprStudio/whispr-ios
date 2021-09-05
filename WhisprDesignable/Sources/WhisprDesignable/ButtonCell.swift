@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ButtonCell<LeftView: View, RightView: View>: View {
+public struct ButtonCell<LeftView: View, RightView: View>: View {
     private var label: String
     private var subLabel: String
     private var action: (() -> ())
@@ -16,7 +16,7 @@ struct ButtonCell<LeftView: View, RightView: View>: View {
     @State private var isClicked: Bool = false
     private let alignment: HorizontalAlignment!
     
-    init(label: String = "",
+    public init(label: String = "",
          subLabel: String = "",
          action: @escaping (() -> ()),
          leftView: (() -> LeftView)? = nil,
@@ -33,7 +33,7 @@ struct ButtonCell<LeftView: View, RightView: View>: View {
         }
     }
 
-    var body: some View {
+    public var body: some View {
         Button(action: {
             isClicked.toggle()
             action()
@@ -75,7 +75,7 @@ struct ButtonCell<LeftView: View, RightView: View>: View {
     }
 }
 
-extension ButtonCell where LeftView == EmptyView {
+public extension ButtonCell where LeftView == EmptyView {
     init(label: String = "",
          subLabel: String = "",
          action: @escaping (() -> ()),
@@ -89,7 +89,7 @@ extension ButtonCell where LeftView == EmptyView {
     }
 }
 
-extension ButtonCell where RightView == EmptyView {
+public extension ButtonCell where RightView == EmptyView {
     init(label: String = "",
          subLabel: String = "",
          action: @escaping (() -> ()),
@@ -103,7 +103,7 @@ extension ButtonCell where RightView == EmptyView {
     }
 }
 
-extension ButtonCell where RightView == EmptyView, LeftView == EmptyView {
+public extension ButtonCell where RightView == EmptyView, LeftView == EmptyView {
     init(label: String = "",
          subLabel: String = "",
          action: @escaping (() -> ())) {

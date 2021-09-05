@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomSlider<Value, Track, Fill, Thumb>: View
+public struct CustomSlider<Value, Track, Fill, Thumb>: View
 where Value: BinaryFloatingPoint, Value.Stride: BinaryFloatingPoint, Track: View, Fill: View, Thumb: View {
     // the value of the slider, inside `bounds`
     @Binding var value: Value
@@ -40,7 +40,7 @@ where Value: BinaryFloatingPoint, Value.Stride: BinaryFloatingPoint, Track: View
     @State private var trackSize: CGSize = .zero
 
     // initializer allows us to set default values for some view params
-    init(value: Binding<Value>,
+    public init(value: Binding<Value>,
         in bounds: ClosedRange<Value> = 0...1,
         step: Value = 0.001,
         minimumValueLabel: Text? = nil,
@@ -72,7 +72,7 @@ where Value: BinaryFloatingPoint, Value.Stride: BinaryFloatingPoint, Track: View
         trackSize.width * CGFloat(percentage)
     }
 
-    var body: some View {
+    public var body: some View {
     // the HStack orders minimumValueLabel, the slider and maximumValueLabel horizontally
         HStack {
             minimumValueLabel.primaryFont(size: .L, weight: .medium)
