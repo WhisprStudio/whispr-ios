@@ -8,28 +8,38 @@
 import SwiftUI
 
 public struct ButtonCell<LeftView: View, RightView: View>: View {
-    private var label: String
-    private var subLabel: String
     private var action: (() -> ())
     private let content: LeftView?
     private let rightView: RightView?
     @State private var isClicked: Bool = false
     private let alignment: HorizontalAlignment!
     
+    var labelText: Text
+    private var subLabelText: Text?
+    
+    @Environment(\.primaryColor) var primaryColor : Color
+    @Environment(\.secondaryColor) var secondaryColor : Color
+    @Environment(\.clickedColor) var clickedColor : Color
+
     public init(label: String = "",
          subLabel: String = "",
          action: @escaping (() -> ()),
          leftView: (() -> LeftView)? = nil,
          rightView: (() -> RightView)? = nil) {
-        self.label = label
-        self.subLabel = subLabel
         self.action = action
         self.content = leftView?()
         self.rightView = rightView?()
         if (leftView != nil) {
             alignment = .leading
+        } else if leftView == nil && rightView != nil {
+            alignment = .leading
         } else {
             alignment = .center
+        }
+        
+        labelText = Text(label)
+        if !subLabel.isEmpty {
+            subLabelText = Text(subLabel)
         }
     }
 
@@ -40,18 +50,17 @@ public struct ButtonCell<LeftView: View, RightView: View>: View {
         }) {
             HStack {
                 content
-//                    .padding(.leading)
                 if (content != nil) {
                     Spacer()
                 }
                 VStack(alignment: alignment) {
-                    Text(label)
-                        .foregroundColor(isClicked ? .success : .primaryText)
+                    labelText
+                        .foregroundColor(isClicked ? clickedColor : primaryColor)
                         .primaryFont(size: .L, weight: .medium)
                         .padding(.trailing)
-                    if !(subLabel.isEmpty) {
-                        Text(subLabel)
-                            .foregroundColor(isClicked ? .success : .disabledText)
+                    if subLabelText != nil {
+                        subLabelText
+                            .foregroundColor(isClicked ? clickedColor : secondaryColor)
                             .primaryFont(size: .S, weight: .medium)
                             .padding(.trailing)
                     }
@@ -63,15 +72,6 @@ public struct ButtonCell<LeftView: View, RightView: View>: View {
             }
         }
         .foregroundColor(.primaryText)
-//        .frame(minWidth: 0, maxWidth: 300)
-//        .padding()
-//        .padding(.leading, 10)
-//        .padding(.trailing, 10)
-//        .overlay(
-//            RoundedRectangle(cornerRadius: 15)
-//                .stroke(isClicked ? Color.success : Color.primaryText, lineWidth: 2)
-//        )
-//        .background(Color.background)
     }
 }
 
@@ -80,12 +80,14 @@ public extension ButtonCell where LeftView == EmptyView {
          subLabel: String = "",
          action: @escaping (() -> ()),
          rightView: (() -> RightView)? = nil) {
-        self.label = label
-        self.subLabel = subLabel
         self.action = action
         content = nil
         self.rightView = rightView?()
         alignment = .center
+        labelText = Text(label)
+        if !subLabel.isEmpty {
+            subLabelText = Text(subLabel)
+        }
     }
 }
 
@@ -94,12 +96,14 @@ public extension ButtonCell where RightView == EmptyView {
          subLabel: String = "",
          action: @escaping (() -> ()),
          leftView: (() -> LeftView)? = nil) {
-        self.label = label
-        self.subLabel = subLabel
         self.action = action
         rightView = nil
         content = leftView?()
         alignment = .center
+        labelText = Text(label)
+        if !subLabel.isEmpty {
+            subLabelText = Text(subLabel)
+        }
     }
 }
 
@@ -107,12 +111,14 @@ public extension ButtonCell where RightView == EmptyView, LeftView == EmptyView 
     init(label: String = "",
          subLabel: String = "",
          action: @escaping (() -> ())) {
-        self.label = label
-        self.subLabel = subLabel
         self.action = action
         rightView = nil
         content = nil
         alignment = .center
+        labelText = Text(label)
+        if !subLabel.isEmpty {
+            subLabelText = Text(subLabel)
+        }
     }
 }
 
@@ -126,6 +132,9 @@ struct ButtonCell_Previews: PreviewProvider {
             ButtonCell(action: {})
             ButtonCell(label: "label", action: {})
             ButtonCell(label: "label", subLabel: "subLabel", action: {})
+                .primaryColor(.red)
+                .secondaryColor(.blue)
+                .clickedColor(.yellow)
             ButtonCell(label: "label",
                        action: {},
                        leftView: {
@@ -141,6 +150,9 @@ struct ButtonCell_Previews: PreviewProvider {
                             .resizable()
                             .frame(width: 50, height: 50)
                        })
+                .primaryColor(.primaryText)
+                .secondaryColor(.success)
+                .clickedColor(.yellow)
             ButtonCell(label: "label",
                        action: {},
                        leftView: {
@@ -150,6 +162,7 @@ struct ButtonCell_Previews: PreviewProvider {
                        },
                        rightView: {
                         Image(systemName: "chevron.right")
+                            .foregroundColor(Color.white)
                             .primaryFont(size: .L, weight: .regular)
                        })
             ButtonCell(label: "label",
@@ -162,12 +175,14 @@ struct ButtonCell_Previews: PreviewProvider {
                        },
                        rightView: {
                         Image(systemName: "chevron.right")
+                            .foregroundColor(Color.white)
                             .primaryFont(size: .L, weight: .regular)
                        })
             ButtonCell(label: "label",
                        action: {},
                        rightView: {
                         Image(systemName: "chevron.right")
+                            .foregroundColor(Color.white)
                             .primaryFont(size: .L, weight: .regular)
                        })
             ButtonCell(label: "label",
@@ -175,6 +190,7 @@ struct ButtonCell_Previews: PreviewProvider {
                        action: {},
                        rightView: {
                         Image(systemName: "chevron.right")
+                            .foregroundColor(Color.white)
                             .primaryFont(size: .L, weight: .regular)
                        })
         }

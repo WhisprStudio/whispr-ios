@@ -45,7 +45,7 @@ public struct SliderCell: View {
     }
 }
 
-struct SliderCellPreviewContainer: View {
+public struct SliderCellPreviewContainer: View {
     @State var value: CGFloat = 0
     var onEditingChanged: ((Bool) -> ()) = {_ in }
     var minimumValue: String = "0"
@@ -53,7 +53,7 @@ struct SliderCellPreviewContainer: View {
     var label: String = "Volume"
     var subLabel: String = ""
 
-    var body: some View {
+    public var body: some View {
         VStack {
             SliderCell(value: $value, onEditingChanged: onEditingChanged, label: label, subLabel: subLabel)
                 .frame(maxWidth: .infinity)

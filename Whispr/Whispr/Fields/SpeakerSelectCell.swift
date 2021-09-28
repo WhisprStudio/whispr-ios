@@ -36,6 +36,8 @@ struct SpeakerSelectCell: View {
                         .foregroundColor(isClicked ? .success : .primaryText)
                         .primaryFont(size: .XL, weight: .medium)
                    })
+            .primaryColor(Color.primaryText)
+            .clickedColor(Color.success)
     }
 }
 

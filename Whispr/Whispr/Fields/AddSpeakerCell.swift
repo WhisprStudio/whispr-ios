@@ -29,6 +29,8 @@ struct AddSpeakerCell: View {
                             .primaryFont(size: .XL, weight: .medium)
                     }
                    })
+            .primaryColor(Color.primaryText)
+            .clickedColor(Color.success)
     }
 }
 
