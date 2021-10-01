@@ -37,6 +37,9 @@ struct SpeakerSelectCellTestView: View {
                 AnyView(AddSpeakerCell(action: {}))
             ])
         ], style: .plain)
+        .separatorColor(Color.primaryText)
+        .primaryColor(Color.primaryText)
+        .backgroundColor(Color.FieldBackground)
     }
 }
 

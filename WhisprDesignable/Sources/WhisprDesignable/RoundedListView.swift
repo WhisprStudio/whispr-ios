@@ -9,25 +9,36 @@ import SwiftUI
 
 public struct RoundedListView: View {
     var section: Section
+    var primaryColor : Color
+    var backgroundColor : Color
+    var separatorColor : Color
 
-    public init(section: Section) {
+    public init(section: Section,
+                primaryColor : Color = .primary,
+                backgroundColor : Color = .secondary,
+                separatorColor : Color = .primary) {
         self.section = section
+        self.primaryColor = primaryColor
+        self.backgroundColor = backgroundColor
+        self.separatorColor = separatorColor
     }
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             if !section.header.isEmpty {
                 Text(section.header.capitalized )
+                    .foregroundColor(primaryColor)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(.top)
             }
-            ListRowView(section: section)
-                .addBorder(Color.primaryText, width: 2, cornerRadius: 15)
-                .background(Color.FieldBackground)
+            ListRowView(section: section, separatorColor: separatorColor)
+                .background(backgroundColor)
+                .addBorder(separatorColor, width: 2, cornerRadius: 15)
                 .padding(.top, 5)
                 .padding(.bottom, 5)
             if !section.footer.isEmpty {
                 Text(section.footer.capitalized)
+                    .foregroundColor(primaryColor)
                     .primaryFont(size: .M, weight: .medium)
                     .padding(.bottom, 10)
             }

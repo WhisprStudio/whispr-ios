@@ -9,16 +9,18 @@ import SwiftUI
 
 public struct ListRowView: View {
     var section: Section
+    var separatorColor: Color
 
-    public init(section: Section) {
+    public init(section: Section, separatorColor : Color = .primary) {
         self.section = section
+        self.separatorColor = separatorColor
     }
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ForEach(0..<section.items.count) { index in
                 if index != 0 {
-                    ListDivider()
+                    ListDivider(separatorColor: separatorColor)
                 }
                 section.items[index]
                     .padding()

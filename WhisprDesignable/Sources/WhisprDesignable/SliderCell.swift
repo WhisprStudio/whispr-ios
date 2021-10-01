@@ -13,7 +13,10 @@ public struct SliderCell: View {
     var label: String
     var subLabel: String
     private let thumbRadius: CGFloat = 30
-    
+
+    @Environment(\.primaryColor) var primaryColor : Color
+    @Environment(\.secondaryColor) var secondaryColor : Color
+
     public var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
@@ -28,18 +31,17 @@ public struct SliderCell: View {
                                 onEditingChanged: onEditingChanged,
                                 track: {
                                     Capsule()
-                                        .foregroundColor(Color.disabledText)
+                                        .foregroundColor(primaryColor)
                                         .frame(width: .infinity, height: 10)
                                 }, fill: {
                                     Capsule()
-                                        .foregroundColor(.WhisprYellow)
+                                        .foregroundColor(secondaryColor)
                                 }, thumb: {
                                     Capsule()
                                         .frame(width: thumbRadius, height: thumbRadius - 10)
                                         .foregroundColor(.white)
                                         .shadow(radius: thumbRadius / 1)
                                 }, thumbSize: CGSize(width: thumbRadius, height: thumbRadius - 10))
-                                    .accentColor(Color.WhisprYellow)
             }
         }
     }
@@ -59,6 +61,8 @@ public struct SliderCellPreviewContainer: View {
                 .frame(maxWidth: .infinity)
             Text("Current slider value: \(value, specifier: "%.2f")")
         }
+        .primaryColor(.disabledText)
+        .secondaryColor(.WhisprYellow)
         .background(Color.background)
     }
 }

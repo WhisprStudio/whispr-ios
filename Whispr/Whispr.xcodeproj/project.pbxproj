@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA3F93EE270382D100878516 /* WhisprDesignable in Frameworks */ = {isa = PBXBuildFile; productRef = DA3F93ED270382D100878516 /* WhisprDesignable */; };
 		DA888DC52690AD5500C5734B /* SpeakerSelectCellTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA888DC42690AD5500C5734B /* SpeakerSelectCellTestView.swift */; };
 		DA888DCF2690DE1800C5734B /* AddSpeakerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA888DCE2690DE1800C5734B /* AddSpeakerCell.swift */; };
 		DADBD5C2266FE5A000E7DB8F /* WhisprApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD5C1266FE5A000E7DB8F /* WhisprApp.swift */; };
@@ -20,7 +21,6 @@
 		DADBD620267130CE00E7DB8F /* Barlow-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DADBD61D267130CE00E7DB8F /* Barlow-ThinItalic.ttf */; };
 		DADBD621267130CE00E7DB8F /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DADBD61E267130CE00E7DB8F /* Barlow-Regular.ttf */; };
 		DADBD62E2690A33700E7DB8F /* SpeakerSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD62D2690A33700E7DB8F /* SpeakerSelectCell.swift */; };
-		DADCC21226E4C8BC00BBC66A /* WhisprDesignable in Frameworks */ = {isa = PBXBuildFile; productRef = DADCC21126E4C8BC00BBC66A /* WhisprDesignable */; };
 		DAE2091B26E4C272007C3DA4 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2091926E4C272007C3DA4 /* ColorManager.swift */; };
 		DAE2091C26E4C272007C3DA4 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2091A26E4C272007C3DA4 /* FontManager.swift */; };
 /* End PBXBuildFile section */
@@ -72,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DADCC21226E4C8BC00BBC66A /* WhisprDesignable in Frameworks */,
+				DA3F93EE270382D100878516 /* WhisprDesignable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +202,7 @@
 			);
 			name = Whispr;
 			packageProductDependencies = (
-				DADCC21126E4C8BC00BBC66A /* WhisprDesignable */,
+				DA3F93ED270382D100878516 /* WhisprDesignable */,
 			);
 			productName = Whispr;
 			productReference = DADBD5BE266FE5A000E7DB8F /* Whispr.app */;
@@ -649,7 +649,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DADCC21126E4C8BC00BBC66A /* WhisprDesignable */ = {
+		DA3F93ED270382D100878516 /* WhisprDesignable */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WhisprDesignable;
 		};

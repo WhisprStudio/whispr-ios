@@ -19,6 +19,14 @@ private struct ClickedColorKey: EnvironmentKey {
     static let defaultValue: Color = .secondary
 }
 
+private struct SeparotorColorKey: EnvironmentKey {
+    static let defaultValue: Color = .primary
+}
+
+private struct BackgroundColorKey: EnvironmentKey {
+    static let defaultValue: Color = .secondary
+}
+
 public extension EnvironmentValues {
     var primaryColor: Color {
         get { self[PrimaryColorKey.self] }
@@ -34,6 +42,16 @@ public extension EnvironmentValues {
         get { self[ClickedColorKey.self] }
         set { self[ClickedColorKey.self] = newValue }
     }
+    
+    var separatorColor: Color {
+        get { self[SeparotorColorKey.self] }
+        set { self[SeparotorColorKey.self] = newValue }
+    }
+    
+    var backgroundColor: Color {
+        get { self[BackgroundColorKey.self] }
+        set { self[BackgroundColorKey.self] = newValue }
+    }
 }
 
 public extension View {
@@ -47,5 +65,13 @@ public extension View {
     
     func clickedColor(_ color: Color) -> some View {
         environment(\.clickedColor, color)
+    }
+
+    func separatorColor(_ color: Color) -> some View {
+        environment(\.separatorColor, color)
+    }
+
+    func backgroundColor(_ color: Color) -> some View {
+        environment(\.backgroundColor, color)
     }
 }

@@ -33,15 +33,20 @@ public struct ListView: View {
         self.sections = sections
         self.style = style
     }
+    
+    @Environment(\.primaryColor) var primaryColor : Color
+    @Environment(\.backgroundColor) var backgroundColor : Color
+    @Environment(\.separatorColor) var separatorColor : Color
 
     public var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
                 ForEach( Array(sections.enumerated()), id: \.offset) { index, section in
                     if style == .rounded {
-                        RoundedListView(section: section)
+                        RoundedListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
+//                        RoundedListView(section: section)
                     } else {
-                        PlainListView(section: section)
+                        PlainListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
                     }
                 }
             }
@@ -56,9 +61,10 @@ public struct ListView: View {
 
 struct ListDivider: View {
     var height: CGFloat = 2
+    var separatorColor: Color = Color.primaryText
     var body: some View {
         Rectangle()
-            .fill(Color.primaryText)
+            .fill(separatorColor)
             .frame(height: height)
             .padding(.leading, 30)
             .padding(.trailing, 30)
@@ -72,6 +78,9 @@ struct Cell_Previews: PreviewProvider {
                             Section(items: [AnyView(Text("7")), AnyView(Text("8")), AnyView(Text("9"))], header: "header3", footer: "footer3"),
                             Section(items: [AnyView(Text("10")), AnyView(Text("11")), AnyView(Text("12"))], header: "header4", footer: "footer4"),
         ], style: .rounded)
+        .backgroundColor(.purple)
+        .separatorColor(.red)
+        .primaryColor(.blue)
         .preferredColorScheme(.dark)
     }
 }
