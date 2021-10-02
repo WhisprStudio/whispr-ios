@@ -103,6 +103,16 @@
 			path = Fields;
 			sourceTree = "<group>";
 		};
+		DA3E935127088FD6000BDF7E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				DADBD61C267130CE00E7DB8F /* Barlow-Medium.ttf */,
+				DADBD61E267130CE00E7DB8F /* Barlow-Regular.ttf */,
+				DADBD61D267130CE00E7DB8F /* Barlow-ThinItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		DADBD5B5266FE5A000E7DB8F = {
 			isa = PBXGroup;
 			children = (
@@ -135,8 +145,8 @@
 				DADBD5C3266FE5A000E7DB8F /* ContentView.swift */,
 				DA17263326DF7A0E009FBB3A /* Fields */,
 				DADBD5C5266FE5A100E7DB8F /* Assets.xcassets */,
+				DA3E935127088FD6000BDF7E /* Fonts */,
 				DADBD5CA266FE5A100E7DB8F /* Info.plist */,
-				DADBD625267130D300E7DB8F /* Fonts */,
 				DADBD5C7266FE5A100E7DB8F /* Preview Content */,
 			);
 			path = Whispr;
@@ -166,16 +176,6 @@
 				DADBD5E0266FE5A200E7DB8F /* Info.plist */,
 			);
 			path = WhisprUITests;
-			sourceTree = "<group>";
-		};
-		DADBD625267130D300E7DB8F /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				DADBD61C267130CE00E7DB8F /* Barlow-Medium.ttf */,
-				DADBD61E267130CE00E7DB8F /* Barlow-Regular.ttf */,
-				DADBD61D267130CE00E7DB8F /* Barlow-ThinItalic.ttf */,
-			);
-			name = Fonts;
 			sourceTree = "<group>";
 		};
 		DAE2091626E3F661007C3DA4 /* Frameworks */ = {
