@@ -23,6 +23,8 @@
 		DAE2091B26E4C272007C3DA4 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2091926E4C272007C3DA4 /* ColorManager.swift */; };
 		DAE2091C26E4C272007C3DA4 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2091A26E4C272007C3DA4 /* FontManager.swift */; };
 		DAEDB4D3270B4F5D002A5FEE /* WhisprGenericViews in Frameworks */ = {isa = PBXBuildFile; productRef = DAEDB4D2270B4F5D002A5FEE /* WhisprGenericViews */; };
+		DAEDB4D5270B52F1002A5FEE /* WhisprGenericViews in Frameworks */ = {isa = PBXBuildFile; productRef = DAEDB4D4270B52F1002A5FEE /* WhisprGenericViews */; };
+		DAEDB4D7270B52F6002A5FEE /* WhisprGenericViews in Frameworks */ = {isa = PBXBuildFile; productRef = DAEDB4D6270B52F6002A5FEE /* WhisprGenericViews */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAEDB4D5270B52F1002A5FEE /* WhisprGenericViews in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAEDB4D7270B52F6002A5FEE /* WhisprGenericViews in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +226,9 @@
 				DADBD5D1266FE5A200E7DB8F /* PBXTargetDependency */,
 			);
 			name = WhisprTests;
+			packageProductDependencies = (
+				DAEDB4D4270B52F1002A5FEE /* WhisprGenericViews */,
+			);
 			productName = WhisprTests;
 			productReference = DADBD5CF266FE5A200E7DB8F /* WhisprTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -240,6 +247,9 @@
 				DADBD5DC266FE5A200E7DB8F /* PBXTargetDependency */,
 			);
 			name = WhisprUITests;
+			packageProductDependencies = (
+				DAEDB4D6270B52F6002A5FEE /* WhisprGenericViews */,
+			);
 			productName = WhisprUITests;
 			productReference = DADBD5DA266FE5A200E7DB8F /* WhisprUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -650,6 +660,14 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		DAEDB4D2270B4F5D002A5FEE /* WhisprGenericViews */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WhisprGenericViews;
+		};
+		DAEDB4D4270B52F1002A5FEE /* WhisprGenericViews */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WhisprGenericViews;
+		};
+		DAEDB4D6270B52F6002A5FEE /* WhisprGenericViews */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WhisprGenericViews;
 		};
