@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import WhisprDesignable
+import WhisprGenericViews
 
 struct SpeakerSelectCellTestView: View {
     var body: some View {

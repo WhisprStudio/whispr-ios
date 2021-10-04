@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA3F93EE270382D100878516 /* WhisprDesignable in Frameworks */ = {isa = PBXBuildFile; productRef = DA3F93ED270382D100878516 /* WhisprDesignable */; };
 		DA888DC52690AD5500C5734B /* SpeakerSelectCellTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA888DC42690AD5500C5734B /* SpeakerSelectCellTestView.swift */; };
 		DA888DCF2690DE1800C5734B /* AddSpeakerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA888DCE2690DE1800C5734B /* AddSpeakerCell.swift */; };
 		DADBD5C2266FE5A000E7DB8F /* WhisprApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD5C1266FE5A000E7DB8F /* WhisprApp.swift */; };
@@ -23,6 +22,7 @@
 		DADBD62E2690A33700E7DB8F /* SpeakerSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD62D2690A33700E7DB8F /* SpeakerSelectCell.swift */; };
 		DAE2091B26E4C272007C3DA4 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2091926E4C272007C3DA4 /* ColorManager.swift */; };
 		DAE2091C26E4C272007C3DA4 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2091A26E4C272007C3DA4 /* FontManager.swift */; };
+		DAEDB4D3270B4F5D002A5FEE /* WhisprGenericViews in Frameworks */ = {isa = PBXBuildFile; productRef = DAEDB4D2270B4F5D002A5FEE /* WhisprGenericViews */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,9 +62,9 @@
 		DADBD61D267130CE00E7DB8F /* Barlow-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-ThinItalic.ttf"; sourceTree = "<group>"; };
 		DADBD61E267130CE00E7DB8F /* Barlow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Regular.ttf"; sourceTree = "<group>"; };
 		DADBD62D2690A33700E7DB8F /* SpeakerSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerSelectCell.swift; sourceTree = "<group>"; };
-		DAE2091526E3F5A2007C3DA4 /* WhisprDesignable */ = {isa = PBXFileReference; lastKnownFileType = folder; name = WhisprDesignable; path = ../WhisprDesignable; sourceTree = "<group>"; };
 		DAE2091926E4C272007C3DA4 /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		DAE2091A26E4C272007C3DA4 /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
+		DAEDB4D1270B4EE9002A5FEE /* WhisprGenericViews */ = {isa = PBXFileReference; lastKnownFileType = folder; name = WhisprGenericViews; path = ../WhisprGenericViews; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA3F93EE270382D100878516 /* WhisprDesignable in Frameworks */,
+				DAEDB4D3270B4F5D002A5FEE /* WhisprGenericViews in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +116,7 @@
 		DADBD5B5266FE5A000E7DB8F = {
 			isa = PBXGroup;
 			children = (
-				DAE2091526E3F5A2007C3DA4 /* WhisprDesignable */,
+				DAEDB4D1270B4EE9002A5FEE /* WhisprGenericViews */,
 				DADBD5C0266FE5A000E7DB8F /* Whispr */,
 				DADBD5D2266FE5A200E7DB8F /* WhisprTests */,
 				DADBD5DD266FE5A200E7DB8F /* WhisprUITests */,
@@ -202,7 +202,7 @@
 			);
 			name = Whispr;
 			packageProductDependencies = (
-				DA3F93ED270382D100878516 /* WhisprDesignable */,
+				DAEDB4D2270B4F5D002A5FEE /* WhisprGenericViews */,
 			);
 			productName = Whispr;
 			productReference = DADBD5BE266FE5A000E7DB8F /* Whispr.app */;
@@ -649,9 +649,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DA3F93ED270382D100878516 /* WhisprDesignable */ = {
+		DAEDB4D2270B4F5D002A5FEE /* WhisprGenericViews */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = WhisprDesignable;
+			productName = WhisprGenericViews;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

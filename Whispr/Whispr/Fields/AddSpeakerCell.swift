@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import WhisprDesignable
+import WhisprGenericViews
 
 struct AddSpeakerCell: View {
     private var action: (() -> ())

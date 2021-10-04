@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import WhisprDesignable
+import WhisprGenericViews
 
 struct SpeakerSelectCell: View {
     private var label: String

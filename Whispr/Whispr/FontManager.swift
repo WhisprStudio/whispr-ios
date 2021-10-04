@@ -5,7 +5,7 @@
 //  Created by Paul Erny on 09/06/2021.
 //
 
-import WhisprDesignable
+import WhisprGenericViews
 import SwiftUI
 
 //MARK: - SwiftUI
