@@ -9,6 +9,8 @@ import SwiftUI
 import WhisprGenericViews
 
 struct SpeakerSelectCellTestView: View {
+    @State var text: String = ""
+    
     var body: some View {
         ListView(sections: [
             Section(items: [
@@ -34,7 +36,8 @@ struct SpeakerSelectCellTestView: View {
                                           action: {})),
             ], header: "header", footer: "footer"),
             Section(items: [
-                AnyView(AddSpeakerCell(action: {}))
+                AnyView(AddSpeakerCell(action: {})),
+                AnyView(TextFieldCell(text: $text, label: "Text Field"))
             ])
         ], style: .plain)
         .separatorColor(Color.primaryText)

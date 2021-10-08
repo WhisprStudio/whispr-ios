@@ -27,6 +27,10 @@ private struct BackgroundColorKey: EnvironmentKey {
     static let defaultValue: Color = .secondary
 }
 
+private struct TextInputColorKey: EnvironmentKey {
+    static let defaultValue: Color = .primary
+}
+
 public extension EnvironmentValues {
     var primaryColor: Color {
         get { self[PrimaryColorKey.self] }
@@ -52,6 +56,11 @@ public extension EnvironmentValues {
         get { self[BackgroundColorKey.self] }
         set { self[BackgroundColorKey.self] = newValue }
     }
+    
+    var textInputColor: Color {
+        get { self[TextInputColorKey.self] }
+        set { self[TextInputColorKey.self] = newValue }
+    }
 }
 
 public extension View {
@@ -73,5 +82,9 @@ public extension View {
 
     func backgroundColor(_ color: Color) -> some View {
         environment(\.backgroundColor, color)
+    }
+    
+    func textInputColor(_ color: Color) -> some View {
+        environment(\.textInputColor, color)
     }
 }
