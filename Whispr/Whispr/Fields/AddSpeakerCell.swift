@@ -21,6 +21,9 @@ struct AddSpeakerCell: View {
                    action: {
                     isClicked.toggle()
                     action()
+                    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
+                        isClicked.toggle()
+                    }
                    },
                    rightView: {
                     HStack {

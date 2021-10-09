@@ -47,6 +47,9 @@ public struct ButtonCell<LeftView: View, RightView: View>: View {
         Button(action: {
             isClicked.toggle()
             action()
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
+                isClicked.toggle()
+            }
         }) {
             HStack {
                 content

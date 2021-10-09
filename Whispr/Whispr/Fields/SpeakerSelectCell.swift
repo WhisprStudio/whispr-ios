@@ -25,6 +25,9 @@ struct SpeakerSelectCell: View {
                    action: {
                     isClicked.toggle()
                     action()
+                    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
+                        isClicked.toggle()
+                    }
                    },
                    leftView: {
                     Image(speakerImage)
