@@ -37,7 +37,8 @@ struct SpeakerSelectCellTestView: View {
             ], header: "header", footer: "footer"),
             Section(items: [
                 AnyView(AddSpeakerCell(action: {})),
-                AnyView(TextFieldCell(text: $text, label: "Text Field"))
+                AnyView(TextFieldCell(text: $text, label: "Text Field")),
+                AnyView(SaveCell(action: {})),
             ])
         ], style: .plain)
         .separatorColor(Color.primaryText)
