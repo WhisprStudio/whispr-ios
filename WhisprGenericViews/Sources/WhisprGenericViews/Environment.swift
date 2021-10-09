@@ -35,6 +35,10 @@ private struct SaveTextColorKey: EnvironmentKey {
     static let defaultValue: Color = .primary
 }
 
+private struct DeleteTextColorKey: EnvironmentKey {
+    static let defaultValue: Color = .primary
+}
+
 public extension EnvironmentValues {
     var primaryColor: Color {
         get { self[PrimaryColorKey.self] }
@@ -70,6 +74,11 @@ public extension EnvironmentValues {
         get { self[SaveTextColorKey.self] }
         set { self[SaveTextColorKey.self] = newValue }
     }
+    
+    var deleteTextColor: Color {
+        get { self[DeleteTextColorKey.self] }
+        set { self[DeleteTextColorKey.self] = newValue }
+    }
 }
 
 public extension View {
@@ -99,5 +108,9 @@ public extension View {
 
     func saveTextColor(_ color: Color) -> some View {
         environment(\.saveTextColor, color)
+    }
+    
+    func deleteTextColor(_ color: Color) -> some View {
+        environment(\.deleteTextColor, color)
     }
 }

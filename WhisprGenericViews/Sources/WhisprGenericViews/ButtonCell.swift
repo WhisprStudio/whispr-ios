@@ -54,15 +54,29 @@ public struct ButtonCell<LeftView: View, RightView: View>: View {
                     Spacer()
                 }
                 VStack(alignment: alignment) {
-                    labelText
-                        .foregroundColor(isClicked ? clickedColor : primaryColor)
-                        .primaryFont(size: .L, weight: .medium)
-                        .padding(.trailing)
-                    if subLabelText != nil {
-                        subLabelText
-                            .foregroundColor(isClicked ? clickedColor : secondaryColor)
-                            .primaryFont(size: .S, weight: .medium)
+                    if clickedColor != .secondary {
+                        labelText
+                            .foregroundColor(isClicked ? clickedColor : primaryColor)
+                            .primaryFont(size: .L, weight: .medium)
                             .padding(.trailing)
+                    } else {
+                        labelText
+                            .foregroundColor(primaryColor)
+                            .primaryFont(size: .L, weight: .medium)
+                            .padding(.trailing)
+                    }
+                    if subLabelText != nil {
+                        if clickedColor != .secondary {
+                            subLabelText
+                                .foregroundColor(isClicked ? clickedColor : secondaryColor)
+                                .primaryFont(size: .S, weight: .medium)
+                                .padding(.trailing)
+                        } else {
+                            subLabelText
+                                .foregroundColor(secondaryColor)
+                                .primaryFont(size: .S, weight: .medium)
+                                .padding(.trailing)
+                        }
                     }
                 }
                 if (rightView != nil && content == nil) {
