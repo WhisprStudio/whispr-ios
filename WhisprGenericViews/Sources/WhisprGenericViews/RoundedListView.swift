@@ -29,7 +29,6 @@ public struct RoundedListView: View {
                 Text(section.header.capitalized )
                     .foregroundColor(primaryColor)
                     .primaryFont(size: .L, weight: .medium)
-                    .padding(.top)
             }
             ListRowView(section: section, separatorColor: separatorColor)
                 .background(backgroundColor)
@@ -40,7 +39,6 @@ public struct RoundedListView: View {
                 Text(section.footer.capitalized)
                     .foregroundColor(primaryColor)
                     .primaryFont(size: .M, weight: .medium)
-                    .padding(.bottom, 10)
             }
         }
         .padding(.leading)

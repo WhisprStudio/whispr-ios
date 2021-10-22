@@ -167,8 +167,8 @@ struct ButtonCell_Previews: PreviewProvider {
                             .resizable()
                             .frame(width: 50, height: 50)
                        })
-                .primaryColor(.primaryText)
-                .secondaryColor(.success)
+                .primaryColor(.green)
+                .secondaryColor(.yellow)
                 .clickedColor(.yellow)
             ButtonCell(label: "label",
                        action: {},
@@ -186,9 +186,10 @@ struct ButtonCell_Previews: PreviewProvider {
                        subLabel: "subLabel",
                        action: {},
                        leftView: {
-                        Image("portable2")
+                        Image(systemName: "chevron.left")
                             .resizable()
                             .frame(width: 50, height: 50)
+                            .foregroundColor(Color.white)
                        },
                        rightView: {
                         Image(systemName: "chevron.right")

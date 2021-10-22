@@ -29,7 +29,6 @@ public struct PlainListView: View {
                 Text(section.header.capitalized )
                     .foregroundColor(primaryColor)
                     .primaryFont(size: .L, weight: .medium)
-                    .padding(.top)
                     .padding(.bottom, 5)
                     .padding(.leading)
             }
@@ -45,7 +44,6 @@ public struct PlainListView: View {
                 Text(section.footer.capitalized)
                     .foregroundColor(primaryColor)
                     .primaryFont(size: .M, weight: .medium)
-                    .padding(.bottom)
                     .padding(.top, 5)
                     .padding(.leading)
             }

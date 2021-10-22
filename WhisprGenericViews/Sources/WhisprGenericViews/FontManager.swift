@@ -15,7 +15,7 @@ public protocol FontModifier: ViewModifier {
 }
 
 public enum FontWeight: String {
-    case regular = "Regular", medium = "Medium", thin = "Thin"
+    case regular = "Regular", medium = "Medium", thin = "Thin", semiBold = "SemiBold"
 }
 
 // TODO: add more ? (semi bold, extra bold, bold italic, ...)

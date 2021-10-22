@@ -13,34 +13,44 @@ struct SpeakerSelectCell: View {
     private var speakerImage: String
     private var action: (() -> ())
     @State private var isClicked: Bool = false
-    
-    init(label: String, speakerImage: String, action: @escaping (() -> ())) {
+    @State private var isNavigationTriggered: Bool = false
+    private var subLabel: String = ""
+    private var subLabelColor: Color = .clear
+
+    init(label: String, speakerImage: String, action: @escaping (() -> ()), isConnected: Bool = true) {
         self.label = label
         self.speakerImage = speakerImage
         self.action = action
+        self.subLabel = isConnected ? "Connected" : "Offline"
+        self.subLabelColor = isConnected ? .LED : .error
     }
 
     var body: some View {
-        ButtonCell(label: label,
-                   action: {
-                    isClicked.toggle()
-                    action()
-                    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
+        NavigationLink(destination: SpeakerView(speakerName: label), isActive: $isNavigationTriggered) {
+            ButtonCell(label: label,
+                       subLabel: subLabel,
+                       action: {
                         isClicked.toggle()
-                    }
-                   },
-                   leftView: {
-                    Image(speakerImage)
-                        .resizable()
-                        .frame(width: 100, height: 100, alignment: .center)
-                   },
-                   rightView: {
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(isClicked ? .success : .primaryText)
-                        .primaryFont(size: .XL, weight: .medium)
-                   })
-            .primaryColor(Color.primaryText)
-            .clickedColor(Color.success)
+                        action()
+                        isNavigationTriggered = true
+                        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
+                            isClicked.toggle()
+                        }
+                       },
+                       leftView: {
+                        Image(speakerImage)
+                            .resizable()
+                            .frame(width: 100, height: 100, alignment: .center)
+                       },
+                       rightView: {
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(isClicked ? .success : .primaryText)
+                            .primaryFont(size: .XL, weight: .medium)
+                       })
+                .primaryColor(Color.primaryText)
+                .secondaryColor(subLabelColor)
+                .clickedColor(Color.success)
+        }
     }
 }
 
@@ -50,8 +60,10 @@ struct SpeakerSelectCell_Previews: PreviewProvider {
         let action = {
             print("pressed")
         }
-        
-        SpeakerSelectCell(label: "test", speakerImage: "portable2", action: action)
-            .preferredColorScheme(.dark)
+        NavigationView {
+            SpeakerSelectCell(label: "test", speakerImage: "portable2", action: action)
+                .navigationTitle("Navigation")
+                .preferredColorScheme(.dark)
+        }
     }
 }

@@ -44,7 +44,7 @@ struct SpeakerSelectCellTestView: View {
         ], style: .plain)
         .separatorColor(Color.primaryText)
         .primaryColor(Color.primaryText)
-        .backgroundColor(Color.FieldBackground)
+        .backgroundColor(Color.fieldBackground)
     }
 }
 

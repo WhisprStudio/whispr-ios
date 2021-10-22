@@ -24,38 +24,84 @@ public struct ListView: View {
     
     var sections: [Section]
     var style: ListStyle
+    var fullscreen: Bool
     
     public enum ListStyle {
         case rounded, plain
     }
 
-    public init(sections: [Section], style: ListStyle = .rounded) {
+    public init(sections: [Section], style: ListStyle = .rounded, fullscreen: Bool = false) {
         self.sections = sections
         self.style = style
+        self.fullscreen = fullscreen
     }
     
     @Environment(\.primaryColor) var primaryColor : Color
     @Environment(\.backgroundColor) var backgroundColor : Color
     @Environment(\.separatorColor) var separatorColor : Color
-
-    public var body: some View {
+    
+    @ViewBuilder func view() -> some View {
+//        if fullscreen {
+//            self
+//                .edgesIgnoringSafeArea(.all)
+//        } else {
+//            self
+//        }
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
                 ForEach( Array(sections.enumerated()), id: \.offset) { index, section in
                     if style == .rounded {
-                        RoundedListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
-//                        RoundedListView(section: section)
+                        if index == 0 {
+                            RoundedListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
+                                .padding(.bottom)
+                        } else {
+                            RoundedListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
+                                .padding(.bottom)
+                                .padding(.top)
+                        }
                     } else {
-                        PlainListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
+                        if index == 0 {
+                            PlainListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
+                                .padding(.bottom)
+                        } else {
+                            PlainListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
+                                .padding(.bottom)
+                                .padding(.top)
+                        }
                     }
                 }
             }
             .padding(.bottom, 35)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.top)
         .background(Color.background.edgesIgnoringSafeArea(.all))
-        .edgesIgnoringSafeArea(.all)
+    }
+
+    public var body: some View {
+        if fullscreen {
+            view()
+                .padding(.top)
+                .edgesIgnoringSafeArea(.all)
+        } else {
+            view()
+        }
+//        ScrollView {
+//            VStack(alignment: .leading, spacing: 10) {
+//                ForEach( Array(sections.enumerated()), id: \.offset) { index, section in
+//                    if style == .rounded {
+//                        RoundedListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
+////                        RoundedListView(section: section)
+//                    } else {
+//                        PlainListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
+//                    }
+//                }
+//            }
+//            .padding(.bottom, 35)
+//        }
+//        .frame(maxWidth: .infinity, alignment: .leading)
+//        .padding(.top)
+//        .background(Color.background.edgesIgnoringSafeArea(.all))
+////        .edgesIgnoringSafeArea(.all)
     }
 }
 

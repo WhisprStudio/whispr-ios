@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Whispr.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "WhisprGenericViews"
+               BuildableName = "WhisprGenericViews"
+               BlueprintName = "WhisprGenericViews"
+               ReferencedContainer = "container:../WhisprGenericViews">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
