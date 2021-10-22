@@ -39,7 +39,7 @@ struct PrimaryFontModifier: FontModifier {
         return content
             .font(.system(size: size.rawValue, weight: .medium, design: .default))
 //            .font(.custom("Barlow-\(fontAttribute)", size: size.rawValue))
-            .foregroundColor(.primaryText)
+            .foregroundColor(.white)
     }
 }
 
@@ -51,7 +51,7 @@ struct SecondaryFontModifier: FontModifier {
     func body(content: Content) -> some View {
         return content
             .font(.system(size: size.rawValue, weight: .medium, design: .default))
-            .foregroundColor(.primaryText)
+            .foregroundColor(.white)
     }
 }
 
