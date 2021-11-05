@@ -26,7 +26,7 @@ public struct RoundedListView: View {
     public var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             if !section.header.isEmpty {
-                Text(section.header.capitalized )
+                Text(section.header)
                     .foregroundColor(primaryColor)
                     .primaryFont(size: .M, weight: .medium)
             }
@@ -36,7 +36,7 @@ public struct RoundedListView: View {
                 .padding(.top, 5)
                 .padding(.bottom, 5)
             if !section.footer.isEmpty {
-                Text(section.footer.capitalized)
+                Text(section.footer)
                     .foregroundColor(primaryColor)
                     .primaryFont(size: .S, weight: .medium)
             }

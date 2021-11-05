@@ -14,7 +14,7 @@ struct SpeakerConfigButtonCell: View {
     var isActive: Bool
     
     var body: some View {
-        NavigationLink(destination: SpeakerConfigurationView(), isActive: $isNavigationTriggered) {
+        NavigationLink(destination: SpeakerConfigurationView(configName: configName), isActive: $isNavigationTriggered) {
             ButtonValueCell(label: configName,
                             value: isActive ? "active" : "inactive",
                             action: {

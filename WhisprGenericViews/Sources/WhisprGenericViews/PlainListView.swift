@@ -26,7 +26,7 @@ public struct PlainListView: View {
     public var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             if !section.header.isEmpty {
-                Text(section.header.capitalized )
+                Text(section.header)
                     .foregroundColor(primaryColor)
                     .primaryFont(size: .M, weight: .medium)
                     .padding(.bottom, 5)
@@ -41,7 +41,7 @@ public struct PlainListView: View {
                 .fill(separatorColor)
                 .frame(height: 2)
             if !section.footer.isEmpty {
-                Text(section.footer.capitalized)
+                Text(section.footer)
                     .foregroundColor(primaryColor)
                     .primaryFont(size: .S, weight: .medium)
                     .padding(.top, 5)
