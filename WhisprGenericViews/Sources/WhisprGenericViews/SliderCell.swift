@@ -28,6 +28,7 @@ public struct SliderCell: View {
         VStack(alignment: .leading, spacing: 0) {
             Text(label)
                 .padding(.leading, 5)
+                .foregroundColor(primaryColor)
                 .primaryFont(size: .L, weight: .medium)
             CustomSlider(value: $value,
                             in: 0...100,
@@ -36,7 +37,7 @@ public struct SliderCell: View {
                             track: {
                                 Capsule()
                                     .foregroundColor(primaryColor)
-                                    .frame(width: .infinity, height: 10)
+                                    .frame(width: 335, height: 10)
                             }, fill: {
                                 Capsule()
 //                                    .foregroundColor(secondaryColor)

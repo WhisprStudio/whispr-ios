@@ -39,7 +39,7 @@ struct PrimaryFontModifier: FontModifier {
         return content
             .font(.system(size: size.rawValue, weight: .medium, design: .default))
 //            .font(.custom("Barlow-\(fontAttribute)", size: size.rawValue))
-            .foregroundColor(.white)
+            .foregroundColor(.primaryText)
     }
 }
 
