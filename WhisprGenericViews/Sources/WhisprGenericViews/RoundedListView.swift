@@ -28,7 +28,7 @@ public struct RoundedListView: View {
             if !section.header.isEmpty {
                 Text(section.header.capitalized )
                     .foregroundColor(primaryColor)
-                    .primaryFont(size: .L, weight: .medium)
+                    .primaryFont(size: .M, weight: .medium)
             }
             ListRowView(section: section, separatorColor: separatorColor)
                 .background(backgroundColor)
@@ -38,7 +38,7 @@ public struct RoundedListView: View {
             if !section.footer.isEmpty {
                 Text(section.footer.capitalized)
                     .foregroundColor(primaryColor)
-                    .primaryFont(size: .M, weight: .medium)
+                    .primaryFont(size: .S, weight: .medium)
             }
         }
         .padding(.leading)

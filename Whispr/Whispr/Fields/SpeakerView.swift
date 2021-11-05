@@ -30,6 +30,14 @@ struct SpeakerView: View {
                 AnyView(SliderCell(value: $noiseCancelingValue, onValueChanged: onNoiseCancelingChanged, label: "Noise canceling")),
             ]),
             Section(items: [
+                AnyView(SpeakerConfigButtonCell(configName: "Home",
+                                                isActive: true)),
+                AnyView(SpeakerConfigButtonCell(configName: "Sleep",
+                                                isActive: false)),
+                AnyView(SpeakerConfigButtonCell(configName: "Outside",
+                                                isActive: false))
+            ], header: "Configurations"),
+            Section(items: [
                 AnyView(DeleteCell(action: {}))
             ])
         ], style: .plain)

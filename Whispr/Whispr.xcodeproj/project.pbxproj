@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA57CDA02735756A00A3E4B8 /* SpeakerConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA57CD9F2735756A00A3E4B8 /* SpeakerConfigurationView.swift */; };
+		DA57CDA22735761A00A3E4B8 /* SpeakerConfigButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA57CDA12735761A00A3E4B8 /* SpeakerConfigButtonCell.swift */; };
 		DA67C23C2719BFAF009E2CFE /* SpeakersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA67C23B2719BFAF009E2CFE /* SpeakersListView.swift */; };
 		DA67C2402719DBE9009E2CFE /* Barlow-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA67C23F2719DBE9009E2CFE /* Barlow-SemiBold.ttf */; };
 		DA67C2422719E2F6009E2CFE /* NavBarSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA67C2412719E2F6009E2CFE /* NavBarSettings.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA57CD9F2735756A00A3E4B8 /* SpeakerConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerConfigurationView.swift; sourceTree = "<group>"; };
+		DA57CDA12735761A00A3E4B8 /* SpeakerConfigButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerConfigButtonCell.swift; sourceTree = "<group>"; };
 		DA67C23B2719BFAF009E2CFE /* SpeakersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakersListView.swift; sourceTree = "<group>"; };
 		DA67C23F2719DBE9009E2CFE /* Barlow-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-SemiBold.ttf"; sourceTree = "<group>"; };
 		DA67C2412719E2F6009E2CFE /* NavBarSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarSettings.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				DADBD62D2690A33700E7DB8F /* SpeakerSelectCell.swift */,
+				DA57CDA12735761A00A3E4B8 /* SpeakerConfigButtonCell.swift */,
 				DA888DCE2690DE1800C5734B /* AddSpeakerCell.swift */,
 				DA888DC42690AD5500C5734B /* SpeakerSelectCellTestView.swift */,
 			);
@@ -131,6 +136,7 @@
 			children = (
 				DA67C23B2719BFAF009E2CFE /* SpeakersListView.swift */,
 				DA67C2432719E882009E2CFE /* SpeakerView.swift */,
+				DA57CD9F2735756A00A3E4B8 /* SpeakerConfigurationView.swift */,
 				DA67C2412719E2F6009E2CFE /* NavBarSettings.swift */,
 			);
 			name = Views;
@@ -354,8 +360,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DADBD5C4266FE5A000E7DB8F /* ContentView.swift in Sources */,
+				DA57CDA22735761A00A3E4B8 /* SpeakerConfigButtonCell.swift in Sources */,
 				DADBD62E2690A33700E7DB8F /* SpeakerSelectCell.swift in Sources */,
 				DAE2091C26E4C272007C3DA4 /* FontManager.swift in Sources */,
+				DA57CDA02735756A00A3E4B8 /* SpeakerConfigurationView.swift in Sources */,
 				DA888DCF2690DE1800C5734B /* AddSpeakerCell.swift in Sources */,
 				DA67C2442719E882009E2CFE /* SpeakerView.swift in Sources */,
 				DAE2091B26E4C272007C3DA4 /* ColorManager.swift in Sources */,

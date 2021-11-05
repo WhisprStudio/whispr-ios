@@ -28,7 +28,7 @@ public struct PlainListView: View {
             if !section.header.isEmpty {
                 Text(section.header.capitalized )
                     .foregroundColor(primaryColor)
-                    .primaryFont(size: .L, weight: .medium)
+                    .primaryFont(size: .M, weight: .medium)
                     .padding(.bottom, 5)
                     .padding(.leading)
             }
@@ -43,7 +43,7 @@ public struct PlainListView: View {
             if !section.footer.isEmpty {
                 Text(section.footer.capitalized)
                     .foregroundColor(primaryColor)
-                    .primaryFont(size: .M, weight: .medium)
+                    .primaryFont(size: .S, weight: .medium)
                     .padding(.top, 5)
                     .padding(.leading)
             }
