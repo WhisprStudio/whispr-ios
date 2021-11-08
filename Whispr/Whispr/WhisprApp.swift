@@ -11,7 +11,7 @@ import SwiftUI
 struct WhisprApp: App {
     var body: some Scene {
         WindowGroup {
-            SpeakersListView()
+            DeviceList()
 //            ContentView()
         }
     }
