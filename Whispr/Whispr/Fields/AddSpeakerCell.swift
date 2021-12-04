@@ -11,15 +11,18 @@ import WhisprGenericViews
 struct AddSpeakerCell: View {
     private var action: (() -> ())
     @State private var isClicked: Bool = false
+    @State private var isNavigationTriggered: Bool = false
     
     init(action: @escaping (() -> ())) {
         self.action = action
     }
 
     var body: some View {
+        NavigationLink(destination: AddSpeakerView(), isActive: $isNavigationTriggered) {
         ButtonCell(label: "Nouvelle enceinte",
                    action: {
                     isClicked.toggle()
+                    isNavigationTriggered = true
                     action()
                     Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
                         isClicked.toggle()
@@ -34,6 +37,7 @@ struct AddSpeakerCell: View {
                    })
             .primaryColor(Color.primaryText)
             .clickedColor(Color.success)
+        }
     }
 }
 

@@ -15,6 +15,7 @@
 		DA67C2442719E882009E2CFE /* SpeakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA67C2432719E882009E2CFE /* SpeakerView.swift */; };
 		DA888DC52690AD5500C5734B /* SpeakerSelectCellTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA888DC42690AD5500C5734B /* SpeakerSelectCellTestView.swift */; };
 		DA888DCF2690DE1800C5734B /* AddSpeakerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA888DCE2690DE1800C5734B /* AddSpeakerCell.swift */; };
+		DAC647C2275BB27D0075DD15 /* AddSpeakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC647C1275BB27D0075DD15 /* AddSpeakerView.swift */; };
 		DADBD5C2266FE5A000E7DB8F /* WhisprApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD5C1266FE5A000E7DB8F /* WhisprApp.swift */; };
 		DADBD5C4266FE5A000E7DB8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD5C3266FE5A000E7DB8F /* ContentView.swift */; };
 		DADBD5C6266FE5A100E7DB8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DADBD5C5266FE5A100E7DB8F /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		DA67C2432719E882009E2CFE /* SpeakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerView.swift; sourceTree = "<group>"; };
 		DA888DC42690AD5500C5734B /* SpeakerSelectCellTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerSelectCellTestView.swift; sourceTree = "<group>"; };
 		DA888DCE2690DE1800C5734B /* AddSpeakerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpeakerCell.swift; sourceTree = "<group>"; };
+		DAC647C1275BB27D0075DD15 /* AddSpeakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpeakerView.swift; sourceTree = "<group>"; };
 		DADBD5BE266FE5A000E7DB8F /* Whispr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whispr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DADBD5C1266FE5A000E7DB8F /* WhisprApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisprApp.swift; sourceTree = "<group>"; };
 		DADBD5C3266FE5A000E7DB8F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				DA67C23B2719BFAF009E2CFE /* SpeakersListView.swift */,
+				DAC647C1275BB27D0075DD15 /* AddSpeakerView.swift */,
 				DA67C2432719E882009E2CFE /* SpeakerView.swift */,
 				DA57CD9F2735756A00A3E4B8 /* SpeakerConfigurationView.swift */,
 				DA67C2412719E2F6009E2CFE /* NavBarSettings.swift */,
@@ -367,6 +370,7 @@
 				DA888DCF2690DE1800C5734B /* AddSpeakerCell.swift in Sources */,
 				DA67C2442719E882009E2CFE /* SpeakerView.swift in Sources */,
 				DAE2091B26E4C272007C3DA4 /* ColorManager.swift in Sources */,
+				DAC647C2275BB27D0075DD15 /* AddSpeakerView.swift in Sources */,
 				DA888DC52690AD5500C5734B /* SpeakerSelectCellTestView.swift in Sources */,
 				DA67C23C2719BFAF009E2CFE /* SpeakersListView.swift in Sources */,
 				DADBD5C2266FE5A000E7DB8F /* WhisprApp.swift in Sources */,
