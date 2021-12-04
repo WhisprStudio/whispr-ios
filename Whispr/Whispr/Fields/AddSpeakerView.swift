@@ -11,11 +11,6 @@ import WhisprGenericViews
 struct AddSpeakerView: View {
     @State var speakerName: String = ""
 
-//    init() {
-//        self.speakerName = speakerName
-//        self.tmpSpeakerName = speakerName
-//    }
-
     var body: some View {
         ListView(sections: [
             Section(items: [

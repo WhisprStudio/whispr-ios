@@ -35,7 +35,8 @@ struct SpeakerView: View {
                 AnyView(SpeakerConfigButtonCell(configName: "Sleep",
                                                 isActive: false)),
                 AnyView(SpeakerConfigButtonCell(configName: "Outside",
-                                                isActive: false))
+                                                isActive: false)),
+                AnyView(AddConfigCell(action: {}))
             ], header: "Configurations"),
             Section(items: [
                 AnyView(DeleteCell(action: {}))

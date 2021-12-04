@@ -1,14 +1,14 @@
 //
-//  AddSpeakerCell.swift
+//  AddConfigCell.swift
 //  Whispr
 //
-//  Created by Paul Erny on 03/07/2021.
+//  Created by Paul Erny on 04/12/2021.
 //
 
 import SwiftUI
 import WhisprGenericViews
 
-struct AddSpeakerCell: View {
+struct AddConfigCell: View {
     private var action: (() -> ())
     @State private var isClicked: Bool = false
     @State private var isNavigationTriggered: Bool = false
@@ -18,8 +18,8 @@ struct AddSpeakerCell: View {
     }
 
     var body: some View {
-        NavigationLink(destination: AddSpeakerView(), isActive: $isNavigationTriggered) {
-            ButtonCell(label: "Nouvelle enceinte",
+        NavigationLink(destination: AddConfigView(), isActive: $isNavigationTriggered) {
+            ButtonCell(label: "Add Congfiguration",
                    action: {
                     isClicked.toggle()
                     isNavigationTriggered = true
@@ -41,9 +41,9 @@ struct AddSpeakerCell: View {
     }
 }
 
-struct AddSpeakerCell_Previews: PreviewProvider {
+struct AddConfigCell_Previews: PreviewProvider {
     static var previews: some View {
-        AddSpeakerCell(action: {})
+        AddConfigCell(action: {})
             .preferredColorScheme(.dark)
     }
 }
