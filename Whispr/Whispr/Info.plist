@@ -48,6 +48,8 @@
 	</array>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>This apps uses bluetooth for scanning peripheral devices</string>
+	<key>Privacy – Bluetooth Peripheral Usage Description</key>
+	<string>This apps uses bluetooth for scanning peripheral devices</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
