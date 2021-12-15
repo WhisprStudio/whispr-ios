@@ -7,7 +7,6 @@
 
 import CoreBluetooth
 import SwiftUI
-import WhisprGenericViews
 
 struct DeviceList: View {
     @ObservedObject var bleManager = BLEManager()
