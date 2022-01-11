@@ -5,16 +5,19 @@
 //  Created by Paul Erny on 05/11/2021.
 //
 
-import WhisprGenericViews
+//import WhisprGenericViews
 import SwiftUI
 
 struct SpeakerConfigButtonCell: View {
     @State private var isNavigationTriggered: Bool = false
     var configName: String
     var isActive: Bool
+    @EnvironmentObject var contentManager: ContentManager
     
     var body: some View {
-        NavigationLink(destination: SpeakerConfigurationView(configName: configName), isActive: $isNavigationTriggered) {
+        NavigationLink(destination: SpeakerConfigurationView(configName: configName)
+                        .environmentObject(contentManager),
+                       isActive: $isNavigationTriggered) {
             ButtonValueCell(label: configName,
                             value: isActive ? "active" : "inactive",
                             action: {

@@ -5,7 +5,7 @@
 //  Created by Paul Erny on 05/11/2021.
 //
 
-import WhisprGenericViews
+//import WhisprGenericViews
 import SwiftUI
 
 struct SpeakerConfigurationView: View {
@@ -16,6 +16,7 @@ struct SpeakerConfigurationView: View {
     var onVolumeChanged: ((Bool) -> ()) = {_ in }
     @State var noiseCancelingValue: CGFloat = 50
     var onNoiseCancelingChanged: ((Bool) -> ()) = {_ in }
+    @EnvironmentObject var contentManager: ContentManager
     
     init(configName: String) {
         self.configName = configName
@@ -35,7 +36,9 @@ struct SpeakerConfigurationView: View {
                 AnyView(Text("Ending hour"))
             ], header: "Time trigger", footer: "If activated, triggers this configuration on the connected speaker(s) between the specified time period."),
             Section(items: [
-                AnyView(DeleteCell(action: {}))
+                AnyView(DeleteCell(action: {
+//                    contentManager.delete(configId: <#T##UUID#>, speakerId: <#T##UUID#>)
+                }))
             ])
         ], style: .plain)
         .separatorColor(Color.separator)

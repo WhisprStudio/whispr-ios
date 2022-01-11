@@ -18,7 +18,7 @@ public struct ListRowView: View {
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            ForEach(0..<section.items.count) { index in
+            ForEach(0..<section.items.count, id: \.self) { index in
                 if index != 0 {
                     ListDivider(separatorColor: separatorColor)
                 }
@@ -34,6 +34,6 @@ public struct ListRowView: View {
 
 struct ListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ListRowView(section: Section(items: []))
+        ListRowView(section: Section(items: [AnyView(Text("1")), AnyView(Text("2")), AnyView(Text("3"))], header: "header1", footer: "footer1"))
     }
 }

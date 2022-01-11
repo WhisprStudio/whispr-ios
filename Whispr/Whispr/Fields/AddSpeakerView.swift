@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
-import WhisprGenericViews
+//import WhisprGenericViews
 
 struct AddSpeakerView: View {
     @State var speakerName: String = ""
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @EnvironmentObject var contentManager: ContentManager
 
     var body: some View {
         ListView(sections: [
@@ -18,7 +20,12 @@ struct AddSpeakerView: View {
                 AnyView(TextFieldCell(text: $speakerName, label: "Name", placeholder: "My speaker")),
             ]),
             Section(items: [
-                AnyView(SaveCell(action: {}))
+                AnyView(SaveCell(action: {
+                    if !speakerName.isEmpty {
+                        contentManager.add(Speaker(name: speakerName))
+                        self.mode.wrappedValue.dismiss()
+                    }
+                }))
             ])
         ], style: .plain)
         .separatorColor(Color.separator)

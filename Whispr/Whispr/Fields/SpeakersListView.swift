@@ -6,35 +6,41 @@
 //
 
 import SwiftUI
-import WhisprGenericViews
+//import WhisprGenericViews
 
 struct SpeakersListView: View {
-    @State var text: String = ""
+    @StateObject var contentManager = ContentManager()
 
     var body: some View {
         NavigationView {
-            ListView(sections: [
-                Section(items: [
-                    AnyView(SpeakerSelectCell(label: "Speaker 1",
-                                              speakerImage: "portable2",
-                                              action: {},
-                                              isConnected: true)),
-                    AnyView(SpeakerSelectCell(label: "Speaker 2",
-                                              speakerImage: "portable2",
-                                              action: {},
-                                              isConnected: false)),
-                    AnyView(SpeakerSelectCell(label: "Speaker 3",
-                                              speakerImage: "salon3",
-                                              action: {},
-                                              isConnected: false))
-                ]),
-                Section(items: [
-                    AnyView(AddSpeakerCell(action: {}))
-                ])
-            ], style: .plain)
-            .separatorColor(Color.separator)
-            .primaryColor(Color.primaryText)
-            .backgroundColor(Color.fieldBackground)
+            VStack {
+                ListView(sections: [
+                    Section(items:
+                        { () -> [AnyView] in
+                            var speakerViews: [AnyView] = []
+                            for item in contentManager.speakers {
+                                speakerViews.append(AnyView(
+                                    SpeakerSelectCell(
+                                        speaker: item,
+                                        action: {},
+                                        isConnected: true
+                                    )
+                                    .environmentObject(contentManager)
+                                ))
+                            }
+                            return speakerViews
+                        }()
+                    ),
+                    Section(items: [
+                        AnyView(AddSpeakerCell(action: {})
+                                    .environmentObject(contentManager)
+                        )
+                    ])
+                ], style: .plain)
+                .separatorColor(Color.separator)
+                .primaryColor(Color.primaryText)
+                .backgroundColor(Color.fieldBackground)
+            }
             .navigationTitle("Your speakers")
             .background(NavigationConfigurator())
         }

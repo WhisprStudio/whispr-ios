@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Color {
+public extension Color {
     static let background = Color("Background")
     static let disabledText = Color("DisabledText")
     static let disabledField = Color("DisabledField")

@@ -6,20 +6,22 @@
 //
 
 import SwiftUI
-import WhisprGenericViews
+//import WhisprGenericViews
 
 struct SpeakerView: View {
     var speakerName: String
-    
+    private var speaker: Speaker
     @State var tmpSpeakerName: String
     @State var volumeValue: CGFloat = 32
     var onVolumeChanged: ((Bool) -> ()) = {_ in }
     @State var noiseCancelingValue: CGFloat = 74
     var onNoiseCancelingChanged: ((Bool) -> ()) = {_ in }
+    @EnvironmentObject var contentManager: ContentManager
 
-    init(speakerName: String) {
-        self.speakerName = speakerName
-        self.tmpSpeakerName = speakerName
+    init(speaker: Speaker) {
+        self.speaker = speaker
+        self.speakerName = speaker.name
+        self.tmpSpeakerName = speaker.name
     }
     
     var body: some View {
@@ -29,17 +31,33 @@ struct SpeakerView: View {
                 AnyView(SliderCell(value: $volumeValue, onValueChanged: onVolumeChanged, label: "Volume")),
                 AnyView(SliderCell(value: $noiseCancelingValue, onValueChanged: onNoiseCancelingChanged, label: "Noise canceling")),
             ]),
+            Section(items:
+                        { () -> [AnyView] in
+                            var configViews: [AnyView] = []
+                            for item in speaker.configs {
+                                print("config: " + item.name)
+                                configViews.append(AnyView(
+                                    SpeakerConfigButtonCell(
+                                        
+                                        configName: item.name,
+                                        isActive: true
+                                    )
+                                    .environmentObject(contentManager)
+                                ))
+                            }
+                            print("main " + String(configViews.count))
+                            configViews.append(
+                                AnyView(AddConfigCell(speakerId: speaker.id, action: {})
+                                            .environmentObject(contentManager)
+                                )
+                            )
+                            return configViews
+                        }(),
+            header: "Configurations"),
             Section(items: [
-                AnyView(SpeakerConfigButtonCell(configName: "Home",
-                                                isActive: true)),
-                AnyView(SpeakerConfigButtonCell(configName: "Sleep",
-                                                isActive: false)),
-                AnyView(SpeakerConfigButtonCell(configName: "Outside",
-                                                isActive: false)),
-                AnyView(AddConfigCell(action: {}))
-            ], header: "Configurations"),
-            Section(items: [
-                AnyView(DeleteCell(action: {}))
+                AnyView(DeleteCell(action: {
+                    contentManager.delete(id: speaker.id)
+                }))
             ])
         ], style: .plain)
         .separatorColor(Color.separator)
@@ -54,7 +72,7 @@ struct SpeakerView: View {
 struct SpeakerView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SpeakerView(speakerName: "my speaker")
+            SpeakerView(speaker: Speaker(name: "my speaker", volume: 50, noiseCanceling: 50))
                 .preferredColorScheme(.dark)
         }
     }

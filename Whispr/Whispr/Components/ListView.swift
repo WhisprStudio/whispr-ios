@@ -41,12 +41,6 @@ public struct ListView: View {
     @Environment(\.separatorColor) var separatorColor : Color
     
     @ViewBuilder func view() -> some View {
-//        if fullscreen {
-//            self
-//                .edgesIgnoringSafeArea(.all)
-//        } else {
-//            self
-//        }
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
                 ForEach( Array(sections.enumerated()), id: \.offset) { index, section in
@@ -84,24 +78,13 @@ public struct ListView: View {
                 .edgesIgnoringSafeArea(.all)
         } else {
             view()
-        }
-//        ScrollView {
-//            VStack(alignment: .leading, spacing: 10) {
-//                ForEach( Array(sections.enumerated()), id: \.offset) { index, section in
-//                    if style == .rounded {
-//                        RoundedListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
-////                        RoundedListView(section: section)
-//                    } else {
-//                        PlainListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
-//                    }
-//                }
+//            VStack {
+//                RoundedListView(section: sections[0], primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
+//                    .padding(.bottom)
+//                RoundedListView(section: sections[1], primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
+//                    .padding(.bottom)
 //            }
-//            .padding(.bottom, 35)
-//        }
-//        .frame(maxWidth: .infinity, alignment: .leading)
-//        .padding(.top)
-//        .background(Color.background.edgesIgnoringSafeArea(.all))
-////        .edgesIgnoringSafeArea(.all)
+        }
     }
 }
 

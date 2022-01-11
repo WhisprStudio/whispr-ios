@@ -6,28 +6,29 @@
 //
 
 import SwiftUI
-import WhisprGenericViews
+//import WhisprGenericViews
 
 struct SpeakerSelectCell: View {
-    private var label: String
-    private var speakerImage: String
+    private var speaker: Speaker
     private var action: (() -> ())
     @State private var isClicked: Bool = false
     @State private var isNavigationTriggered: Bool = false
     private var subLabel: String = ""
     private var subLabelColor: Color = .clear
+    @EnvironmentObject var contentManager: ContentManager
 
-    init(label: String, speakerImage: String, action: @escaping (() -> ()), isConnected: Bool = true) {
-        self.label = label
-        self.speakerImage = speakerImage
+    init(speaker: Speaker, action: @escaping (() -> ()), isConnected: Bool = true) {
+        self.speaker = speaker
         self.action = action
         self.subLabel = isConnected ? "Connected" : "Offline"
         self.subLabelColor = isConnected ? .LED : .error
     }
 
     var body: some View {
-        NavigationLink(destination: SpeakerView(speakerName: label), isActive: $isNavigationTriggered) {
-            ButtonCell(label: label,
+        NavigationLink(destination: SpeakerView(speaker: speaker)
+                        .environmentObject(contentManager),
+                       isActive: $isNavigationTriggered) {
+            ButtonCell(label: speaker.name,
                        subLabel: subLabel,
                        action: {
                         isClicked.toggle()
@@ -38,7 +39,7 @@ struct SpeakerSelectCell: View {
                         }
                        },
                        leftView: {
-                        Image(speakerImage)
+                        Image(speaker.type)
                             .resizable()
                             .frame(width: 100, height: 100, alignment: .center)
                        },
@@ -61,7 +62,7 @@ struct SpeakerSelectCell_Previews: PreviewProvider {
             print("pressed")
         }
         NavigationView {
-            SpeakerSelectCell(label: "test", speakerImage: "portable2", action: action)
+            SpeakerSelectCell(speaker: Speaker(name: "speaker", volume: 50, noiseCanceling: 50), action: action)
                 .navigationTitle("Navigation")
                 .preferredColorScheme(.dark)
         }

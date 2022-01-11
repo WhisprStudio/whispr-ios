@@ -6,19 +6,22 @@
 //
 
 import SwiftUI
-import WhisprGenericViews
+//import WhisprGenericViews
 
 struct AddSpeakerCell: View {
     private var action: (() -> ())
     @State private var isClicked: Bool = false
     @State private var isNavigationTriggered: Bool = false
+    @EnvironmentObject var contentManager: ContentManager
     
     init(action: @escaping (() -> ())) {
         self.action = action
     }
 
     var body: some View {
-        NavigationLink(destination: AddSpeakerView(), isActive: $isNavigationTriggered) {
+        NavigationLink(destination: AddSpeakerView()
+                        .environmentObject(contentManager),
+                       isActive: $isNavigationTriggered) {
             ButtonCell(label: "Nouvelle enceinte",
                    action: {
                     isClicked.toggle()

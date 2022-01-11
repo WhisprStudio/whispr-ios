@@ -6,17 +6,20 @@
 //
 
 import SwiftUI
-import WhisprGenericViews
+//import WhisprGenericViews
 
 struct AddConfigView: View {
-    @State var configName: String
+    private var speakerId: UUID
+    @State var configName: String = ""
     @State var volumeValue: CGFloat = 50
     var onVolumeChanged: ((Bool) -> ()) = {_ in }
     @State var noiseCancelingValue: CGFloat = 50
     var onNoiseCancelingChanged: ((Bool) -> ()) = {_ in }
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @EnvironmentObject var contentManager: ContentManager
     
-    init() {
-        self.configName = ""
+    init(speakerId: UUID) {
+        self.speakerId = speakerId
     }
     
     var body: some View {
@@ -32,7 +35,16 @@ struct AddConfigView: View {
                 AnyView(Text("Ending hour"))
             ], header: "Time trigger", footer: "If activated, triggers this configuration on the connected speaker(s) between the specified time period."),
             Section(items: [
-                AnyView(SaveCell(action: {}))
+                AnyView(SaveCell(action: {
+                    if !configName.isEmpty {
+                        contentManager.add(config:
+                                            SpeakerConfig(name: configName,
+                                                          volume: Double(volumeValue),
+                                                          noiseCanceling: Double(noiseCancelingValue)),
+                                           speakerId: speakerId)
+                        self.mode.wrappedValue.dismiss()
+                    }
+                }))
             ])
         ], style: .plain)
         .separatorColor(Color.separator)
@@ -47,7 +59,7 @@ struct AddConfigView: View {
 struct AddConfigView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AddConfigView()
+            AddConfigView(speakerId: UUID())
         }
         .preferredColorScheme(.dark)
     }

@@ -6,19 +6,24 @@
 //
 
 import SwiftUI
-import WhisprGenericViews
+//import WhisprGenericViews
 
 struct AddConfigCell: View {
     private var action: (() -> ())
+    private var speakerId: UUID
     @State private var isClicked: Bool = false
     @State private var isNavigationTriggered: Bool = false
+    @EnvironmentObject var contentManager: ContentManager
     
-    init(action: @escaping (() -> ())) {
+    init(speakerId: UUID, action: @escaping (() -> ())) {
+        self.speakerId = speakerId
         self.action = action
     }
 
     var body: some View {
-        NavigationLink(destination: AddConfigView(), isActive: $isNavigationTriggered) {
+        NavigationLink(destination: AddConfigView(speakerId: speakerId)
+                        .environmentObject(contentManager),
+                       isActive: $isNavigationTriggered) {
             ButtonCell(label: "Add Congfiguration",
                    action: {
                     isClicked.toggle()
@@ -43,7 +48,7 @@ struct AddConfigCell: View {
 
 struct AddConfigCell_Previews: PreviewProvider {
     static var previews: some View {
-        AddConfigCell(action: {})
+        AddConfigCell(speakerId: UUID(), action: {})
             .preferredColorScheme(.dark)
     }
 }

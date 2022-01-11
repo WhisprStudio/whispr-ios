@@ -3,10 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA224B7F278B310500BC0595 /* ButtonValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA224B71278B310400BC0595 /* ButtonValueCell.swift */; };
+		DA224B80278B310500BC0595 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA224B72278B310400BC0595 /* ListRowView.swift */; };
+		DA224B81278B310500BC0595 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA224B73278B310400BC0595 /* CustomSlider.swift */; };
+		DA224B82278B310500BC0595 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA224B74278B310400BC0595 /* TextFieldCell.swift */; };
+		DA224B83278B310500BC0595 /* DeleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA224B75278B310400BC0595 /* DeleteCell.swift */; };
+		DA224B84278B310500BC0595 /* RoundedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA224B76278B310400BC0595 /* RoundedListView.swift */; };
+		DA224B85278B310500BC0595 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA224B77278B310400BC0595 /* ButtonCell.swift */; };
+		DA224B86278B310500BC0595 /* PlaceholderDetectedSpeackersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA224B78278B310400BC0595 /* PlaceholderDetectedSpeackersCell.swift */; };
+		DA224B87278B310500BC0595 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA224B79278B310400BC0595 /* ListView.swift */; };
+		DA224B88278B310500BC0595 /* ConfigSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA224B7A278B310500BC0595 /* ConfigSwitchCell.swift */; };
+		DA224B89278B310500BC0595 /* PlainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA224B7B278B310500BC0595 /* PlainListView.swift */; };
+		DA224B8A278B310500BC0595 /* SaveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA224B7C278B310500BC0595 /* SaveCell.swift */; };
+		DA224B8B278B310500BC0595 /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA224B7D278B310500BC0595 /* SliderCell.swift */; };
+		DA224B8C278B310500BC0595 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA224B7E278B310500BC0595 /* Environment.swift */; };
 		DA57CDA02735756A00A3E4B8 /* SpeakerConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA57CD9F2735756A00A3E4B8 /* SpeakerConfigurationView.swift */; };
 		DA57CDA22735761A00A3E4B8 /* SpeakerConfigButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA57CDA12735761A00A3E4B8 /* SpeakerConfigButtonCell.swift */; };
 		DA67C23C2719BFAF009E2CFE /* SpeakersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA67C23B2719BFAF009E2CFE /* SpeakersListView.swift */; };
@@ -18,6 +32,8 @@
 		DAC647C2275BB27D0075DD15 /* AddSpeakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC647C1275BB27D0075DD15 /* AddSpeakerView.swift */; };
 		DAC647C4275BBACA0075DD15 /* AddConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC647C3275BBACA0075DD15 /* AddConfigView.swift */; };
 		DAC647C6275BBC8E0075DD15 /* AddConfigCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC647C5275BBC8E0075DD15 /* AddConfigCell.swift */; };
+		DAC647C9275BCE9A0075DD15 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC647C8275BCE9A0075DD15 /* Speaker.swift */; };
+		DAC647CB275BD01B0075DD15 /* SpeakerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC647CA275BD01B0075DD15 /* SpeakerConfig.swift */; };
 		DADBD5C2266FE5A000E7DB8F /* WhisprApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD5C1266FE5A000E7DB8F /* WhisprApp.swift */; };
 		DADBD5C4266FE5A000E7DB8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD5C3266FE5A000E7DB8F /* ContentView.swift */; };
 		DADBD5C6266FE5A100E7DB8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DADBD5C5266FE5A100E7DB8F /* Assets.xcassets */; };
@@ -31,9 +47,6 @@
 		DADBD62E2690A33700E7DB8F /* SpeakerSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD62D2690A33700E7DB8F /* SpeakerSelectCell.swift */; };
 		DAE2091B26E4C272007C3DA4 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2091926E4C272007C3DA4 /* ColorManager.swift */; };
 		DAE2091C26E4C272007C3DA4 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2091A26E4C272007C3DA4 /* FontManager.swift */; };
-		DAEDB4D3270B4F5D002A5FEE /* WhisprGenericViews in Frameworks */ = {isa = PBXBuildFile; productRef = DAEDB4D2270B4F5D002A5FEE /* WhisprGenericViews */; };
-		DAEDB4D5270B52F1002A5FEE /* WhisprGenericViews in Frameworks */ = {isa = PBXBuildFile; productRef = DAEDB4D4270B52F1002A5FEE /* WhisprGenericViews */; };
-		DAEDB4D7270B52F6002A5FEE /* WhisprGenericViews in Frameworks */ = {isa = PBXBuildFile; productRef = DAEDB4D6270B52F6002A5FEE /* WhisprGenericViews */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +67,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA224B71278B310400BC0595 /* ButtonValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonValueCell.swift; sourceTree = "<group>"; };
+		DA224B72278B310400BC0595 /* ListRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
+		DA224B73278B310400BC0595 /* CustomSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		DA224B74278B310400BC0595 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		DA224B75278B310400BC0595 /* DeleteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteCell.swift; sourceTree = "<group>"; };
+		DA224B76278B310400BC0595 /* RoundedListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedListView.swift; sourceTree = "<group>"; };
+		DA224B77278B310400BC0595 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
+		DA224B78278B310400BC0595 /* PlaceholderDetectedSpeackersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderDetectedSpeackersCell.swift; sourceTree = "<group>"; };
+		DA224B79278B310400BC0595 /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		DA224B7A278B310500BC0595 /* ConfigSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigSwitchCell.swift; sourceTree = "<group>"; };
+		DA224B7B278B310500BC0595 /* PlainListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlainListView.swift; sourceTree = "<group>"; };
+		DA224B7C278B310500BC0595 /* SaveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveCell.swift; sourceTree = "<group>"; };
+		DA224B7D278B310500BC0595 /* SliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
+		DA224B7E278B310500BC0595 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		DA57CD9F2735756A00A3E4B8 /* SpeakerConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerConfigurationView.swift; sourceTree = "<group>"; };
 		DA57CDA12735761A00A3E4B8 /* SpeakerConfigButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerConfigButtonCell.swift; sourceTree = "<group>"; };
 		DA67C23B2719BFAF009E2CFE /* SpeakersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakersListView.swift; sourceTree = "<group>"; };
@@ -65,6 +92,8 @@
 		DAC647C1275BB27D0075DD15 /* AddSpeakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpeakerView.swift; sourceTree = "<group>"; };
 		DAC647C3275BBACA0075DD15 /* AddConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConfigView.swift; sourceTree = "<group>"; };
 		DAC647C5275BBC8E0075DD15 /* AddConfigCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConfigCell.swift; sourceTree = "<group>"; };
+		DAC647C8275BCE9A0075DD15 /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
+		DAC647CA275BD01B0075DD15 /* SpeakerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerConfig.swift; sourceTree = "<group>"; };
 		DADBD5BE266FE5A000E7DB8F /* Whispr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whispr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DADBD5C1266FE5A000E7DB8F /* WhisprApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisprApp.swift; sourceTree = "<group>"; };
 		DADBD5C3266FE5A000E7DB8F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -84,7 +113,6 @@
 		DADBD62D2690A33700E7DB8F /* SpeakerSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerSelectCell.swift; sourceTree = "<group>"; };
 		DAE2091926E4C272007C3DA4 /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		DAE2091A26E4C272007C3DA4 /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
-		DAEDB4D1270B4EE9002A5FEE /* WhisprGenericViews */ = {isa = PBXFileReference; lastKnownFileType = folder; name = WhisprGenericViews; path = ../WhisprGenericViews; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +120,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAEDB4D3270B4F5D002A5FEE /* WhisprGenericViews in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +127,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAEDB4D5270B52F1002A5FEE /* WhisprGenericViews in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +134,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAEDB4D7270B52F6002A5FEE /* WhisprGenericViews in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +150,27 @@
 				DA888DC42690AD5500C5734B /* SpeakerSelectCellTestView.swift */,
 			);
 			path = Fields;
+			sourceTree = "<group>";
+		};
+		DA224B70278B30DB00BC0595 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DA224B77278B310400BC0595 /* ButtonCell.swift */,
+				DA224B71278B310400BC0595 /* ButtonValueCell.swift */,
+				DA224B7A278B310500BC0595 /* ConfigSwitchCell.swift */,
+				DA224B73278B310400BC0595 /* CustomSlider.swift */,
+				DA224B75278B310400BC0595 /* DeleteCell.swift */,
+				DA224B7E278B310500BC0595 /* Environment.swift */,
+				DA224B72278B310400BC0595 /* ListRowView.swift */,
+				DA224B79278B310400BC0595 /* ListView.swift */,
+				DA224B78278B310400BC0595 /* PlaceholderDetectedSpeackersCell.swift */,
+				DA224B7B278B310500BC0595 /* PlainListView.swift */,
+				DA224B76278B310400BC0595 /* RoundedListView.swift */,
+				DA224B7C278B310500BC0595 /* SaveCell.swift */,
+				DA224B7D278B310500BC0595 /* SliderCell.swift */,
+				DA224B74278B310400BC0595 /* TextFieldCell.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		DA3E935127088FD6000BDF7E /* Fonts */ = {
@@ -152,10 +198,19 @@
 			path = Fields;
 			sourceTree = "<group>";
 		};
+		DAC647C7275BCE7B0075DD15 /* DataTypes */ = {
+			isa = PBXGroup;
+			children = (
+				DAC647C8275BCE9A0075DD15 /* Speaker.swift */,
+				DAC647CA275BD01B0075DD15 /* SpeakerConfig.swift */,
+			);
+			name = DataTypes;
+			path = Fields;
+			sourceTree = "<group>";
+		};
 		DADBD5B5266FE5A000E7DB8F = {
 			isa = PBXGroup;
 			children = (
-				DAEDB4D1270B4EE9002A5FEE /* WhisprGenericViews */,
 				DADBD5C0266FE5A000E7DB8F /* Whispr */,
 				DADBD5D2266FE5A200E7DB8F /* WhisprTests */,
 				DADBD5DD266FE5A200E7DB8F /* WhisprUITests */,
@@ -182,8 +237,10 @@
 				DADBD5FE267112D800E7DB8F /* Colors.xcassets */,
 				DADBD5C1266FE5A000E7DB8F /* WhisprApp.swift */,
 				DADBD5C3266FE5A000E7DB8F /* ContentView.swift */,
+				DA224B70278B30DB00BC0595 /* Components */,
 				DA67C23A2719BF8B009E2CFE /* Views */,
 				DA17263326DF7A0E009FBB3A /* Fields */,
+				DAC647C7275BCE7B0075DD15 /* DataTypes */,
 				DADBD5C5266FE5A100E7DB8F /* Assets.xcassets */,
 				DA3E935127088FD6000BDF7E /* Fonts */,
 				DADBD5CA266FE5A100E7DB8F /* Info.plist */,
@@ -242,7 +299,6 @@
 			);
 			name = Whispr;
 			packageProductDependencies = (
-				DAEDB4D2270B4F5D002A5FEE /* WhisprGenericViews */,
 			);
 			productName = Whispr;
 			productReference = DADBD5BE266FE5A000E7DB8F /* Whispr.app */;
@@ -263,7 +319,6 @@
 			);
 			name = WhisprTests;
 			packageProductDependencies = (
-				DAEDB4D4270B52F1002A5FEE /* WhisprGenericViews */,
 			);
 			productName = WhisprTests;
 			productReference = DADBD5CF266FE5A200E7DB8F /* WhisprTests.xctest */;
@@ -284,7 +339,6 @@
 			);
 			name = WhisprUITests;
 			packageProductDependencies = (
-				DAEDB4D6270B52F6002A5FEE /* WhisprGenericViews */,
 			);
 			productName = WhisprUITests;
 			productReference = DADBD5DA266FE5A200E7DB8F /* WhisprUITests.xctest */;
@@ -368,21 +422,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA224B8A278B310500BC0595 /* SaveCell.swift in Sources */,
 				DADBD5C4266FE5A000E7DB8F /* ContentView.swift in Sources */,
 				DA57CDA22735761A00A3E4B8 /* SpeakerConfigButtonCell.swift in Sources */,
 				DADBD62E2690A33700E7DB8F /* SpeakerSelectCell.swift in Sources */,
+				DAC647C9275BCE9A0075DD15 /* Speaker.swift in Sources */,
+				DA224B83278B310500BC0595 /* DeleteCell.swift in Sources */,
+				DA224B84278B310500BC0595 /* RoundedListView.swift in Sources */,
 				DAE2091C26E4C272007C3DA4 /* FontManager.swift in Sources */,
+				DA224B86278B310500BC0595 /* PlaceholderDetectedSpeackersCell.swift in Sources */,
+				DA224B82278B310500BC0595 /* TextFieldCell.swift in Sources */,
 				DA57CDA02735756A00A3E4B8 /* SpeakerConfigurationView.swift in Sources */,
 				DA888DCF2690DE1800C5734B /* AddSpeakerCell.swift in Sources */,
 				DAC647C4275BBACA0075DD15 /* AddConfigView.swift in Sources */,
 				DA67C2442719E882009E2CFE /* SpeakerView.swift in Sources */,
 				DAE2091B26E4C272007C3DA4 /* ColorManager.swift in Sources */,
+				DA224B87278B310500BC0595 /* ListView.swift in Sources */,
+				DA224B8B278B310500BC0595 /* SliderCell.swift in Sources */,
 				DAC647C2275BB27D0075DD15 /* AddSpeakerView.swift in Sources */,
+				DA224B81278B310500BC0595 /* CustomSlider.swift in Sources */,
+				DA224B8C278B310500BC0595 /* Environment.swift in Sources */,
 				DA888DC52690AD5500C5734B /* SpeakerSelectCellTestView.swift in Sources */,
 				DA67C23C2719BFAF009E2CFE /* SpeakersListView.swift in Sources */,
+				DA224B7F278B310500BC0595 /* ButtonValueCell.swift in Sources */,
 				DAC647C6275BBC8E0075DD15 /* AddConfigCell.swift in Sources */,
+				DA224B89278B310500BC0595 /* PlainListView.swift in Sources */,
+				DA224B80278B310500BC0595 /* ListRowView.swift in Sources */,
 				DADBD5C2266FE5A000E7DB8F /* WhisprApp.swift in Sources */,
+				DAC647CB275BD01B0075DD15 /* SpeakerConfig.swift in Sources */,
+				DA224B88278B310500BC0595 /* ConfigSwitchCell.swift in Sources */,
 				DA67C2422719E2F6009E2CFE /* NavBarSettings.swift in Sources */,
+				DA224B85278B310500BC0595 /* ButtonCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,21 +772,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		DAEDB4D2270B4F5D002A5FEE /* WhisprGenericViews */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = WhisprGenericViews;
-		};
-		DAEDB4D4270B52F1002A5FEE /* WhisprGenericViews */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = WhisprGenericViews;
-		};
-		DAEDB4D6270B52F6002A5FEE /* WhisprGenericViews */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = WhisprGenericViews;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DADBD5B6266FE5A000E7DB8F /* Project object */;
 }
