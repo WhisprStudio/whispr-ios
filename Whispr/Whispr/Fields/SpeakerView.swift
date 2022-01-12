@@ -23,7 +23,7 @@ struct SpeakerView: View {
         self.speakerName = speaker.name
         self.tmpSpeakerName = speaker.name
     }
-    
+
     var body: some View {
         ListView(sections: [
             Section(items: [
@@ -38,8 +38,8 @@ struct SpeakerView: View {
                                 print("config: " + item.name)
                                 configViews.append(AnyView(
                                     SpeakerConfigButtonCell(
-                                        
-                                        configName: item.name,
+                                        config: item,
+                                        speakerId: speaker.id,
                                         isActive: true
                                     )
                                     .environmentObject(contentManager)
@@ -71,8 +71,10 @@ struct SpeakerView: View {
 
 struct SpeakerView_Previews: PreviewProvider {
     static var previews: some View {
+        let contentManager = ContentManager()
         NavigationView {
             SpeakerView(speaker: Speaker(name: "my speaker", volume: 50, noiseCanceling: 50))
+                .environmentObject(contentManager)
                 .preferredColorScheme(.dark)
         }
     }

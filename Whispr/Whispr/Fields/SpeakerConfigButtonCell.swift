@@ -10,15 +10,16 @@ import SwiftUI
 
 struct SpeakerConfigButtonCell: View {
     @State private var isNavigationTriggered: Bool = false
-    var configName: String
+    var config: SpeakerConfig
+    var speakerId: UUID
     var isActive: Bool
     @EnvironmentObject var contentManager: ContentManager
     
     var body: some View {
-        NavigationLink(destination: SpeakerConfigurationView(configName: configName)
+        NavigationLink(destination: SpeakerConfigurationView(config: config, speakerId: speakerId)
                         .environmentObject(contentManager),
                        isActive: $isNavigationTriggered) {
-            ButtonValueCell(label: configName,
+            ButtonValueCell(label: config.name,
                             value: isActive ? "active" : "inactive",
                             action: {
                                 isNavigationTriggered = true
@@ -34,8 +35,11 @@ struct SpeakerConfigButtonCell: View {
 
 struct SpeakerConfigButtonCell_Previews: PreviewProvider {
     static var previews: some View {
+        let contentManager = ContentManager()
+
         NavigationView {
-            SpeakerConfigButtonCell(configName: "test", isActive: true)
+            SpeakerConfigButtonCell(config: SpeakerConfig(name: "Home", volume: 50, noiseCanceling: 50), speakerId: UUID(), isActive: true)
+                .environmentObject(contentManager)
                 .navigationTitle("Navigation")
                 .preferredColorScheme(.dark)
         }

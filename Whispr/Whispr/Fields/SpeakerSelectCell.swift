@@ -61,8 +61,10 @@ struct SpeakerSelectCell_Previews: PreviewProvider {
         let action = {
             print("pressed")
         }
+        let contentManager = ContentManager()
         NavigationView {
             SpeakerSelectCell(speaker: Speaker(name: "speaker", volume: 50, noiseCanceling: 50), action: action)
+                .environmentObject(contentManager)
                 .navigationTitle("Navigation")
                 .preferredColorScheme(.dark)
         }
