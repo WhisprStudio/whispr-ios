@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C407C207278F4B1400CD24AE /* deviceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C407C206278F4B1400CD24AE /* deviceList.swift */; };
+		C407C209278F4C1E00CD24AE /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C407C208278F4C1E00CD24AE /* BLEManager.swift */; };
 		DA57CDA02735756A00A3E4B8 /* SpeakerConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA57CD9F2735756A00A3E4B8 /* SpeakerConfigurationView.swift */; };
 		DA57CDA22735761A00A3E4B8 /* SpeakerConfigButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA57CDA12735761A00A3E4B8 /* SpeakerConfigButtonCell.swift */; };
 		DA67C23C2719BFAF009E2CFE /* SpeakersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA67C23B2719BFAF009E2CFE /* SpeakersListView.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C407C206278F4B1400CD24AE /* deviceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deviceList.swift; sourceTree = "<group>"; };
+		C407C208278F4C1E00CD24AE /* BLEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 		DA57CD9F2735756A00A3E4B8 /* SpeakerConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerConfigurationView.swift; sourceTree = "<group>"; };
 		DA57CDA12735761A00A3E4B8 /* SpeakerConfigButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerConfigButtonCell.swift; sourceTree = "<group>"; };
 		DA67C23B2719BFAF009E2CFE /* SpeakersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakersListView.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 				DA57CDA12735761A00A3E4B8 /* SpeakerConfigButtonCell.swift */,
 				DA888DCE2690DE1800C5734B /* AddSpeakerCell.swift */,
 				DA888DC42690AD5500C5734B /* SpeakerSelectCellTestView.swift */,
+				C407C206278F4B1400CD24AE /* deviceList.swift */,
 			);
 			path = Fields;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 				DA3E935127088FD6000BDF7E /* Fonts */,
 				DADBD5CA266FE5A100E7DB8F /* Info.plist */,
 				DADBD5C7266FE5A100E7DB8F /* Preview Content */,
+				C407C208278F4C1E00CD24AE /* BLEManager.swift */,
 			);
 			path = Whispr;
 			sourceTree = "<group>";
@@ -368,9 +374,11 @@
 				DA67C2442719E882009E2CFE /* SpeakerView.swift in Sources */,
 				DAE2091B26E4C272007C3DA4 /* ColorManager.swift in Sources */,
 				DA888DC52690AD5500C5734B /* SpeakerSelectCellTestView.swift in Sources */,
+				C407C209278F4C1E00CD24AE /* BLEManager.swift in Sources */,
 				DA67C23C2719BFAF009E2CFE /* SpeakersListView.swift in Sources */,
 				DADBD5C2266FE5A000E7DB8F /* WhisprApp.swift in Sources */,
 				DA67C2422719E2F6009E2CFE /* NavBarSettings.swift in Sources */,
+				C407C207278F4B1400CD24AE /* deviceList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,15 +537,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Whispr/Preview Content\"";
-				DEVELOPMENT_TEAM = CUKPDDT2TD;
+				DEVELOPMENT_TEAM = K8WF8WM4Z2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Whispr/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Whispr.Whispr;
+				PRODUCT_BUNDLE_IDENTIFIER = whispr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -551,15 +559,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Whispr/Preview Content\"";
-				DEVELOPMENT_TEAM = CUKPDDT2TD;
+				DEVELOPMENT_TEAM = K8WF8WM4Z2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Whispr/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Whispr.Whispr;
+				PRODUCT_BUNDLE_IDENTIFIER = whispr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
