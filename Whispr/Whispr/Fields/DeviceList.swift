@@ -4,7 +4,6 @@
 //
 //  Created by Victor maurin on 07/11/2021.
 //
-
 import CoreBluetooth
 import SwiftUI
 
