@@ -1,5 +1,5 @@
 //
-//  ConfigSwitchCell.swift
+//  SwitchCell.swift
 //  Whispr
 //
 //  Created by Paul Erny on 22/10/2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct ConfigSwitchCell: View {
+public struct SwitchCell: View {
     private var label: Text
     private var subLabel: Text?
     @Binding var value: Bool
@@ -55,7 +55,7 @@ public struct ConfigSwitchCell: View {
     }
 }
 
-struct ConfigSwitchCellPreviewContainer: View {
+struct SwitchCellPreviewContainer: View {
     @State var value: Bool = false
     var onEditingChanged: ((Bool) -> ()) = {_ in }
     var label: String = "label"
@@ -63,8 +63,8 @@ struct ConfigSwitchCellPreviewContainer: View {
 
     var body: some View {
         VStack {
-            ConfigSwitchCell(label: "label", value: $value, onValueChanged: {_ in })
-            ConfigSwitchCell(label: "label", subLabel: "subLabel", value: $value, onValueChanged: {_ in})
+            SwitchCell(label: "label", value: $value, onValueChanged: {_ in })
+            SwitchCell(label: "label", subLabel: "subLabel", value: $value, onValueChanged: {_ in})
             Text("\(String(value))")
         }
         .primaryColor(Color.yellow)
@@ -72,7 +72,7 @@ struct ConfigSwitchCellPreviewContainer: View {
     }
 }
 
-struct ConfigSwitchCell_Previews: PreviewProvider {
+struct SwitchCell_Previews: PreviewProvider {
     static var previews: some View {
         ConfigSwitchCellPreviewContainer()
             .preferredColorScheme(.dark)
