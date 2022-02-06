@@ -30,7 +30,7 @@ struct SpeakerConfigButtonCell: View {
                                     .primaryFont(size: .XL, weight: .medium)
                             })
         }
-//        .isDetailLink(false)
+        .isDetailLink(false)
 //        .onDisappear(perform: {
 //            isNavigationTriggered = false
 //        })

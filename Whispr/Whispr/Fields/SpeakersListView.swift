@@ -44,6 +44,7 @@ struct SpeakersListView: View {
             .navigationTitle("Your speakers")
             .background(NavigationConfigurator())
         }
+//        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

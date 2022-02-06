@@ -55,6 +55,9 @@ struct SpeakerSelectCell: View {
                 .clickedColor(Color.success)
         }
         .isDetailLink(false)
+//        .onDisappear(perform: {
+//            isNavigationTriggered = false
+//        })
     }
 }
 
