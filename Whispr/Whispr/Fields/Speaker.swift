@@ -28,15 +28,60 @@ class Speaker: Identifiable, Codable {
 class ContentManager: ObservableObject {
     @Published private(set) var speakers: [Speaker]
     static let speakersKey = "speakersData"
+    
+    enum Property {
+        case name,
+             type,
+             volume,
+             noiseCanceling
+    }
+
+    private var saveProperty = [Property: (String, UUID)->Void]()
 
     init() {
+        speakers = []
+        saveProperty.updateValue(saveName, forKey: .name)
+        saveProperty.updateValue(saveVolume, forKey: .volume)
+        saveProperty.updateValue(saveNoiseCanceling, forKey: .noiseCanceling)
         if let data = UserDefaults.standard.data(forKey: Self.speakersKey) {
             if let decoded = try? JSONDecoder().decode([Speaker].self, from: data) {
                 self.speakers = decoded
                 return
             }
         }
-        speakers = []
+    }
+    
+    private func saveName(value: String, speakerId: UUID) {
+        speakers.first(where: {
+            $0.id == speakerId
+        })?.name = value
+        save()
+    }
+    
+    private func saveVolume(value: String, speakerId: UUID) {
+        guard let volume = Double(value) else {
+            print("error: couldn't convert \(value) to double (Speaker.swift l.61)")
+            return
+        }
+        speakers.first(where: {
+            $0.id == speakerId
+        })?.volume = volume
+        save()
+    }
+    
+    private func saveNoiseCanceling(value: String, speakerId: UUID) {
+        guard let noiseCanceling = Double(value) else {
+            print("error: couldn't convert \(value) to double (Speaker.swift l.61)")
+            return
+        }
+        speakers.first(where: {
+            $0.id == speakerId
+        })?.noiseCanceling = noiseCanceling
+        save()
+    }
+    
+    func save(property: Property, value: String, speakerId: UUID) {
+        saveProperty[property]!(value, speakerId)
     }
 
     private func save() {

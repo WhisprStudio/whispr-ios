@@ -46,7 +46,9 @@ struct AddSpeakerCell: View {
 
 struct AddSpeakerCell_Previews: PreviewProvider {
     static var previews: some View {
+        let contentManager = ContentManager()
         AddSpeakerCell(action: {})
+            .environmentObject(contentManager)
             .preferredColorScheme(.dark)
     }
 }

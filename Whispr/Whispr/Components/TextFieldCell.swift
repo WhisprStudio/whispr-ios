@@ -11,6 +11,7 @@ public struct TextFieldCell: View {
     @Binding var text: String
     var label: String
     var placeholder: String
+    var onEditingChange: (String)->()
 
     @Environment(\.primaryColor) var primaryColor : Color
     @Environment(\.secondaryColor) var secondaryColor : Color
@@ -18,15 +19,17 @@ public struct TextFieldCell: View {
 
     public init(text: Binding<String>,
                 label: String = "",
-                placeholder: String = "Your text...") {
+                placeholder: String = "Your text...",
+                onEditingChange: @escaping (String)->() = {_ in}) {
         self._text = text
         self.label = label
         self.placeholder = placeholder
+        self.onEditingChange = onEditingChange
     }
 
     public var body: some View {
         if label.isEmpty {
-            ColorizableTextField(textInputColor: textInputColor, secondaryColor: secondaryColor, text: $text, placeholder: placeholder, inputAlignment: .leading, placeholderAlignment: .leading)
+            ColorizableTextField(textInputColor: textInputColor, secondaryColor: secondaryColor, text: $text, placeholder: placeholder, inputAlignment: .leading, placeholderAlignment: .leading, onEditingChange: onEditingChange)
         } else {
             HStack {
                 if primaryColor != .primary {
@@ -37,7 +40,7 @@ public struct TextFieldCell: View {
                     Text(label)
                         .primaryFont(size: .L, weight: .medium)
                 }
-                ColorizableTextField(textInputColor: textInputColor, secondaryColor: secondaryColor, text: $text, placeholder: placeholder, inputAlignment: .trailing, placeholderAlignment: .trailing)
+                ColorizableTextField(textInputColor: textInputColor, secondaryColor: secondaryColor, text: $text, placeholder: placeholder, inputAlignment: .trailing, placeholderAlignment: .trailing, onEditingChange: onEditingChange)
             }
         }
     }
@@ -50,10 +53,15 @@ struct ColorizableTextField: View {
     var placeholder: String
     var inputAlignment: TextAlignment
     var placeholderAlignment: Alignment
+    var onEditingChange: (String)->()
+    
     var body: some View {
         if secondaryColor != .secondary {
             if textInputColor != .primary {
                 TextField("", text: $text)
+                    .onChange(of: text) {
+                        self.onEditingChange($0)
+                    }
                     .multilineTextAlignment(inputAlignment)
                     .placeholder(when: text.isEmpty, alignment: placeholderAlignment) {
                         Text(placeholder)
@@ -64,6 +72,9 @@ struct ColorizableTextField: View {
                     .primaryFont(size: .L, weight: .medium)
             } else {
                 TextField("", text: $text)
+                    .onChange(of: text) {
+                        self.onEditingChange($0)
+                    }
                     .multilineTextAlignment(inputAlignment)
                     .placeholder(when: text.isEmpty, alignment: placeholderAlignment) {
                         Text(placeholder)
@@ -75,11 +86,17 @@ struct ColorizableTextField: View {
         } else {
             if textInputColor != .primary {
                 TextField(placeholder, text: $text)
+                    .onChange(of: text) {
+                        self.onEditingChange($0)
+                    }
                     .multilineTextAlignment(inputAlignment)
                     .foregroundColor(textInputColor)
                     .primaryFont(size: .L, weight: .medium)
             } else {
                 TextField(placeholder, text: $text)
+                    .onChange(of: text) {
+                        self.onEditingChange($0)
+                    }
                     .multilineTextAlignment(inputAlignment)
                     .primaryFont(size: .L, weight: .medium)
             }

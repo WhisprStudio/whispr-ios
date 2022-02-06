@@ -11,6 +11,7 @@ import SwiftUI
 struct SpeakerSelectCell: View {
     private var speaker: Speaker
     private var action: (() -> ())
+    @State private var speakerName: String
     @State private var isClicked: Bool = false
     @State private var isNavigationTriggered: Bool = false
     private var subLabel: String = ""
@@ -22,13 +23,14 @@ struct SpeakerSelectCell: View {
         self.action = action
         self.subLabel = isConnected ? "Connected" : "Offline"
         self.subLabelColor = isConnected ? .LED : .error
+        self.speakerName = speaker.name
     }
 
     var body: some View {
         NavigationLink(destination: SpeakerView(speaker: speaker)
                         .environmentObject(contentManager),
                        isActive: $isNavigationTriggered) {
-            ButtonCell(label: speaker.name,
+            ButtonCell(label: speakerName,
                        subLabel: subLabel,
                        action: {
                         isClicked.toggle()
