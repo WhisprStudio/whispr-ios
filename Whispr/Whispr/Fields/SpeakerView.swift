@@ -44,12 +44,13 @@ struct SpeakerView: View {
             Section(items:
                         { () -> [AnyView] in
                             var configViews: [AnyView] = []
-                            for item in speaker.configs {
+                            for (index, item) in speaker.configs.enumerated() {
+                                let isActive = index == 0 ? true : false
                                 configViews.append(AnyView(
                                     SpeakerConfigButtonCell(
                                         config: item,
                                         speakerId: speaker.id,
-                                        isActive: true
+                                        isActive: isActive
                                     )
                                     .environmentObject(contentManager)
                                 ))

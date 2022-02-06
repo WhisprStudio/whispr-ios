@@ -12,9 +12,7 @@ struct AddConfigView: View {
     private var speakerId: UUID
     @State var configName: String = ""
     @State var volumeValue: CGFloat = 50
-    var onVolumeChanged: ((Bool) -> ()) = {_ in }
     @State var noiseCancelingValue: CGFloat = 50
-    var onNoiseCancelingChanged: ((Bool) -> ()) = {_ in }
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @EnvironmentObject var contentManager: ContentManager
     @State var startTime = Calendar.autoupdatingCurrent.date(bySettingHour: 8, minute: 0, second: 0, of: Date())!
@@ -23,6 +21,8 @@ struct AddConfigView: View {
     
     @State private var timeTriggerFields: [AnyView] = []
     @State private var timeTriggerSection: [AnyView] = []
+    
+    private var newConfig = SpeakerConfig()
     
     init(speakerId: UUID) {
         self.speakerId = speakerId
@@ -34,12 +34,33 @@ struct AddConfigView: View {
         } else if (!newValue && timeTriggerSection.count > 1) {
             timeTriggerSection.removeLast(2)
         }
+        newConfig.hasTimeTrigger = newValue
+    }
+    
+    func onNameChanged(value: String) {
+        newConfig.name = value
+    }
+    
+    func onVolumeChanged(value: Bool) {
+        newConfig.volume = Double(volumeValue)
+    }
+    
+    func onNoiseCancelingChanged(value: Bool) {
+        newConfig.noiseCanceling = Double(noiseCancelingValue)
+    }
+    
+    func onStartTimeChanged(value: Date) {
+        newConfig.startTime = value
+    }
+    
+    func onEndTimeChanged(value: Date) {
+        newConfig.endTime = value
     }
     
     var body: some View {
         ListView(sections: [
             Section(items: [
-                AnyView(TextFieldCell(text: $configName, label: "Name", placeholder: "My configuration")),
+                AnyView(TextFieldCell(text: $configName, label: "Name", placeholder: "My configuration", onEditingChange: onNameChanged)),
                 AnyView(SliderCell(value: $volumeValue, onValueChanged: onVolumeChanged, label: "Volume")),
                 AnyView(SliderCell(value: $noiseCancelingValue, onValueChanged: onNoiseCancelingChanged, label: "Noise canceling"))
             ]),
@@ -49,9 +70,7 @@ struct AddConfigView: View {
                 AnyView(SaveCell(action: {
                     if !configName.isEmpty {
                         contentManager.add(config:
-                                            SpeakerConfig(name: configName,
-                                                          volume: Double(volumeValue),
-                                                          noiseCanceling: Double(noiseCancelingValue)),
+                                            newConfig,
                                            speakerId: speakerId)
                         self.mode.wrappedValue.dismiss()
                     }
@@ -60,8 +79,8 @@ struct AddConfigView: View {
         ], style: .plain)
         .onAppear(perform: {
             self.timeTriggerFields = [
-                AnyView(DatePickerCell(date: $startTime, label: "Activation")),
-                AnyView(DatePickerCell(date: $endTime, label: "Deactivation"))
+                AnyView(DatePickerCell(date: $startTime, label: "Activation", onValueChange: onStartTimeChanged)),
+                AnyView(DatePickerCell(date: $endTime, label: "Deactivation", onValueChange: onEndTimeChanged))
             ]
             self.timeTriggerSection = [
                 AnyView(ConfigSwitchCell(state: $hasPeriodicActivation, onValueChanged: toggleTimeTrigger))

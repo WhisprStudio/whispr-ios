@@ -43,6 +43,10 @@ struct AddConfigCell: View {
             .primaryColor(Color.primaryText)
             .clickedColor(Color.success)
         }
+//        .isDetailLink(false)
+//        .onDisappear(perform: {
+//            isNavigationTriggered = false
+//        })
     }
 }
 

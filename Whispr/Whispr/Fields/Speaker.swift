@@ -35,14 +35,32 @@ class ContentManager: ObservableObject {
              volume,
              noiseCanceling
     }
+    
+    enum ConfigProperty {
+        case name,
+             volume,
+             noiseCanceling,
+             timeTrigger,
+             startTime,
+             endTime
+    }
 
     private var saveProperty = [Property: (String, UUID)->Void]()
+    private var saveConfigProperty = [ConfigProperty: (String, UUID, UUID)->Void]()
 
     init() {
         speakers = []
+
         saveProperty.updateValue(saveName, forKey: .name)
         saveProperty.updateValue(saveVolume, forKey: .volume)
         saveProperty.updateValue(saveNoiseCanceling, forKey: .noiseCanceling)
+
+        saveConfigProperty.updateValue(saveConfigName, forKey: .name)
+        saveConfigProperty.updateValue(saveConfigVolume, forKey: .volume)
+        saveConfigProperty.updateValue(saveConfigNoiseCanceling, forKey: .noiseCanceling)
+        saveConfigProperty.updateValue(saveTimeTriggerSwitch, forKey: .timeTrigger)
+        saveConfigProperty.updateValue(saveStartTime, forKey: .startTime)
+        saveConfigProperty.updateValue(saveEndTime, forKey: .endTime)
         if let data = UserDefaults.standard.data(forKey: Self.speakersKey) {
             if let decoded = try? JSONDecoder().decode([Speaker].self, from: data) {
                 self.speakers = decoded
@@ -60,7 +78,7 @@ class ContentManager: ObservableObject {
     
     private func saveVolume(value: String, speakerId: UUID) {
         guard let volume = Double(value) else {
-            print("error: couldn't convert \(value) to double (Speaker.swift l.61)")
+            print("error: couldn't convert \(value) to double (Speaker.swift)")
             return
         }
         speakers.first(where: {
@@ -71,7 +89,7 @@ class ContentManager: ObservableObject {
     
     private func saveNoiseCanceling(value: String, speakerId: UUID) {
         guard let noiseCanceling = Double(value) else {
-            print("error: couldn't convert \(value) to double (Speaker.swift l.61)")
+            print("error: couldn't convert \(value) to double (Speaker.swift)")
             return
         }
         speakers.first(where: {
@@ -80,10 +98,104 @@ class ContentManager: ObservableObject {
         save()
     }
     
+    // save object property to Speaker class
     func save(property: Property, value: String, speakerId: UUID) {
         saveProperty[property]!(value, speakerId)
     }
+    
+    private func saveConfigName(value: String, speakerId: UUID, configId: UUID) {
+        speakers.first(where: {
+            $0.id == speakerId
+        })?.configs.first(where: {
+            $0.id == configId
+        })?.name = value
+        save()
+        // need to manually trigger the observedObject since Speaker.configs cannot be of type @Published
+        objectWillChange.send()
+    }
+    
+    private func saveConfigVolume(value: String, speakerId: UUID, configId: UUID) {
+        guard let volume = Double(value) else {
+            print("error: couldn't convert \(value) to double (Speaker.swift)")
+            return
+        }
+        speakers.first(where: {
+            $0.id == speakerId
+        })?.configs.first(where: {
+            $0.id == configId
+        })?.volume = volume
+        save()
+        // need to manually trigger the observedObject since Speaker.configs cannot be of type @Published
+        objectWillChange.send()
+    }
+    
+    private func saveConfigNoiseCanceling(value: String, speakerId: UUID, configId: UUID) {
+        guard let noiseCanceling = Double(value) else {
+            print("error: couldn't convert \(value) to double (Speaker.swift)")
+            return
+        }
+        speakers.first(where: {
+            $0.id == speakerId
+        })?.configs.first(where: {
+            $0.id == configId
+        })?.noiseCanceling = noiseCanceling
+        save()
+        // need to manually trigger the observedObject since Speaker.configs cannot be of type @Published
+        objectWillChange.send()
+    }
+    
+    private func saveTimeTriggerSwitch(value: String, speakerId: UUID, configId: UUID) {
+        guard value == "true" || value == "false" else {
+            print("error: expected true of false but got \(value) (Speaker.swift)")
+            return
+        }
+        let hasTimeTrigger = value == "true" ? true : false
+        speakers.first(where: {
+            $0.id == speakerId
+        })?.configs.first(where: {
+            $0.id == configId
+        })?.hasTimeTrigger = hasTimeTrigger
+        save()
+        // need to manually trigger the observedObject since Speaker.configs cannot be of type @Published
+        objectWillChange.send()
+    }
+    
+    private func saveStartTime(value: String, speakerId: UUID, configId: UUID) {
+        guard let timeSinceEpoch = Double(value) else {
+            print("error: couldn't convert \(value) to double (time since epoch) (Speaker.swift)")
+            return
+        }
+        speakers.first(where: {
+            $0.id == speakerId
+        })?.configs.first(where: {
+            $0.id == configId
+        })?.startTime = Date(timeIntervalSince1970: timeSinceEpoch)
+        save()
+        // need to manually trigger the observedObject since Speaker.configs cannot be of type @Published
+        objectWillChange.send()
+    }
+    
+    private func saveEndTime(value: String, speakerId: UUID, configId: UUID) {
+        guard let timeSinceEpoch = Double(value) else {
+            print("error: couldn't convert \(value) to double (time since epoch) (Speaker.swift)")
+            return
+        }
+        speakers.first(where: {
+            $0.id == speakerId
+        })?.configs.first(where: {
+            $0.id == configId
+        })?.endTime = Date(timeIntervalSince1970: timeSinceEpoch)
+        save()
+        // need to manually trigger the observedObject since Speaker.configs cannot be of type @Published
+        objectWillChange.send()
+    }
+    
+    // save object property to Speaker class
+    func saveConfig(property: ConfigProperty, value: String, speakerId: UUID, configId: UUID) {
+        saveConfigProperty[property]!(value, speakerId, configId)
+    }
 
+    // save object array in cache
     private func save() {
         if let encoded = try? JSONEncoder().encode(speakers) {
             UserDefaults.standard.set(encoded, forKey: Self.speakersKey)

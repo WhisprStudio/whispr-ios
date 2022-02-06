@@ -10,26 +10,47 @@ import SwiftUI
 
 struct SpeakerConfigurationView: View {
     @State var configName: String
-    
-//    @State var tmpConfigName: String
-    @State var volumeValue: CGFloat = 50
+
+    @State var volumeValue: CGFloat
     var config: SpeakerConfig
     var speakerId: UUID
-    var onVolumeChanged: ((Bool) -> ()) = {_ in }
-    @State var noiseCancelingValue: CGFloat = 50
-    var onNoiseCancelingChanged: ((Bool) -> ()) = {_ in }
+    @State var noiseCancelingValue: CGFloat
     @EnvironmentObject var contentManager: ContentManager
-    @State var startTime = Calendar.autoupdatingCurrent.date(bySettingHour: 8, minute: 0, second: 0, of: Date())!
-    @State var endTime = Calendar.autoupdatingCurrent.date(bySettingHour: 18, minute: 0, second: 0, of: Date())!
-    @State var hasPeriodicActivation: Bool = false
-    
+    @State var startTime: Date
+    @State var endTime: Date
+    @State var hasPeriodicActivation: Bool
     @State private var timeTriggerFields: [AnyView] = []
     @State private var timeTriggerSection: [AnyView] = []
-    
+
     init(config: SpeakerConfig, speakerId: UUID) {
         self.config = config
         self.speakerId = speakerId
-        _configName = State(initialValue: config.name)
+        self._volumeValue = State(initialValue: CGFloat(config.volume))
+        self._noiseCancelingValue = State(initialValue: CGFloat(config.noiseCanceling))
+        self._configName = State(initialValue: config.name)
+        self._startTime = State(initialValue: config.startTime)
+        self._endTime = State(initialValue: config.endTime)
+        self._hasPeriodicActivation = State(initialValue: config.hasTimeTrigger)
+    }
+
+    func onNameChange(value: String) {
+        contentManager.saveConfig(property: .name, value: value, speakerId: speakerId, configId: config.id)
+    }
+    
+    func onVolumeChanged(value: Bool) {
+        contentManager.saveConfig(property: .volume, value: volumeValue.description, speakerId: speakerId, configId: config.id)
+    }
+    
+    func onNoiseCancelingChanged(value: Bool) {
+        contentManager.saveConfig(property: .noiseCanceling, value: noiseCancelingValue.description, speakerId: speakerId, configId: config.id)
+    }
+    
+    func onStartTimeChanged(value: Date) {
+        contentManager.saveConfig(property: .startTime, value: startTime.timeIntervalSince1970.description, speakerId: speakerId, configId: config.id)
+    }
+    
+    func onEndTimeChanged(value: Date) {
+        contentManager.saveConfig(property: .endTime, value: endTime.timeIntervalSince1970.description, speakerId: speakerId, configId: config.id)
     }
 
     func toggleTimeTrigger(newValue: Bool) {
@@ -38,12 +59,13 @@ struct SpeakerConfigurationView: View {
         } else if (!newValue && timeTriggerSection.count > 1) {
             timeTriggerSection.removeLast(2)
         }
+        contentManager.saveConfig(property: .timeTrigger, value: newValue.description, speakerId: speakerId, configId: config.id)
     }
 
     var body: some View {
         ListView(sections: [
             Section(items: [
-                AnyView(TextFieldCell(text: $configName, label: "Name", placeholder: "My configuration")),
+                AnyView(TextFieldCell(text: $configName, label: "Name", placeholder: "My configuration", onEditingChange: self.onNameChange)),
                 AnyView(SliderCell(value: $volumeValue, onValueChanged: onVolumeChanged, label: "Volume")),
                 AnyView(SliderCell(value: $noiseCancelingValue, onValueChanged: onNoiseCancelingChanged, label: "Noise canceling"))
             ]),
@@ -57,8 +79,8 @@ struct SpeakerConfigurationView: View {
         ], style: .plain)
         .onAppear(perform: {
             self.timeTriggerFields = [
-                AnyView(DatePickerCell(date: $startTime, label: "Activation")),
-                AnyView(DatePickerCell(date: $endTime, label: "Deactivation"))
+                AnyView(DatePickerCell(date: $startTime, label: "Activation", onValueChange: onStartTimeChanged)),
+                AnyView(DatePickerCell(date: $endTime, label: "Deactivation", onValueChange: onEndTimeChanged))
             ]
             self.timeTriggerSection = [
                 AnyView(ConfigSwitchCell(state: $hasPeriodicActivation, onValueChanged: toggleTimeTrigger))
@@ -70,7 +92,7 @@ struct SpeakerConfigurationView: View {
         .separatorColor(Color.separator)
         .primaryColor(Color.primaryText)
         .backgroundColor(Color.fieldBackground)
-        .navigationTitle(config.name)
+        .navigationTitle(configName)
         .navigationBarTitleDisplayMode(.inline)
         .background(NavigationConfigurator())
     }

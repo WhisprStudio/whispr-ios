@@ -10,16 +10,22 @@ import SwiftUI
 struct DatePickerCell: View {
     @Binding var date: Date
     var label: String
+    var onValueChange: (Date)->()
 
     public init(date: Binding<Date>,
-                label: String = "") {
+                label: String = "",
+                onValueChange: @escaping (Date)->() = {_ in}) {
         self._date = date
         self.label = label
+        self.onValueChange = onValueChange
     }
 
     var body: some View {
         DatePicker(label, selection: $date, displayedComponents: .hourAndMinute)
 //            .datePickerStyle(WheelDatePickerStyle())
+            .onChange(of: date) {
+                self.onValueChange($0)
+            }
             .accentColor(.whisprYellow)
             .primaryFont(size: .L, weight: .medium)
     }
@@ -30,7 +36,7 @@ struct DatePickerPreviewContainer: View {
     var label = "label"
 
     var body: some View {
-        DatePickerCell(date: $date, label: label)
+        DatePickerCell(date: $date, label: label, onValueChange: {_ in})
     }
 }
 

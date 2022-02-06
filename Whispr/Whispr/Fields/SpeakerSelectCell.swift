@@ -54,6 +54,7 @@ struct SpeakerSelectCell: View {
                 .secondaryColor(subLabelColor)
                 .clickedColor(Color.success)
         }
+        .isDetailLink(false)
     }
 }
 
