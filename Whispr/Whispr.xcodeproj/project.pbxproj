@@ -35,10 +35,7 @@
 		DADBD62E2690A33700E7DB8F /* SpeakerSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADBD62D2690A33700E7DB8F /* SpeakerSelectCell.swift */; };
 		DAE2091B26E4C272007C3DA4 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2091926E4C272007C3DA4 /* ColorManager.swift */; };
 		DAE2091C26E4C272007C3DA4 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE2091A26E4C272007C3DA4 /* FontManager.swift */; };
-<<<<<<< HEAD
-=======
 		DAEDB4D3270B4F5D002A5FEE /* WhisprGenericViews in Frameworks */ = {isa = PBXBuildFile; productRef = DAEDB4D2270B4F5D002A5FEE /* WhisprGenericViews */; };
->>>>>>> 407fbc3 (up)
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,23 +79,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-<<<<<<< HEAD
-		DADBD5CC266FE5A200E7DB8F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DADBD5D7266FE5A200E7DB8F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-=======
->>>>>>> 407fbc3 (up)
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -248,49 +228,6 @@
 			productReference = DADBD5BE266FE5A000E7DB8F /* Whispr.app */;
 			productType = "com.apple.product-type.application";
 		};
-<<<<<<< HEAD
-		DADBD5CE266FE5A200E7DB8F /* WhisprTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DADBD5E6266FE5A200E7DB8F /* Build configuration list for PBXNativeTarget "WhisprTests" */;
-			buildPhases = (
-				DADBD5CB266FE5A200E7DB8F /* Sources */,
-				DADBD5CC266FE5A200E7DB8F /* Frameworks */,
-				DADBD5CD266FE5A200E7DB8F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DADBD5D1266FE5A200E7DB8F /* PBXTargetDependency */,
-			);
-			name = WhisprTests;
-			packageProductDependencies = (
-			);
-			productName = WhisprTests;
-			productReference = DADBD5CF266FE5A200E7DB8F /* WhisprTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		DADBD5D9266FE5A200E7DB8F /* WhisprUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DADBD5E9266FE5A200E7DB8F /* Build configuration list for PBXNativeTarget "WhisprUITests" */;
-			buildPhases = (
-				DADBD5D6266FE5A200E7DB8F /* Sources */,
-				DADBD5D7266FE5A200E7DB8F /* Frameworks */,
-				DADBD5D8266FE5A200E7DB8F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DADBD5DC266FE5A200E7DB8F /* PBXTargetDependency */,
-			);
-			name = WhisprUITests;
-			packageProductDependencies = (
-			);
-			productName = WhisprUITests;
-			productReference = DADBD5DA266FE5A200E7DB8F /* WhisprUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
-=======
->>>>>>> 407fbc3 (up)
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -569,8 +506,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-<<<<<<< HEAD
-=======
 
 /* Begin XCSwiftPackageProductDependency section */
 		DAEDB4D2270B4F5D002A5FEE /* WhisprGenericViews */ = {
@@ -578,7 +513,6 @@
 			productName = WhisprGenericViews;
 		};
 /* End XCSwiftPackageProductDependency section */
->>>>>>> 407fbc3 (up)
 	};
 	rootObject = DADBD5B6266FE5A000E7DB8F /* Project object */;
 }
