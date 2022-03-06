@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//import WhisprGenericViews
+import WhisprGenericViews
 
 struct SpeakerView: View {
     private var speaker: Speaker

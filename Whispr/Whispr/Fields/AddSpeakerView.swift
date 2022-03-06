@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//import WhisprGenericViews
+import WhisprGenericViews
 
 struct AddSpeakerView: View {
     @State var speakerName: String = ""

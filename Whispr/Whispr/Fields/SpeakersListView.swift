@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//import WhisprGenericViews
+import WhisprGenericViews
 
 struct SpeakersListView: View {
     @StateObject var contentManager = ContentManager()

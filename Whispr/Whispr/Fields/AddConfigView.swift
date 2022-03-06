@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//import WhisprGenericViews
+import WhisprGenericViews
 
 struct AddConfigView: View {
     private var speakerId: UUID

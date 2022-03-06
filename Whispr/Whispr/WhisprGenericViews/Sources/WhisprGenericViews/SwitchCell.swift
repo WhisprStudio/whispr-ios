@@ -74,7 +74,7 @@ struct SwitchCellPreviewContainer: View {
 
 struct SwitchCell_Previews: PreviewProvider {
     static var previews: some View {
-        ConfigSwitchCellPreviewContainer()
+        SwitchCellPreviewContainer()
             .preferredColorScheme(.dark)
     }
 }

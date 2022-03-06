@@ -5,7 +5,7 @@
 //  Created by Paul Erny on 05/11/2021.
 //
 
-//import WhisprGenericViews
+import WhisprGenericViews
 import SwiftUI
 
 struct SpeakerConfigButtonCell: View {

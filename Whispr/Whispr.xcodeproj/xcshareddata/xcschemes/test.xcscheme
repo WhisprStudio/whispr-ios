@@ -20,20 +20,6 @@
                ReferencedContainer = "container:Whispr.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "WhisprGenericViews"
-               BuildableName = "WhisprGenericViews"
-               BlueprintName = "WhisprGenericViews"
-               ReferencedContainer = "container:Whispr/WhisprGenericViews">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -42,26 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DADBD5CE266FE5A200E7DB8F"
-               BuildableName = "WhisprTests.xctest"
-               BlueprintName = "WhisprTests"
-               ReferencedContainer = "container:Whispr.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DADBD5D9266FE5A200E7DB8F"
-               BuildableName = "WhisprUITests.xctest"
-               BlueprintName = "WhisprUITests"
-               ReferencedContainer = "container:Whispr.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

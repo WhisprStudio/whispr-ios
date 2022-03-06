@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WhisprGenericViews
 
 struct ConfigSwitchCell: View {
     @Binding var hasPeriodicActivation: Bool

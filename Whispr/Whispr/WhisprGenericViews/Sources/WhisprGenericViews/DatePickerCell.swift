@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DatePickerCell: View {
+public struct DatePickerCell: View {
     @Binding var date: Date
     var label: String
     var onValueChange: (Date)->()
@@ -20,7 +20,7 @@ struct DatePickerCell: View {
         self.onValueChange = onValueChange
     }
 
-    var body: some View {
+    public var body: some View {
         DatePicker(label, selection: $date, displayedComponents: .hourAndMinute)
 //            .datePickerStyle(WheelDatePickerStyle())
             .onChange(of: date) {
