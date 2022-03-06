@@ -11,6 +11,12 @@ struct Peripheral: Identifiable {
     let id: Int
     let name: String
     let rssi: Int
+    let peripheral: CBPeripheral
+}
+
+struct cbPeripheral: Identifiable {
+    let id: Int
+    let periphiral: CBPeripheral
 }
 
 class BLEManager: NSObject, ObservableObject, CBCentralManagerDelegate, CBPeripheralDelegate {
@@ -26,7 +32,8 @@ class BLEManager: NSObject, ObservableObject, CBCentralManagerDelegate, CBPeriph
     var myCentral: CBCentralManager!
     @Published var isSwitchedOn = false
     @Published var peripherals = [Peripheral]()
-    var myPeripheral: CBPeripheral!
+    @Published var cbperipherals = [cbPeripheral]()
+    @Published var myPeripheral: CBPeripheral!
     
     override init() {
         super.init()
@@ -39,21 +46,25 @@ class BLEManager: NSObject, ObservableObject, CBCentralManagerDelegate, CBPeriph
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         var peripheralName: String!
        
-        if let name = advertisementData[CBAdvertisementDataLocalNameKey] as? String {
-            peripheralName = name
-            if name == "LE-Diamant noir" {
-                self.myPeripheral = peripheral
-                self.myPeripheral.delegate = self
-                self.myCentral.connect(peripheral, options: nil)
-            }
+        peripheralName = peripheral.name
+        if peripheralName != nil {
+            let newPeripheral = Peripheral(id: peripherals.count, name: peripheralName, rssi: RSSI.intValue, peripheral: peripheral)
+            print(newPeripheral)
+            peripherals.append(newPeripheral)
         }
-        else {
-            peripheralName = "Unknown"
-        }
-       
-        let newPeripheral = Peripheral(id: peripherals.count, name: peripheralName, rssi: RSSI.intValue)
-        print(newPeripheral)
-        peripherals.append(newPeripheral)
+    }
+    
+    func connectToDevice(peripheral: CBPeripheral) {
+        self.myPeripheral = peripheral
+        self.myPeripheral.delegate = self
+        self.myCentral.connect(peripheral, options: nil)
+        print("CONNECTED TO \(String(describing: self.myPeripheral.name))")
+    }
+    
+    func disconnectToDevice() {
+        self.myCentral.cancelPeripheralConnection(self.myPeripheral)
+        self.myPeripheral = nil
+        print("DISCONNECTED TO DEVICE")
     }
     
     func startScanning() {

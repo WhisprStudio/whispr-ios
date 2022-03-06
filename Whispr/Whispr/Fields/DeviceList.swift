@@ -6,6 +6,7 @@
 //
 import CoreBluetooth
 import SwiftUI
+import XCTest
 
 struct DeviceList: View {
     @ObservedObject var bleManager = BLEManager()
@@ -20,7 +21,11 @@ struct DeviceList: View {
                 .frame(maxWidth: .infinity, alignment: .center)
             List(bleManager.peripherals) { peripheral in
                 HStack {
-                    Text(peripheral.name)
+                    Button(action: {
+                        self.bleManager.connectToDevice(peripheral: peripheral.peripheral)
+                    }) {
+                        Text(peripheral.name)
+                    }
                     Spacer()
                     Text(String(peripheral.rssi))
                 }
@@ -58,6 +63,16 @@ struct DeviceList: View {
                 }.padding()
             }
             Spacer()
+            
+            if bleManager.myPeripheral != nil {
+                Text("Connecté à")
+                Text(bleManager.myPeripheral?.name ?? "")
+                Button(action : {
+                    self.bleManager.disconnectToDevice()
+                }) {
+                    Text("Se déconencter")
+                }
+            }
         }
     }
 }
