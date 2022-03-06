@@ -7,6 +7,64 @@
 
 import SwiftUI
 
+/// A control that initiates an action.
+///
+/// You create a ButtonCell by providing an action, label, sublabel and images. The action is either
+/// a method or closure property that does something when a user clicks or taps
+/// the button. The label and sublabel are strings that describe the button's action and the images are views --- for
+/// example, by showing text, an icon, or both:
+///
+/// ```swift
+///     ButtonCell(label: "Sign In",
+///         action: signIn,
+///         leftView: {
+///             Image("google.png")
+///                 .resizable()
+///                 .frame(width: 50, height: 50)
+///             },
+///         rightView: {
+///             Image(systemName: "chevron.right")
+///         }
+///     )
+/// ```
+///
+/// For the common case of text-only labels, you can use the convenience
+/// initializer that takes a title string or LocalizedStringKey as its first
+/// parameter, instead of a trailing closure:
+///
+/// ```swift
+///     ButtonCell(label: "label", action: {})
+/// ```
+///
+/// ### Styling ButtonCells
+
+/// ```swift
+///     ButtonCell(label: "label", action: {})
+///          .primaryColor(.green)
+///          .secondaryColor(.yellow)
+///          .clickedColor(.yellow)
+/// ```
+/// #### primaryColor
+///
+/// ```swift
+///     func primaryColor(_ color: Color) -> some View
+/// ```
+/// When applied, replaces the primary color of a view with the given parameter
+///
+/// #### secondaryColor
+///
+/// ```swift
+///     func secondaryColor(_ color: Color) -> some View
+/// ```
+/// When applied, replaces the secondary color of a view with the given parameter
+/// 
+/// #### clickedColor
+///
+/// ```swift
+///     func clickedColor(_ color: Color) -> some View
+/// ```
+/// When applied to a ButtonCell, replaces the primary color of the view with the given parameter upon clicking on said button
+
 public struct ButtonCell<LeftView: View, RightView: View>: View {
     private var action: (() -> ())
     private let content: LeftView?

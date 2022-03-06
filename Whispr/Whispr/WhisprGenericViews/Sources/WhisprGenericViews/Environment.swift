@@ -94,22 +94,27 @@ public extension View {
         environment(\.clickedColor, color)
     }
 
+    /// When applied to a ListView, replaces the color of the line separating rows with the given parameter
     func separatorColor(_ color: Color) -> some View {
         environment(\.separatorColor, color)
     }
 
+    /// When applied to a ListView, replaces the rows default background color with the given parameter
     func backgroundColor(_ color: Color) -> some View {
         environment(\.backgroundColor, color)
     }
     
+    /// When applied to a TextFieldCell, replaces the color of the input text by the given parameter
     func textInputColor(_ color: Color) -> some View {
         environment(\.textInputColor, color)
     }
 
+    /// When applied to a SaveCell, replaces the color of the cell's text by the given parameter
     func saveTextColor(_ color: Color) -> some View {
         environment(\.saveTextColor, color)
     }
     
+    /// When applied to a DeleteCell, replaces the color of the cell's text by the given parameter
     func deleteTextColor(_ color: Color) -> some View {
         environment(\.deleteTextColor, color)
     }
