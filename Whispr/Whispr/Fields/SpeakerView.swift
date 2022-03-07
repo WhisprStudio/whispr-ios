@@ -38,8 +38,10 @@ struct SpeakerView: View {
         ListView(sections: [
             Section(items: [
                 AnyView(TextFieldCell(text: $speakerName, label: "Name", placeholder: "My speaker", onEditingChange: self.onNameChange)),
-                AnyView(SliderCell(value: $volumeValue, onValueChanged: onVolumeChanged, label: "Volume")),
-                AnyView(SliderCell(value: $noiseCancelingValue, onValueChanged: onNoiseCancelingChanged, label: "Noise canceling")),
+                AnyView(SliderCell(value: $volumeValue, onValueChanged: onVolumeChanged, label: "Volume")
+                            .secondaryColor(.whisprYellow)),
+                AnyView(SliderCell(value: $noiseCancelingValue, onValueChanged: onNoiseCancelingChanged, label: "Noise canceling")
+                            .secondaryColor(.whisprYellow)),
             ]),
             Section(items:
                         { () -> [AnyView] in
