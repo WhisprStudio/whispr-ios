@@ -79,6 +79,41 @@ public struct ButtonCell<LeftView: View, RightView: View>: View {
     @Environment(\.secondaryColor) var secondaryColor : Color
     @Environment(\.clickedColor) var clickedColor : Color
 
+    /// Creates a Button with a label and optionnal sublabel surrounded by two Views
+    ///
+    /// Parameter:
+    ///  - label: A String or LocalizedStringKey representing the text displayed on the button
+    ///  - subLabel: An optionnal String or LocalizedStringKey representing a smaller text displayed on the button
+    ///  - action: method or closure property that does something when a user clicks or taps the button
+    ///  - rightView: A View
+    ///  - leftView: A View
+    ///
+    /// ### Usage
+    ///
+    /// ```swift
+    ///     ButtonCell(label: "Sign In",
+    ///         action: signIn,
+    ///         leftView: {
+    ///          Image("googleLogo")
+    ///              .resizable()
+    ///              .frame(width: 50, height: 50)
+    ///         },
+    ///         rightView: {
+    ///          Image(systemName: "chevron.right")
+    ///         }
+    ///     )
+    ///     ButtonCell(label: "Sign In",
+    ///         subLabel: "To your account",
+    ///         leftView: {
+    ///          Image("facebookLogo")
+    ///              .resizable()
+    ///              .frame(width: 50, height: 50)
+    ///         },
+    ///         rightView: {
+    ///          Image(systemName: "chevron.right")
+    ///         }
+    ///     )
+    /// ```
     public init(label: String = "",
          subLabel: String = "",
          action: @escaping (() -> ()),
@@ -151,6 +186,33 @@ public struct ButtonCell<LeftView: View, RightView: View>: View {
 }
 
 public extension ButtonCell where LeftView == EmptyView {
+    /// Creates a Button simillar the the default one but with an additional view on the right of the label
+    ///
+    /// Parameter:
+    ///  - label: A String or LocalizedStringKey representing the text displayed on the button
+    ///  - subLabel: An optionnal String or LocalizedStringKey representing a smaller text displayed on the button
+    ///  - action: method or closure property that does something when a user clicks or taps the button
+    ///  - rightView: A View
+    ///
+    /// ### Usage
+    ///
+    /// ```swift
+    ///     ButtonCell(label: "Sign In",
+    ///         action: signIn,
+    ///         rightView: {
+    ///          Image("googleLogo")
+    ///              .resizable()
+    ///              .frame(width: 50, height: 50)
+    ///     })
+    ///     ButtonCell(label: "Sign In",
+    ///         subLabel: "To your account",
+    ///         action: signIn,
+    ///         rightView: {
+    ///          Image("facebookLogo")
+    ///              .resizable()
+    ///              .frame(width: 50, height: 50)
+    ///     })
+    /// ```
     init(label: String = "",
          subLabel: String = "",
          action: @escaping (() -> ()),
@@ -167,6 +229,33 @@ public extension ButtonCell where LeftView == EmptyView {
 }
 
 public extension ButtonCell where RightView == EmptyView {
+    /// Creates a Button simillar the the default one but with an additional view on the left of the label
+    ///
+    /// Parameter:
+    ///  - label: A String or LocalizedStringKey representing the text displayed on the button
+    ///  - subLabel: An optionnal String or LocalizedStringKey representing a smaller text displayed on the button
+    ///  - action: method or closure property that does something when a user clicks or taps the button
+    ///  - leftView: A View
+    ///
+    /// ### Usage
+    ///
+    /// ```swift
+    ///     ButtonCell(label: "Sign In",
+    ///         action: signIn,
+    ///         leftView: {
+    ///          Image("googleLogo")
+    ///              .resizable()
+    ///              .frame(width: 50, height: 50)
+    ///     })
+    ///     ButtonCell(label: "Sign In",
+    ///         subLabel: "To your account",
+    ///         action: signIn,
+    ///         leftView: {
+    ///          Image("facebookLogo")
+    ///              .resizable()
+    ///              .frame(width: 50, height: 50)
+    ///     })
+    /// ```
     init(label: String = "",
          subLabel: String = "",
          action: @escaping (() -> ()),
@@ -183,6 +272,19 @@ public extension ButtonCell where RightView == EmptyView {
 }
 
 public extension ButtonCell where RightView == EmptyView, LeftView == EmptyView {
+    /// Default initialiser
+    ///
+    /// Parameter:
+    ///  - label: A String or LocalizedStringKey representing the text displayed on the button
+    ///  - subLabel: An optionnal String or LocalizedStringKey representing a smaller text displayed on the button
+    ///  - action: method or closure property that does something when a user clicks or taps the button
+    ///
+    /// ### Usage
+    ///
+    /// ```swift
+    ///     ButtonCell(label: "Sign In", action: signIn)
+    ///     ButtonCell(label: "Sign In", subLabel: "To your account", action: signIn)
+    /// ```
     init(label: String = "",
          subLabel: String = "",
          action: @escaping (() -> ())) {
