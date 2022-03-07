@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-public struct ListRowView: View {
+struct ListRowView: View {
     var section: Section
     var separatorColor: Color
 
-    public init(section: Section, separatorColor : Color = .primary) {
+    init(section: Section, separatorColor : Color = .primary) {
         self.section = section
         self.separatorColor = separatorColor
     }
 
-    public var body: some View {
+    var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ForEach(0..<section.items.count, id: \.self) { index in
                 if index != 0 {

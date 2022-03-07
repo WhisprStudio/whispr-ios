@@ -25,7 +25,7 @@ import SwiftUI
 ///    DeleteCell(action: deleteContent)
 ///        .deleteTextColor(myRedColor)
 /// ```
-/// #### primaryColor
+/// #### deleteTextColor
 ///
 /// ```swift
 ///     func deleteTextColor(_ color: Color) -> some View

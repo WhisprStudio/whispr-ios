@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-public struct RoundedListView: View {
+struct RoundedListView: View {
     var section: Section
     var primaryColor : Color
     var backgroundColor : Color
     var separatorColor : Color
 
-    public init(section: Section,
+    init(section: Section,
                 primaryColor : Color = .primary,
                 backgroundColor : Color = .secondary,
                 separatorColor : Color = .primary) {
@@ -23,7 +23,7 @@ public struct RoundedListView: View {
         self.separatorColor = separatorColor
     }
 
-    public var body: some View {
+    var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             if !section.header.isEmpty {
                 Text(section.header)
