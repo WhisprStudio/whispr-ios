@@ -7,6 +7,41 @@
 
 import SwiftUI
 
+/// A control that toggles between on and off states.
+///
+/// You create a SwitchCell by providing an action, label, sublabel and a binding to hold the value of the state.
+/// The action is either a method or closure property that does something when a user clicks or taps
+/// the button. The label and sublabel are strings that describe the button's action --- for
+/// example:
+///
+/// ```swift
+///     SwitchCell(label: "Wi-Fi",
+///                value: $isWifiEnabled,
+///                onValueChanged: toggleWiFi
+///     )
+///     SwitchCell(label: "Bluetooth",
+///                subLabel: "Toggle On / Off",
+///                value: $value,
+///                onValueChanged: toggleBluetooth
+///     )
+/// ```
+///
+/// ### Styling SwitchCell
+///
+/// For the styling of the SwitchCell, you have access to one modifier
+/// ```swift
+///     SwitchCell(label: "Wi-Fi",
+///                value: $isWifiEnabled,
+///                onValueChanged: toggleWiFi
+///     )
+///         .primaryColor(.green)
+/// ```
+/// #### primaryColor
+///
+/// ```swift
+///     func primaryColor(_ color: Color) -> some View
+/// ```
+/// When applied, replaces the background color of the switch **when turned on** with the given parameter
 public struct SwitchCell: View {
     private var label: Text
     private var subLabel: Text?
@@ -15,6 +50,27 @@ public struct SwitchCell: View {
     
     @Environment(\.primaryColor) var primaryColor : Color
     
+    /// Creates a SwitchCell with a label and optionnal sublabel
+    ///
+    /// Parameter:
+    ///  - label: A String or LocalizedStringKey representing the text displayed on the switch
+    ///  - subLabel: An optionnal String or LocalizedStringKey representing a smaller text displayed on the switch
+    ///  - value: Binding to a Bool holding the value of the switch
+    ///  - action: method or closure property that does something when a user clicks or taps the switch
+    ///
+    /// ### Usage
+    ///
+    /// ```swift
+    ///     SwitchCell(label: "Wi-Fi",
+    ///                value: $isWifiEnabled,
+    ///                onValueChanged: toggleWiFi
+    ///     )
+    ///     SwitchCell(label: "Bluetooth",
+    ///                subLabel: "Toggle On / Off",
+    ///                value: $value,
+    ///                onValueChanged: toggleBluetooth
+    ///     )
+    /// ```
     public init(label: String,
                 subLabel: String = "",
                 value: Binding<Bool>,
