@@ -46,11 +46,11 @@ import SwiftUI
 ///
 /// Parameters:
 ///  - value: A Binding that will hold the selected value (Int, Float, Double, ...)
-///  - in: The range from which to pick values
-///  - step: The step at which to increment values
-///  - minimumValueLabel: A Text displayed to the left of the track
-///  - maximumValueLabel: A Text displayed to the right of the track
-///  - onEditingChanged: A method or closure property that does something when the value cahnges
+///  - in: (Optionnal) The range from which to pick values
+///  - step: (Optionnal) The step at which to increment values
+///  - minimumValueLabel: (Optionnal) A Text displayed to the left of the track
+///  - maximumValueLabel: (Optionnal) A Text displayed to the right of the track
+///  - onEditingChanged: (Optionnal) A method or closure property that does something when the value cahnges
 ///  - track: A shape representing the track on which the slider moves
 ///  - fill: A shape representing the left part of the track, between the start and the slider
 ///  - thumb: A shape representing the moving part of the slider
@@ -87,7 +87,17 @@ where Value: BinaryFloatingPoint, Value.Stride: BinaryFloatingPoint, Track: View
     // the size of the track view. This can be obtained at runtime.
     @State private var trackSize: CGSize = .zero
 
-    // initializer allows us to set default values for some view params
+    /// Parameters:
+    ///  - value: A Binding that will hold the selected value (Int, Float, Double, ...)
+    ///  - in: (Optionnal) The range from which to pick values
+    ///  - step: (Optionnal) The step at which to increment values
+    ///  - minimumValueLabel: (Optionnal) A Text displayed to the left of the track
+    ///  - maximumValueLabel: (Optionnal) A Text displayed to the right of the track
+    ///  - onEditingChanged: (Optionnal) A method or closure property that does something when the value cahnges
+    ///  - track: A shape representing the track on which the slider moves
+    ///  - fill: A shape representing the left part of the track, between the start and the slider
+    ///  - thumb: A shape representing the moving part of the slider
+    ///  - thumbSize: CGSize representing the width and height of the thumb
     public init(value: Binding<Value>,
         in bounds: ClosedRange<Value> = 0...1,
         step: Value = 0.001,

@@ -7,11 +7,33 @@
 
 import SwiftUI
 
+/// A control for selecting a timestamp (Hour and minutes).
+///
+/// You create a DatePickerCell by providing a binding in which to store the date in, a label and an action.
+/// The action is either a method or closure property that gets called when the selected date changes.
+/// The label is a string that describes the button's action.
+///
+/// ### Implementation
+///
+/// ```swift
+///     DatePickerCell(date: $date, label: "Add Alarm", onValueChange: saveValue)
+/// ```
+///
+/// Parameter:
+/// - label: A String or LocalizedStringKey representing the text displayed left of the time picker
+/// - onValueChange: method or closure property that gets called when the selected date changes
+/// - `date`: A Binding of type Date
 public struct DatePickerCell: View {
     @Binding var date: Date
     var label: String
     var onValueChange: (Date)->()
 
+    /// Default initialiser
+    /// 
+    /// Parameter:
+    /// - label: A String or LocalizedStringKey representing the text displayed left of the time picker
+    /// - onValueChange: method or closure property that gets called when the selected date changes
+    /// - `date`: A Binding of type Date
     public init(date: Binding<Date>,
                 label: String = "",
                 onValueChange: @escaping (Date)->() = {_ in}) {
