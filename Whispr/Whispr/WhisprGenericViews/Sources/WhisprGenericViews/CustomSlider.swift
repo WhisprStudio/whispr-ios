@@ -7,6 +7,54 @@
 
 import SwiftUI
 
+/// A control for selecting a value from a linear range of floating point values.
+///
+/// You create a ButtonCell by providing a binding that will contain the selected value,
+/// the range of values, the step from which to increment values, three shapes respectively representing
+/// the shape of the track, the filled part of the slider and the "button" that is used to pick a value.
+/// You also provide a CGSize representing the width and height of said button to help with internal
+/// computation. Lastly, you also pass an action as parameter.
+/// The action is either a method or closure property that will automatically get called every time a new
+/// value is selected.
+/// Finnaly, two optionnal Texts can be provided, and if so, will be displayed on woth ends of the track
+///
+/// ### Implementation
+///
+/// ```swift
+///    CustomSlider(value: $value,
+///         in: 0...100,
+///         step: 1,
+///         minimumValueLabel: Text("Min"),
+///         maximumValueLabel: Text("Max"),
+///         onEditingChanged: { started in
+///             print("started custom slider: \(started)")
+///         }, track: {
+///             Capsule()
+///                 .foregroundColor(Color(red: 0.9, green: 0.9, blue: 0.9))
+///                 .frame(width: 200, height: 5)
+///         }, fill: {
+///             Capsule()
+///             .foregroundColor(.blue)
+///         }, thumb: {
+///             Capsule()
+///                 .frame(width: thumbRadius, height: thumbRadius)
+///                 .foregroundColor(.white)
+///                 .shadow(radius: thumbRadius / 1)
+///         }, thumbSize: CGSize(width: thumbRadius, height: thumbRadius)
+///    )
+/// ```
+///
+/// Parameters:
+///  - value: A Binding that will hold the selected value (Int, Float, Double, ...)
+///  - in: The range from which to pick values
+///  - step: The step at which to increment values
+///  - minimumValueLabel: A Text displayed to the left of the track
+///  - maximumValueLabel: A Text displayed to the right of the track
+///  - onEditingChanged: A method or closure property that does something when the value cahnges
+///  - track: A shape representing the track on which the slider moves
+///  - fill: A shape representing the left part of the track, between the start and the slider
+///  - thumb: A shape representing the moving part of the slider
+///  - thumbSize: CGSize representing the width and height of the thumb
 public struct CustomSlider<Value, Track, Fill, Thumb>: View
 where Value: BinaryFloatingPoint, Value.Stride: BinaryFloatingPoint, Track: View, Fill: View, Thumb: View {
     // the value of the slider, inside `bounds`
