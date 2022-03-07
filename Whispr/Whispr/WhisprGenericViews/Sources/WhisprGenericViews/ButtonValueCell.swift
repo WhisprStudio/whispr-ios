@@ -185,7 +185,7 @@ public struct ButtonValueCell<LeftView: View>: View {
 }
 
 public extension ButtonValueCell where LeftView == EmptyView {
-    /// Default initialiser
+    /// Default initializer
     ///
     /// Parameter:
     ///  - label: A String or LocalizedStringKey representing the text displayed on the button

@@ -272,7 +272,7 @@ public extension ButtonCell where RightView == EmptyView {
 }
 
 public extension ButtonCell where RightView == EmptyView, LeftView == EmptyView {
-    /// Default initialiser
+    /// Default initializer
     ///
     /// Parameter:
     ///  - label: A String or LocalizedStringKey representing the text displayed on the button

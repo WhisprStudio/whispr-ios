@@ -28,7 +28,7 @@ public struct DatePickerCell: View {
     var label: String
     var onValueChange: (Date)->()
 
-    /// Default initialiser
+    /// Default initializer
     /// 
     /// Parameter:
     /// - label: A String or LocalizedStringKey representing the text displayed left of the time picker
