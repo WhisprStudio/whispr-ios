@@ -7,6 +7,62 @@
 
 import SwiftUI
 
+/// A control that initiates an action.
+///
+/// A derived version of the ``ButtonCell`` where the optionnal View that can be added to the right of
+/// the button is replaced by a String or LocalizedStringKey.
+/// This is equivalent to passing a Text as the right view to a ButtonCell.
+///
+/// You create a ButtonValueCell the same way you would a ``ButtonCell``. For
+/// example:
+///
+/// ```swift
+///    ButtonValueCell(label: "Wi-Fi",
+///                    value: wifi.description,
+///                    action: {},
+///                    leftView: {
+///                        Image(systemName: "wifi.square.fill")
+///                            .foregroundColor(.blue)
+///                    }
+///    )
+/// ```
+///
+/// For the common case of text-only labels, you can use the convenience
+/// initializer that takes a label string or LocalizedStringKey as its first
+/// parameter:
+///
+/// ```swift
+///     ButtonValueCell(label: "Connected as: ", value: user.name, action: changeUser)
+/// ```
+///
+/// ### Styling ButtonCells
+
+/// ```swift
+///     ButtonValueCell(label: "Connected as: ", value: user.name, action: changeUser)
+///          .primaryColor(.green)
+///          .secondaryColor(.yellow)
+///          .clickedColor(.yellow)
+/// ```
+/// #### primaryColor
+///
+/// ```swift
+///     func primaryColor(_ color: Color) -> some View
+/// ```
+/// When applied, sets the label's color to the one given as parameter
+///
+/// #### secondaryColor
+///
+/// ```swift
+///     func secondaryColor(_ color: Color) -> some View
+/// ```
+/// When applied, sets the sublabel's color (if any) and the value's color to the one given as parameter
+///
+/// #### clickedColor
+///
+/// ```swift
+///     func clickedColor(_ color: Color) -> some View
+/// ```
+/// When applied, replaces both primary and seconday colors of the view with the given parameter upon clicking on said button
 public struct ButtonValueCell<LeftView: View>: View {
     private var action: (() -> ())
     private let content: LeftView?
@@ -21,6 +77,36 @@ public struct ButtonValueCell<LeftView: View>: View {
     @Environment(\.secondaryColor) var secondaryColor : Color
     @Environment(\.clickedColor) var clickedColor : Color
 
+    /// Creates a Button simillar the the default one but with an additional view on the left of the label
+    ///
+    /// Parameter:
+    ///  - label: A String or LocalizedStringKey representing the text displayed on the button
+    ///  - subLabel: An optionnal String or LocalizedStringKey representing a smaller text displayed on the button
+    ///  - value: a String representing the value to be displayed on the right of the button
+    ///  - action: method or closure property that does something when a user clicks or taps the button
+    ///  - leftView: A View
+    ///
+    /// ### Usage
+    ///
+    /// ```swift
+    ///     ButtonValueCell(label: "Connected as: ",
+    ///         value: user.name,
+    ///         action: changeUser,
+    ///         leftView: {
+    ///          Image(systemName: "person.crop.circle.badge.moon")
+    ///             .foregroundColor(.white)
+    ///         }
+    ///     )
+    ///     ButtonValueCell(label: "Connected as: ",
+    ///         subLabel: "click to change",
+    ///         value: user.name,
+    ///         action: changeUser,
+    ///         leftView: {
+    ///          Image(systemName: "person.crop.circle.badge.moon")
+    ///            .foregroundColor(.white)
+    ///         }
+    ///     )
+    /// ```
     public init(label: String = "",
                 subLabel: String = "",
                 value: String = "",
@@ -99,6 +185,27 @@ public struct ButtonValueCell<LeftView: View>: View {
 }
 
 public extension ButtonValueCell where LeftView == EmptyView {
+    /// Default initialiser
+    ///
+    /// Parameter:
+    ///  - label: A String or LocalizedStringKey representing the text displayed on the button
+    ///  - subLabel: An optionnal String or LocalizedStringKey representing a smaller text displayed on the button
+    ///  - value: a String representing the value to be displayed on the right of the button
+    ///  - action: method or closure property that does something when a user clicks or taps the button
+    ///
+    /// ### Usage
+    ///
+    /// ```swift
+    ///    ButtonValueCell(label: "Connected as: ",
+    ///        value: user.name,
+    ///        action: changeUser
+    ///    )
+    ///    ButtonValueCell(label: "Connected as: ",
+    ///        subLabel: "click to change",
+    ///        value: user.name,
+    ///        action: changeUser
+    ///    )
+    /// ```
     init(label: String = "",
          subLabel: String = "",
          value: String = "",
