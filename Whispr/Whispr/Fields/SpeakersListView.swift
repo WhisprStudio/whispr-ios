@@ -8,6 +8,10 @@
 import SwiftUI
 import WhisprGenericViews
 
+/// Application homepage
+///
+/// Displays the list of already added speakers (if any) followed by a button to add new speakers.
+/// No parameters required for initialization.
 struct SpeakersListView: View {
     @StateObject var contentManager = ContentManager()
 

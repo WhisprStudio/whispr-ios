@@ -8,6 +8,11 @@
 import SwiftUI
 import WhisprGenericViews
 
+/// Speaker details
+///
+/// Displayed when clicking on a speaker from the homepage. This view shows the name, current volume and
+/// noise canceling settings of the speaker as well as existing conficurations (if any) followed by a button to add
+/// new configurations to the speaker.
 struct SpeakerView: View {
     private var speaker: Speaker
     @State var speakerName: String

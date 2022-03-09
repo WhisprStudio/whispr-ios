@@ -8,6 +8,10 @@
 import WhisprGenericViews
 import SwiftUI
 
+/// Speaker configuration page
+///
+/// Displayed when clicking on a configuration from the SpeakerView page.
+/// This view shows the name, preset volume and noise canceling and other settings of the current configuration.
 struct SpeakerConfigurationView: View {
     @State var configName: String
 
