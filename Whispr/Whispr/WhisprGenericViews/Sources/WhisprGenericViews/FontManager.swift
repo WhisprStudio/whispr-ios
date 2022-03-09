@@ -36,6 +36,7 @@ struct PrimaryFontModifier: ViewModifier {
         let fontAttribute = weight == .thin ? weight.rawValue + FontType.italic.rawValue : weight.rawValue
         return content
             .font(.custom("Barlow-\(fontAttribute)", size: size.rawValue))
+//            .font(.system(size: size.rawValue, weight: .medium, design: .default))
             .foregroundColor(.primaryText)
     }
     

@@ -85,7 +85,7 @@ public struct SliderCell: View {
     }
 }
 
-public struct SliderCellPreviewContainer: View {
+struct SliderCellPreviewContainer: View {
     @State var value: CGFloat = 0
     var onEditingChanged: ((Bool) -> ()) = {_ in }
     var label: String = "Volume"

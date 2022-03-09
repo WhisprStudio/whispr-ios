@@ -66,8 +66,10 @@ struct SpeakerConfigurationView: View {
         ListView(sections: [
             Section(items: [
                 AnyView(TextFieldCell(text: $configName, label: "Name", placeholder: "My configuration", onEditingChange: self.onNameChange)),
-                AnyView(SliderCell(value: $volumeValue, onValueChanged: onVolumeChanged, label: "Volume")),
-                AnyView(SliderCell(value: $noiseCancelingValue, onValueChanged: onNoiseCancelingChanged, label: "Noise canceling"))
+                AnyView(SliderCell(value: $volumeValue, onValueChanged: onVolumeChanged, label: "Volume")
+                            .secondaryColor(.whisprYellow)),
+                AnyView(SliderCell(value: $noiseCancelingValue, onValueChanged: onNoiseCancelingChanged, label: "Noise canceling")
+                            .secondaryColor(.whisprYellow))
             ]),
             Section(items: timeTriggerSection,
                     header: "Time trigger", footer: "If activated, triggers this configuration on the connected speaker(s) between the specified time period."),
