@@ -7,6 +7,44 @@
 
 import SwiftUI
 
+/// A control that displays an editable text interface.
+///
+/// You create a TextFieldCell by providing an action, label, optionnal placeholder text and a String binding.
+/// The action is either a method or closure property that does something when a user inputs text in the field.
+/// The label and placeholder are strings that describe the field's action and default content --- for
+/// example, by showing only a label:
+///
+/// ```swift
+///     TextFieldCell(text: $userInput, label: "Username: ")
+/// ```
+/// ### Styling TextFieldCell
+///
+/// ```swift
+///     TextFieldCell(text: $userInput, label: "Username: ")
+///          .primaryColor(.green)
+///          .secondaryColor(.yellow)
+///          .textInputColor(.red)
+/// ```
+/// #### primaryColor
+///
+/// ```swift
+///     func primaryColor(_ color: Color) -> some View
+/// ```
+/// When applied, replaces the text label's color with the given parameter
+///
+/// #### secondaryColor
+///
+/// ```swift
+///     func secondaryColor(_ color: Color) -> some View
+/// ```
+/// When applied, replaces the placeholder text's color with the given parameter
+///
+/// #### textInputColor
+///
+/// ```swift
+///     func textInputColor(_ color: Color) -> some View
+/// ```
+/// When applied, replaces the user input text's color with the given parameter
 public struct TextFieldCell: View {
     @Binding var text: String
     var label: String
@@ -17,6 +55,23 @@ public struct TextFieldCell: View {
     @Environment(\.secondaryColor) var secondaryColor : Color
     @Environment(\.textInputColor) var textInputColor : Color
 
+    /// Default initializer
+    ///
+    /// Parameter:
+    ///  - label: A String or LocalizedStringKey representing the text displayed left of the input
+    ///  - text: Binding to a String holding the input value
+    ///  - placeholder: A String or LocalizedStringKey representing default text of the input field
+    ///  - action: method or closure property that does something when a user inputs text
+    ///
+    /// ### Usage
+    ///
+    /// ```swift
+    ///     TextFieldCell(text: $userInput, label: "Username: ")
+    ///     TextFieldCell(text: $userInput,
+    ///                   label: "Username: ",
+    ///                   placeholder: "Your username",
+    ///                   onEditingChange: saveUsername)
+    /// ```
     public init(text: Binding<String>,
                 label: String = "",
                 placeholder: String = "Your text...",
@@ -117,12 +172,13 @@ extension View {
     }
 }
 
-public struct TextFieldCellContainer: View {
+struct TextFieldCellContainer: View {
     @State var text: String = ""
     
     public var body: some View {
         VStack {
             TextFieldCell(text: $text, label: "Your text")
+                .primaryColor(.green)
                 .secondaryColor(.blue)
                 .textInputColor(.red)
             Text(text)
