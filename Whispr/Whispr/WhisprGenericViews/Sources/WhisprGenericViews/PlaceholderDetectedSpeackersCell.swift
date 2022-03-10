@@ -12,8 +12,8 @@ public struct PlaceholderDetectedSpeackersCell: View {
     
     public var body: some View {
         VStack {
-            Spacer()
-        }.frame(height: 200)
+            DeviceList()
+        }//.frame(height: 200)
     }
 }
 

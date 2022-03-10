@@ -7,6 +7,11 @@
 import CoreBluetooth
 import SwiftUI
 
+/// This View is showing all the devices looking for connection.
+///
+/// Show if Bluetooth is working on the phone
+///
+/// Show which device is connected
 struct DeviceList: View {
     @ObservedObject var bleManager = BLEManager()
     init() {
@@ -25,8 +30,6 @@ struct DeviceList: View {
                     }) {
                         Text(peripheral.name)
                     }
-                    Spacer()
-                    Text(String(peripheral.rssi))
                 }
             }.frame(height: 300)
 

@@ -7,6 +7,12 @@
 import Foundation
 import CoreBluetooth
 
+///
+/// Bluetooth manager
+/// Function for scanning, connect and disconnect to bluetooth peripheral
+///
+///
+
 struct Peripheral: Identifiable {
     let id: Int
     let name: String
