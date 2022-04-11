@@ -12,68 +12,56 @@ import SwiftUI
 /// Show if Bluetooth is working on the phone
 ///
 /// Show which device is connected
+///
+///
+
 struct DeviceList: View {
     @ObservedObject var bleManager = BLEManager()
     init() {
         
     }
     var body: some View {
-        VStack (spacing: 10) {
+        VStack (alignment: .leading, spacing: 16) {
 
             Text("Bluetooth Devices")
-                .font(.largeTitle)
                 .frame(maxWidth: .infinity, alignment: .center)
-            List(bleManager.peripherals) { peripheral in
-                HStack {
-                    Button(action: {
-                        self.bleManager.connectToDevice(peripheral: peripheral.peripheral)
-                    }) {
-                        Text(peripheral.name)
+                .primaryFont(size: .XL, weight: .semiBold)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    ForEach(bleManager.peripherals, id: \.id) { peripheral in
+                        Button(peripheral.name) {
+                            if bleManager.myPeripheral == nil {
+                                self.bleManager.connectToDevice(peripheral: peripheral.peripheral)
+                            }
+                        }
+                        .primaryFont(size: .S, weight: .regular)
                     }
                 }
-            }.frame(height: 300)
-
-            Spacer()
-
-            Text("STATUS")
-                .font(.headline)
-
-            // Status goes here
-            if bleManager.isSwitchedOn {
-                Text("Bluetooth is switched on")
-                    .foregroundColor(.green)
             }
-            else {
-                Text("Bluetooth is NOT switched on")
-                    .foregroundColor(.red)
-            }
-
-            Spacer()
 
             HStack {
-                VStack (spacing: 10) {
-                    Button(action: {
-                        self.bleManager.startScanning()
-                    }) {
-                        Text("Start Scanning")
-                    }
-                    Button(action: {
-                        self.bleManager.stopScanning()
-                    }) {
-                        Text("Stop Scanning")
-                    }
-                }.padding()
+                Button("Start Scanning") {
+                    self.bleManager.startScanning()
+                }
+                .buttonStyle(GrowingButton())
+                Button("Stop Scanning") {
+                    self.bleManager.stopScanning()
+                }
+                .buttonStyle(GrowingButton())
             }
             Spacer()
             
             if bleManager.myPeripheral != nil {
-                Text("Connecté à")
-                Text(bleManager.myPeripheral?.name ?? "")
-                Button(action : {
-                    self.bleManager.disconnectToDevice()
-                }) {
-                    Text("Se déconencter")
+                VStack (alignment: .leading, spacing: 16) {
+                    Text("Connecté à : ")
+                        .primaryFont(size: .M, weight: .regular)
+                    Text(bleManager.myPeripheral?.name ?? "")
+                        .primaryFont(size: .L, weight: .thin)
                 }
+                Button("Se déconnecter") {
+                    self.bleManager.disconnectToDevice()
+                }
+                .buttonStyle(OutlineButton())
             }
         }
     }

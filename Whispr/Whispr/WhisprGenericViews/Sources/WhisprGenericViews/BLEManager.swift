@@ -54,9 +54,11 @@ class BLEManager: NSObject, ObservableObject, CBCentralManagerDelegate, CBPeriph
        
         peripheralName = peripheral.name
         if peripheralName != nil {
-            let newPeripheral = Peripheral(id: peripherals.count, name: peripheralName, rssi: RSSI.intValue, peripheral: peripheral)
-            print(newPeripheral)
-            peripherals.append(newPeripheral)
+            if !peripherals.contains(where: { $0.name == peripheralName }) {
+                let newPeripheral = Peripheral(id: peripherals.count, name: peripheralName, rssi: RSSI.intValue, peripheral: peripheral)
+                peripherals.append(newPeripheral)
+            }
+            
         }
     }
     
