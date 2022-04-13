@@ -22,7 +22,7 @@ struct AddSpeakerCell: View {
         NavigationLink(destination: AddSpeakerView()
                         .environmentObject(contentManager),
                        isActive: $isNavigationTriggered) {
-            ButtonCell(label: "Nouvelle enceinte",
+            ButtonCell(label: "New speaker",
                    action: {
                     isClicked.toggle()
                     isNavigationTriggered = true

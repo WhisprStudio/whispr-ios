@@ -27,7 +27,9 @@ class Speaker: Identifiable, Codable {
 
 class ContentManager: ObservableObject {
     @Published private(set) var speakers: [Speaker]
+    private(set) var tutorialStep: Int
     static let speakersKey = "speakersData"
+    static let tutorialKey = "tutorialStep"
     
     enum Property {
         case name,
@@ -50,6 +52,7 @@ class ContentManager: ObservableObject {
 
     init() {
         speakers = []
+        tutorialStep = 0
 
         saveProperty.updateValue(saveName, forKey: .name)
         saveProperty.updateValue(saveVolume, forKey: .volume)
@@ -64,7 +67,14 @@ class ContentManager: ObservableObject {
         if let data = UserDefaults.standard.data(forKey: Self.speakersKey) {
             if let decoded = try? JSONDecoder().decode([Speaker].self, from: data) {
                 self.speakers = decoded
-                return
+//                return
+            }
+        }
+        
+        if let data = UserDefaults.standard.data(forKey: Self.tutorialKey) {
+            if let decoded = try? JSONDecoder().decode(Int.self, from: data) {
+                self.tutorialStep = decoded
+//                return
             }
         }
     }
@@ -200,6 +210,15 @@ class ContentManager: ObservableObject {
         if let encoded = try? JSONEncoder().encode(speakers) {
             UserDefaults.standard.set(encoded, forKey: Self.speakersKey)
         }
+    }
+    
+    // increase tutorial step and save in cache
+    func saveTutorial() {
+        tutorialStep += 1
+        if let encoded = try? JSONEncoder().encode(tutorialStep) {
+            UserDefaults.standard.set(encoded, forKey: Self.tutorialKey)
+        }
+        objectWillChange.send()
     }
 
     // add a speaker
