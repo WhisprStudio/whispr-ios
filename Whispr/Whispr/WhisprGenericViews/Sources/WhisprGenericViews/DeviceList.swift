@@ -43,16 +43,19 @@ struct DeviceList: View {
                 Button("Start Scanning") {
                     self.bleManager.startScanning()
                 }
-                .buttonStyle(GrowingButton())
+                .buttonStyle(FilledButton())
                 Button("Stop Scanning") {
                     self.bleManager.stopScanning()
                 }
-                .buttonStyle(GrowingButton())
+                .buttonStyle(FilledButton())
             }
             Spacer()
             
             if bleManager.myPeripheral != nil {
                 VStack (alignment: .leading, spacing: 16) {
+                    Button("Envoyer de la donnée") {
+                        self.bleManager.send(volume: 0x10)
+                    }
                     Text("Connecté à : ")
                         .primaryFont(size: .M, weight: .regular)
                     Text(bleManager.myPeripheral?.name ?? "")
