@@ -105,8 +105,8 @@ struct AddConfigView: View {
 
             // -------- TUTORIAL VIEW --------
             // step 5 and 6
-            if contentManager.tutorialStep == 5 ||
-            contentManager.tutorialStep == 6 {
+            if contentManager.tutorialStep == 8 ||
+            contentManager.tutorialStep == 9 {
                 TutoFour()
                     .environmentObject(contentManager)
             }
@@ -136,13 +136,13 @@ struct TutoFour: View {
                 HighlightedText(text: tutoTopText, highlighted: tutoTopHighlighted, color: .whisprYellow)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(.top, 120)
-                    .offset(x: makeTutoAppear && contentManager.tutorialStep == 5 ? 0 : -380)
-                    .opacity(makeTutoAppear && contentManager.tutorialStep == 5 ? 1 : 0)
+                    .offset(x: makeTutoAppear && contentManager.tutorialStep == 8 ? 0 : -380)
+                    .opacity(makeTutoAppear && contentManager.tutorialStep == 8 ? 1 : 0)
                 HighlightedText(text: tutoBotText, highlighted: tutoBotHighlighted, color: .whisprYellow)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(10)
                     .padding(.top, 120)
-                    .offset(x: contentManager.tutorialStep == 6 ? 0 : 300)
+                    .offset(x: contentManager.tutorialStep == 9 ? 0 : 300)
                     .opacity(makeTutoDisappear ? 0 : 1)
             }
             Rectangle()
@@ -155,14 +155,14 @@ struct TutoFour: View {
                 .opacity(makeTutoDisappear ? 0 : 0.8)
         }
         .onTapGesture {
-            if contentManager.tutorialStep == 5 {
+            if contentManager.tutorialStep == 8 {
                 withAnimation(Animation.linear(duration: 0.2)) {
-                    // go to step 6
+                    // go to step 9
                     contentManager.saveTutorial()
                 }
-            } else if contentManager.tutorialStep == 6 {
+            } else if contentManager.tutorialStep == 9 {
                 withAnimation(Animation.linear(duration: 0.2)) {
-                    // remove tutorial / step 7
+                    // remove tutorial / step 10
                     makeTutoDisappear.toggle()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         contentManager.saveTutorial()

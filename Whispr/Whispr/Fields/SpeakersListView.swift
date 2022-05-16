@@ -32,7 +32,7 @@ struct SpeakersListView: View {
                                             action: {
                                                 // if the tutorial is on -> turn it of for this
                                                 // view after the transition to the new view
-                                                if contentManager.tutorialStep <= 2 {
+                                                if contentManager.tutorialStep <= 5 {
 //                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                                                         // go to step 3
                                                         contentManager.saveTutorial()
@@ -51,7 +51,7 @@ struct SpeakersListView: View {
                             AnyView(AddSpeakerCell(action: {
                                 // if the tutorial is on -> preset the text for the next step
                                 // (after the speaker has been added)
-                                if contentManager.tutorialStep < 2 {
+                                if contentManager.tutorialStep < 5 {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                                         // go to step 2
                                         contentManager.saveTutorial()
@@ -72,7 +72,7 @@ struct SpeakersListView: View {
                 if contentManager.tutorialStep < 2 {
                     TutoOne()
                         .environmentObject(contentManager)
-                } else if contentManager.tutorialStep == 2 {
+                } else if contentManager.tutorialStep == 5 {
                     TutoTwo()
 //                        .environmentObject(contentManager)
                 }

@@ -66,7 +66,7 @@ struct SpeakerView: View {
                                 configViews.append(
                                     AnyView(AddConfigCell(speakerId: speaker.id, action:
                                         {
-                                            if contentManager.tutorialStep == 4 {
+                                            if contentManager.tutorialStep == 7 {
                                                 // go to step 5
                                                 contentManager.saveTutorial()
                                             }
@@ -90,8 +90,8 @@ struct SpeakerView: View {
             .background(NavigationConfigurator())
             
             // -------- TUTORIAL VIEW --------
-            if contentManager.tutorialStep == 3 ||
-               contentManager.tutorialStep == 4 {
+            if contentManager.tutorialStep == 6 ||
+               contentManager.tutorialStep == 7 {
                 TutoThree()
                     .environmentObject(contentManager)
             }
@@ -118,28 +118,28 @@ struct TutoThree: View {
                 HighlightedText(text: tutoTopText, highlighted: tutoTopHighlighted, color: .whisprYellow)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(.top, 120)
-                    .offset(x: makeTutoAppear && contentManager.tutorialStep == 3 ? 0 : -380)
-                    .opacity(makeTutoAppear && contentManager.tutorialStep == 3 ? 1 : 0)
+                    .offset(x: makeTutoAppear && contentManager.tutorialStep == 6 ? 0 : -380)
+                    .opacity(makeTutoAppear && contentManager.tutorialStep == 6 ? 1 : 0)
                 HighlightedText(text: tutoBotText, highlighted: tutoBotHighlighted, color: .whisprYellow)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(10)
                     .padding(.top, 310)
-                    .offset(x: contentManager.tutorialStep == 4 ? 0 : -380)
-                    .opacity(contentManager.tutorialStep == 4 ? 1 : 0)
+                    .offset(x: contentManager.tutorialStep == 7 ? 0 : -380)
+                    .opacity(contentManager.tutorialStep == 7 ? 1 : 0)
             }
             Rectangle()
                 .fill(Color.black)
                 .frame(width: .infinity, height: 72)
-                .opacity(contentManager.tutorialStep == 4 ? 0 : 0.8)
+                .opacity(contentManager.tutorialStep == 7 ? 0 : 0.8)
             Rectangle()
                 .fill(Color.black)
                 .frame(width: .infinity, height: .infinity)
                 .opacity(0.8)
         }
         .onTapGesture {
-            if contentManager.tutorialStep == 3 {
+            if contentManager.tutorialStep == 6 {
                 withAnimation(Animation.linear(duration: 0.2)) {
-                    // go to step 4
+                    // go to step 7
                     contentManager.saveTutorial()
                 }
             }
