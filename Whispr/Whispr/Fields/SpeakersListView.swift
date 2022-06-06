@@ -82,6 +82,7 @@ struct SpeakersListView: View {
 }
 
 struct TutoOne: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var contentManager: ContentManager
     @State var tutoText = "Here you will find all your registered Whispr speakers"
     @State var tutoHighlighted = ["all", "Whispr"]
@@ -91,17 +92,18 @@ struct TutoOne: View {
             Rectangle()
                 .fill(Color.black)
                 .frame(width: .infinity, height: 193)
-                .opacity(0.7)
+                .opacity(colorScheme == .dark ? 0.7 : 0.9)
             Rectangle()
                 .fill(Color.black)
                 .frame(width: .infinity, height: 70)
-                .opacity(contentManager.tutorialStep == 1 ? 0 : 0.7)
+                .opacity(contentManager.tutorialStep == 1 ? 0 : (colorScheme == .dark ? 0.7 : 0.9))
             ZStack(alignment: .top) {
                 Rectangle()
                     .fill(Color.black)
                     .frame(width: .infinity, height: .infinity)
-                    .opacity(0.7)
+                    .opacity(colorScheme == .dark ? 0.7 : 0.9)
                 HighlightedText(text: tutoText, highlighted: tutoHighlighted, color: .whisprYellow)
+                    .foregroundColor(Color.TutorialText)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(.top, 20)
             }
@@ -121,7 +123,7 @@ struct TutoOne: View {
 }
 
 struct TutoTwo: View {
-//    @EnvironmentObject var contentManager: ContentManager
+    @Environment(\.colorScheme) var colorScheme
     @State var tutoText = "Click on your new speaker to see its details"
     @State var tutoHighlighted = ["speaker"]
     
@@ -130,7 +132,7 @@ struct TutoTwo: View {
             Rectangle()
                 .fill(Color.black)
                 .frame(width: .infinity, height: 148)
-                .opacity(0.8)
+                .opacity(colorScheme == .dark ? 0.7 : 0.9)
             Rectangle()
                 .fill(Color.black)
                 .frame(width: .infinity, height: 134)
@@ -139,8 +141,9 @@ struct TutoTwo: View {
                 Rectangle()
                     .fill(Color.black)
                     .frame(width: .infinity, height: .infinity)
-                    .opacity(0.8)
+                    .opacity(colorScheme == .dark ? 0.7 : 0.9)
                 HighlightedText(text: tutoText, highlighted: tutoHighlighted, color: .whisprYellow)
+                    .foregroundColor(Color.TutorialText)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(.top, 20)
             }
@@ -152,6 +155,6 @@ struct TutoTwo: View {
 struct SpeakersListView_Previews: PreviewProvider {
     static var previews: some View {
         SpeakersListView()
-            .preferredColorScheme(.dark)
+//            .preferredColorScheme(.dark)
     }
 }

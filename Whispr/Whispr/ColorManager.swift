@@ -18,4 +18,5 @@ public extension Color {
     static let fieldBackground = Color("FieldBackground")
     static let whisprYellow = Color("WhisprYellow")
     static let separator = Color("Separator")
+    static let TutorialText = Color("TutorialText")
 }

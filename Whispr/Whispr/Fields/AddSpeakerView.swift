@@ -55,6 +55,7 @@ struct AddSpeakerView: View {
 }
 
 struct Tuto: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var contentManager: ContentManager
     @State var tutoText = "On this page you'll push the button 'Start Scanning' to search your speaker ! After that you'll save your speaker to enter a name and save it."
     @State var tutoHighlighted = ["push", "Start Scanning", "speaker", "save", "enter", "name"]
@@ -63,27 +64,28 @@ struct Tuto: View {
         VStack(spacing: 0) {
             Rectangle()
                 .fill(Color.black)
-                .frame(width: .infinity, height: 177)
-                .opacity(0.7)
+                .frame(width: .infinity, height: 182)
+                .opacity(colorScheme == .dark ? 0.7 : 0.9)
             HStack(spacing: 0) {
                 Rectangle()
                     .fill(Color.black)
-                    .frame(width: 24, height: 60)
-                    .opacity(0.7)
+                    .frame(width: 26, height: 57)
+                    .opacity(colorScheme == .dark ? 0.7 : 0.9)
                 Rectangle()
-                    .frame(width: 299, height: 60)
+                    .frame(width: 295, height: 57)
                     .opacity(0)
                 Rectangle()
                     .fill(Color.black)
-                    .frame(width: .infinity, height: 60)
-                    .opacity(0.7)
+                    .frame(width: .infinity, height: 57)
+                    .opacity(colorScheme == .dark ? 0.7 : 0.9)
             }
             ZStack(alignment: .top) {
                 Rectangle()
                     .fill(Color.black)
                     .frame(width: .infinity, height: .infinity)
-                    .opacity(0.7)
+                    .opacity(colorScheme == .dark ? 0.7 : 0.9)
                 HighlightedText(text: tutoText, highlighted: tutoHighlighted, color: .whisprYellow)
+                    .foregroundColor(Color.TutorialText)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(.top, 140)
             }
@@ -97,6 +99,7 @@ struct Tuto: View {
 }
 
 struct TutorialTwo: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var contentManager: ContentManager
     @State var tutoText = "Here is to enter the name of your speaker when it will be selected"
     @State var tutoHighlighted = ["name", "speaker", "selected"]
@@ -106,27 +109,28 @@ struct TutorialTwo: View {
             Rectangle()
                 .fill(Color.black)
                 .frame(width: .infinity, height: 267)
-                .opacity(0.7)
+                .opacity(colorScheme == .dark ? 0.7 : 0.9)
             HStack(spacing: 0) {
                 Rectangle()
                     .fill(Color.black)
                     .frame(width: 24, height: 70)
-                    .opacity(0.7)
+                    .opacity(colorScheme == .dark ? 0.7 : 0.9)
                 Rectangle()
                     .frame(width: 369, height: 70)
                     .opacity(0)
                 Rectangle()
                     .fill(Color.black)
                     .frame(width: .infinity, height: 70)
-                    .opacity(0.7)
+                    .opacity(colorScheme == .dark ? 0.7 : 0.9)
             }
 //                .opacity(contentManager.tutorialStep == 1 ? 0 : 0.7)
             ZStack(alignment: .top) {
                 Rectangle()
                     .fill(Color.black)
                     .frame(width: .infinity, height: .infinity)
-                    .opacity(0.7)
+                    .opacity(colorScheme == .dark ? 0.7 : 0.9)
                 HighlightedText(text: tutoText, highlighted: tutoHighlighted, color: .whisprYellow)
+                    .foregroundColor(Color.TutorialText)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(.top, 140)
             }
@@ -140,6 +144,7 @@ struct TutorialTwo: View {
 }
 
 struct TutorialThree: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var contentManager: ContentManager
     @State var tutoText = "And you click on save, to save your speaker, let's try"
     @State var tutoHighlighted = ["name", "speaker", "selected"]
@@ -150,7 +155,7 @@ struct TutorialThree: View {
             Rectangle()
                 .fill(Color.black)
                 .frame(width: .infinity, height: 387)
-                .opacity(stateTuto == false ? 0.7 : 0)
+                .opacity(stateTuto == false ? (colorScheme == .dark ? 0.7 : 0.9) : 0)
             Rectangle()
                 .fill(Color.black)
                 .frame(width: .infinity, height: 70)
@@ -159,12 +164,13 @@ struct TutorialThree: View {
                 Rectangle()
                     .fill(Color.black)
                     .frame(width: .infinity, height: .infinity)
-                    .opacity(stateTuto == false ? 0.7 : 0)
+                    .opacity(stateTuto == false ? (colorScheme == .dark ? 0.7 : 0.9) : 0)
                 HighlightedText(text: tutoText, highlighted: tutoHighlighted, color: .whisprYellow)
+                    .foregroundColor(Color.TutorialText)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(.top, 80)
             }
-            .opacity(stateTuto == false ? 0.7 : 0)
+//            .opacity(stateTuto == false ? 0.7 : 0Whispr/Whispr/ColorManager.swift)
         }
         .onTapGesture {
             if stateTuto == false {
@@ -181,7 +187,7 @@ struct AddSpeakerView_Previews: PreviewProvider {
         NavigationView {
             AddSpeakerView()
                 .environmentObject(content)
-                .preferredColorScheme(.dark)
+//                .preferredColorScheme(.dark)
         }
     }
 }

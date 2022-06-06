@@ -100,6 +100,7 @@ struct SpeakerView: View {
 }
 
 struct TutoThree: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var contentManager: ContentManager
     @State var makeTutoAppear = false
     var tutoTopText = "Here you can modify your Whispr speakers details"
@@ -114,13 +115,15 @@ struct TutoThree: View {
                 Rectangle()
                     .fill(Color.black)
                     .frame(width: .infinity, height: 408)
-                    .opacity(0.8)
+                    .opacity(colorScheme == .dark ? 0.7 : 0.9)
                 HighlightedText(text: tutoTopText, highlighted: tutoTopHighlighted, color: .whisprYellow)
+                    .foregroundColor(Color.TutorialText)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(.top, 120)
                     .offset(x: makeTutoAppear && contentManager.tutorialStep == 6 ? 0 : -380)
                     .opacity(makeTutoAppear && contentManager.tutorialStep == 6 ? 1 : 0)
                 HighlightedText(text: tutoBotText, highlighted: tutoBotHighlighted, color: .whisprYellow)
+                    .foregroundColor(Color.TutorialText)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(10)
                     .padding(.top, 310)
@@ -130,11 +133,11 @@ struct TutoThree: View {
             Rectangle()
                 .fill(Color.black)
                 .frame(width: .infinity, height: 72)
-                .opacity(contentManager.tutorialStep == 7 ? 0 : 0.8)
+                .opacity(contentManager.tutorialStep == 7 ? 0 : (colorScheme == .dark ? 0.7 : 0.9))
             Rectangle()
                 .fill(Color.black)
                 .frame(width: .infinity, height: .infinity)
-                .opacity(0.8)
+                .opacity(colorScheme == .dark ? 0.7 : 0.9)
         }
         .onTapGesture {
             if contentManager.tutorialStep == 6 {
