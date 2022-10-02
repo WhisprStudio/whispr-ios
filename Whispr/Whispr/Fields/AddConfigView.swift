@@ -137,7 +137,7 @@ struct TutoFour: View {
                     .primaryFont(size: .L, weight: .medium)
                     .padding(10)
                     .padding(.top, 120)
-                    .offset(x: contentManager.tutorialStep == 8 ? 0 : 300)
+                    .offset(x: contentManager.tutorialStep == 8 ? 0 : 355)
                     .opacity(makeTutoDisappear ? 0 : 1)
             }
             Rectangle()
