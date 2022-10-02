@@ -20,7 +20,7 @@ struct SpeakerConfigButtonCell: View {
                         .environmentObject(contentManager),
                        isActive: $isNavigationTriggered) {
             ButtonValueCell(label: config.name,
-                            value: isActive ? "active" : "inactive",
+                            value: isActive ? Strings.active : Strings.inactive,
                             action: {
                                 isNavigationTriggered = true
                             },
@@ -35,6 +35,11 @@ struct SpeakerConfigButtonCell: View {
 //            isNavigationTriggered = false
 //        })
     }
+}
+
+private struct Strings {
+    static let active = NSLocalizedString("Activé", comment: "Fields / SpeakerConfigButtonCell / active")
+    static let inactive = NSLocalizedString("Désactivé", comment: "Fields / SpeakerConfigButtonCell / inactive")
 }
 
 struct SpeakerConfigButtonCell_Previews: PreviewProvider {

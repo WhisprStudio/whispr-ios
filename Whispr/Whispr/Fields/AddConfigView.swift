@@ -65,14 +65,14 @@ struct AddConfigView: View {
         ZStack {
             ListView(sections: [
                 Section(items: [
-                    AnyView(TextFieldCell(text: $configName, label: "Name", placeholder: "My configuration", onEditingChange: onNameChanged)),
-                    AnyView(SliderCell(value: $volumeValue, onValueChanged: onVolumeChanged, label: "Volume")
+                    AnyView(TextFieldCell(text: $configName, label: Strings.nameLabel, placeholder: Strings.namePlaceholder, onEditingChange: onNameChanged)),
+                    AnyView(SliderCell(value: $volumeValue, onValueChanged: onVolumeChanged, label: Strings.volumeLabel)
                                 .secondaryColor(.whisprYellow)),
-                    AnyView(SliderCell(value: $noiseCancelingValue, onValueChanged: onNoiseCancelingChanged, label: "Noise canceling")
+                    AnyView(SliderCell(value: $noiseCancelingValue, onValueChanged: onNoiseCancelingChanged, label: Strings.noiseCancelingLabel)
                                 .secondaryColor(.whisprYellow))
                 ]),
                 Section(items: timeTriggerSection,
-                        header: "Time trigger", footer: "If activated, triggers this configuration on the connected speaker(s) between the specified time period."),
+                        header: Strings.timeTriggerHeader, footer: Strings.timeTriggerFooter),
                 Section(items: [
                     AnyView(SaveCell(action: {
                         if !configName.isEmpty {
@@ -86,8 +86,8 @@ struct AddConfigView: View {
             ], style: .plain)
             .onAppear(perform: {
                 self.timeTriggerFields = [
-                    AnyView(DatePickerCell(date: $startTime, label: "Activation", onValueChange: onStartTimeChanged)),
-                    AnyView(DatePickerCell(date: $endTime, label: "Deactivation", onValueChange: onEndTimeChanged))
+                    AnyView(DatePickerCell(date: $startTime, label: Strings.startTimeLabel, onValueChange: onStartTimeChanged)),
+                    AnyView(DatePickerCell(date: $endTime, label: Strings.endTimeLabel, onValueChange: onEndTimeChanged))
                 ]
                 self.timeTriggerSection = [
                     AnyView(ConfigSwitchCell(state: $hasPeriodicActivation, onValueChanged: toggleTimeTrigger))
@@ -99,14 +99,14 @@ struct AddConfigView: View {
             .separatorColor(Color.separator)
             .primaryColor(Color.primaryText)
             .backgroundColor(Color.fieldBackground)
-            .navigationTitle("Add configuration")
+            .navigationTitle(Strings.title)
             .navigationBarTitleDisplayMode(.inline)
             .background(NavigationConfigurator())
 
             // -------- TUTORIAL VIEW --------
-            // step 5 and 6
-            if contentManager.tutorialStep == 8 ||
-            contentManager.tutorialStep == 9 {
+            // step 7 and 8
+            if contentManager.tutorialStep == 7 ||
+            contentManager.tutorialStep == 8 {
                 TutoFour()
                     .environmentObject(contentManager)
             }
@@ -119,13 +119,6 @@ struct TutoFour: View {
     @EnvironmentObject var contentManager: ContentManager
     @State var makeTutoAppear = false
     @State var makeTutoDisappear = false
-    var tutoTopText = "Here you can create your own predefined speakers configuration"
-    var tutoTopHighlighted = ["create", "predefined"]
-    
-    var tutoBotText = "Fill in your desired settings and activation time"
-    var tutoBotHighlighted = ["settings"]
-    
-    @State var test = 5
     
     var body: some View {
         VStack(spacing: 0) {
@@ -134,17 +127,17 @@ struct TutoFour: View {
                     .fill(Color.black)
                     .frame(width: .infinity, height: 408)
                     .opacity(makeTutoDisappear ? 0 : (colorScheme == .dark ? 0.7 : 0.9))
-                HighlightedText(text: tutoTopText, highlighted: tutoTopHighlighted, color: .whisprYellow)
+                HighlightedText(text: Strings.tutoOne, highlighted: Strings.highlightsTutoOne, color: .whisprYellow)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(.top, 120)
-                    .offset(x: makeTutoAppear && contentManager.tutorialStep == 8 ? 0 : -380)
-                    .opacity(makeTutoAppear && contentManager.tutorialStep == 8 ? 1 : 0)
-                HighlightedText(text: tutoBotText, highlighted: tutoBotHighlighted, color: .whisprYellow)
+                    .offset(x: makeTutoAppear && contentManager.tutorialStep == 7 ? 0 : -380)
+                    .opacity(makeTutoAppear && contentManager.tutorialStep == 7 ? 1 : 0)
+                HighlightedText(text: Strings.tutoTwo, highlighted: Strings.highlightsTutoTwo, color: .whisprYellow)
                     .foregroundColor(Color.TutorialText)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(10)
                     .padding(.top, 120)
-                    .offset(x: contentManager.tutorialStep == 9 ? 0 : 300)
+                    .offset(x: contentManager.tutorialStep == 8 ? 0 : 300)
                     .opacity(makeTutoDisappear ? 0 : 1)
             }
             Rectangle()
@@ -157,14 +150,14 @@ struct TutoFour: View {
                 .opacity(makeTutoDisappear ? 0 : (colorScheme == .dark ? 0.7 : 0.9))
         }
         .onTapGesture {
-            if contentManager.tutorialStep == 8 {
+            if contentManager.tutorialStep == 7 {
                 withAnimation(Animation.linear(duration: 0.2)) {
-                    // go to step 9
+                    // go to step 8
                     contentManager.saveTutorial()
                 }
-            } else if contentManager.tutorialStep == 9 {
+            } else if contentManager.tutorialStep == 8 {
                 withAnimation(Animation.linear(duration: 0.2)) {
-                    // remove tutorial / step 10
+                    // remove tutorial / step 9
                     makeTutoDisappear.toggle()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         contentManager.saveTutorial()
@@ -183,6 +176,26 @@ struct TutoFour: View {
         }
         .ignoresSafeArea()
     }
+}
+
+private struct Strings {
+    static let nameLabel = NSLocalizedString("Nom", comment: "Views / AddConfigView / name cell label")
+    static let namePlaceholder = NSLocalizedString("Ma config", comment: "Views / AddConfigView / name cell placeholder")
+    static let volumeLabel = NSLocalizedString("Volume", comment: "Views / AddConfigView / volume cell label")
+    static let noiseCancelingLabel = NSLocalizedString("Reduction du bruit", comment: "Views / AddConfigView / noise canceling cell placeholder")
+    static let title = NSLocalizedString("Nouvelle configurations", comment: "Views / AddConfigView / config section header")
+    
+    static let timeTriggerHeader = NSLocalizedString("Répétition", comment: "Views / AddConfigView / time trigger header")
+    static let timeTriggerFooter = NSLocalizedString("Si activé, la configuration s'activera automatiquement pendant les heures choisies", comment: "Views / AddConfigView / time trigger footer")
+    
+    static let startTimeLabel = NSLocalizedString("Activation", comment: "Views / AddConfigView / start time")
+    static let endTimeLabel = NSLocalizedString("Jusqu'a", comment: "Views / AddConfigView / end time")
+
+    static let tutoOne = NSLocalizedString("Les configurations permettent de modifier automatiquement les réglages de votre enceinte", comment: "Views / AddConfigView / tuto 1")
+    static let highlightsTutoOne = [NSLocalizedString("modifier", comment: "Views / AddConfigView / highlights tuto 1"), NSLocalizedString("automatiquement", comment: "Views / AddConfigView / highlights tuto 1")]
+    
+    static let tutoTwo = NSLocalizedString("Entrez vos réglages et une période d'activation", comment: "Views / AddConfigView / tuto 2")
+    static let highlightsTutoTwo = [NSLocalizedString("réglages", comment: "Views / AddConfigView / highlights tuto 1")]
 }
 
 struct AddConfigView_Previews: PreviewProvider {

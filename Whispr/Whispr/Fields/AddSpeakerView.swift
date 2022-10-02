@@ -19,7 +19,7 @@ struct AddSpeakerView: View {
             ListView(sections: [
                 Section(items: [
                     AnyView(DetectedSpeackersCell()),
-                    AnyView(TextFieldCell(text: $speakerName, label: "Name", placeholder: "My speaker")),
+                    AnyView(TextFieldCell(text: $speakerName, label: Strings.nameLabel, placeholder: Strings.namePlaceholder)),
                 ]),
                 Section(items: [
                     AnyView(SaveCell(action: {
@@ -34,7 +34,7 @@ struct AddSpeakerView: View {
             .separatorColor(Color.separator)
             .primaryColor(Color.primaryText)
             .backgroundColor(Color.fieldBackground)
-            .navigationTitle("Add Speaker")
+            .navigationTitle(Strings.title)
             .navigationBarTitleDisplayMode(.inline)
             .background(NavigationConfigurator())
             
@@ -42,14 +42,13 @@ struct AddSpeakerView: View {
 //                Tuto()
 //                    .environmentObject(contentManager)
 //            }
-//            else if contentManager.tutorialStep == 3 {
-//                TutorialTwo()
-//                    .environmentObject(contentManager)
-//            }
-//            else if contentManager.tutorialStep == 4 {
-//                TutorialThree()
-//                    .environmentObject(contentManager)
-//            }
+            /*else*/ if contentManager.tutorialStep == 2 {
+                TutorialTwo()
+                    .environmentObject(contentManager)
+            }
+            else if contentManager.tutorialStep == 3 {
+                TutorialThree()
+            }
         }
     }
 }
@@ -101,29 +100,18 @@ struct Tuto: View {
 struct TutorialTwo: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var contentManager: ContentManager
-    @State var tutoText = "Here is to enter the name of your speaker when it will be selected"
-    @State var tutoHighlighted = ["name", "speaker", "selected"]
+    @State var tutoText = Strings.tutoOne
+    @State var tutoHighlighted = Strings.highlightsTutoOne
     
     var body: some View {
         VStack(spacing: 0) {
             Rectangle()
                 .fill(Color.black)
-                .frame(width: .infinity, height: 267)
+                .frame(width: .infinity, height: 204)
                 .opacity(colorScheme == .dark ? 0.7 : 0.9)
-            HStack(spacing: 0) {
                 Rectangle()
-                    .fill(Color.black)
-                    .frame(width: 24, height: 70)
-                    .opacity(colorScheme == .dark ? 0.7 : 0.9)
-                Rectangle()
-                    .frame(width: 369, height: 70)
+                    .frame(width: .infinity, height: 67)
                     .opacity(0)
-                Rectangle()
-                    .fill(Color.black)
-                    .frame(width: .infinity, height: 70)
-                    .opacity(colorScheme == .dark ? 0.7 : 0.9)
-            }
-//                .opacity(contentManager.tutorialStep == 1 ? 0 : 0.7)
             ZStack(alignment: .top) {
                 Rectangle()
                     .fill(Color.black)
@@ -145,16 +133,15 @@ struct TutorialTwo: View {
 
 struct TutorialThree: View {
     @Environment(\.colorScheme) var colorScheme
-    @EnvironmentObject var contentManager: ContentManager
-    @State var tutoText = "And you click on save, to save your speaker, let's try"
-    @State var tutoHighlighted = ["name", "speaker", "selected"]
+    @State var tutoText = Strings.tutoTwo
+    @State var tutoHighlighted = Strings.highlightsTutoTwo
     @State var stateTuto = false
     
     var body: some View {
         VStack(spacing: 0) {
             Rectangle()
                 .fill(Color.black)
-                .frame(width: .infinity, height: 387)
+                .frame(width: .infinity, height: 315)
                 .opacity(stateTuto == false ? (colorScheme == .dark ? 0.7 : 0.9) : 0)
             Rectangle()
                 .fill(Color.black)
@@ -170,7 +157,6 @@ struct TutorialThree: View {
                     .primaryFont(size: .L, weight: .medium)
                     .padding(.top, 80)
             }
-//            .opacity(stateTuto == false ? 0.7 : 0Whispr/Whispr/ColorManager.swift)
         }
         .onTapGesture {
             if stateTuto == false {
@@ -179,6 +165,20 @@ struct TutorialThree: View {
         }
         .ignoresSafeArea()
     }
+}
+
+private struct Strings {
+    static let title = NSLocalizedString("Nouvelle enceinte", comment: "Views / AddSpeakerView / navTitle")
+    static let nameLabel = NSLocalizedString("Nom", comment: "Views / AddSpeakerView / name cell label")
+    static let namePlaceholder = NSLocalizedString("Mon enceinte", comment: "Views / AddSpeakerView / name cell placeholder")
+    
+    
+    
+    static let tutoOne = NSLocalizedString("Si vous êtes connecté à la bonne enceinte, choisissez son nom", comment: "Views / AddSpeakerView / tuto 1")
+    static let highlightsTutoOne = [NSLocalizedString("choisissez", comment: "Views / SpeakerListView / highlights tuto 1"), NSLocalizedString("connecté", comment: "Views / AddSpeakerView / highlights tuto 1")]
+    
+    static let tutoTwo = NSLocalizedString("Maintenant, enregistez votre nouvelle enceinte Whsipr !", comment: "Views / AddSpeakerView / tuto 2")
+    static let highlightsTutoTwo = [NSLocalizedString("enregistez", comment: "Views / SpeakerListView / highlights tuto 1"), NSLocalizedString("Whispr", comment: "Views / AddSpeakerView / highlights tuto 2")]
 }
 
 struct AddSpeakerView_Previews: PreviewProvider {

@@ -24,7 +24,7 @@ struct AddConfigCell: View {
         NavigationLink(destination: AddConfigView(speakerId: speakerId)
                         .environmentObject(contentManager),
                        isActive: $isNavigationTriggered) {
-            ButtonCell(label: "Add Congfiguration",
+            ButtonCell(label: Strings.new,
                    action: {
 //                    isClicked.toggle()
                     isNavigationTriggered = true
@@ -48,6 +48,10 @@ struct AddConfigCell: View {
 //            isNavigationTriggered = false
 //        })
     }
+}
+
+private struct Strings {
+    static let new = NSLocalizedString("Configuration", comment: "Fields / AddConfigCell / new")
 }
 
 struct AddConfigCell_Previews: PreviewProvider {

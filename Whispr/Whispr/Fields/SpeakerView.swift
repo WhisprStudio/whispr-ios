@@ -43,10 +43,10 @@ struct SpeakerView: View {
         ZStack {
             ListView(sections: [
                 Section(items: [
-                    AnyView(TextFieldCell(text: $speakerName, label: "Name", placeholder: "My speaker", onEditingChange: self.onNameChange)),
-                    AnyView(SliderCell(value: $volumeValue, onValueChanged: onVolumeChanged, label: "Volume")
+                    AnyView(TextFieldCell(text: $speakerName, label: Strings.nameLabel, placeholder: Strings.namePlaceholder, onEditingChange: self.onNameChange)),
+                    AnyView(SliderCell(value: $volumeValue, onValueChanged: onVolumeChanged, label: Strings.volumeLabel)
                                 .secondaryColor(.whisprYellow)),
-                    AnyView(SliderCell(value: $noiseCancelingValue, onValueChanged: onNoiseCancelingChanged, label: "Noise canceling")
+                    AnyView(SliderCell(value: $noiseCancelingValue, onValueChanged: onNoiseCancelingChanged, label: Strings.noiseCancelingLabel)
                                 .secondaryColor(.whisprYellow)),
                 ]),
                 Section(items:
@@ -66,8 +66,8 @@ struct SpeakerView: View {
                                 configViews.append(
                                     AnyView(AddConfigCell(speakerId: speaker.id, action:
                                         {
-                                            if contentManager.tutorialStep == 7 {
-                                                // go to step 5
+                                            if contentManager.tutorialStep == 6 {
+                                                // go to step 7
                                                 contentManager.saveTutorial()
                                             }
                                         }).environmentObject(contentManager)
@@ -75,7 +75,7 @@ struct SpeakerView: View {
                                 )
                                 return configViews
                             }(),
-                header: "Configurations"),
+                        header: Strings.configHeaderLabel),
                 Section(items: [
                     AnyView(DeleteCell(action: {
                         contentManager.delete(id: speaker.id)
@@ -90,8 +90,8 @@ struct SpeakerView: View {
             .background(NavigationConfigurator())
             
             // -------- TUTORIAL VIEW --------
-            if contentManager.tutorialStep == 6 ||
-               contentManager.tutorialStep == 7 {
+            if contentManager.tutorialStep == 5 ||
+               contentManager.tutorialStep == 6 {
                 TutoThree()
                     .environmentObject(contentManager)
             }
@@ -103,11 +103,6 @@ struct TutoThree: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var contentManager: ContentManager
     @State var makeTutoAppear = false
-    var tutoTopText = "Here you can modify your Whispr speakers details"
-    var tutoTopHighlighted = ["modify", "Whispr"]
-    
-    var tutoBotText = "Click on the button to add a new predefined configuration"
-    var tutoBotHighlighted = ["button", "predefined"]
     
     var body: some View {
         VStack(spacing: 0) {
@@ -116,31 +111,31 @@ struct TutoThree: View {
                     .fill(Color.black)
                     .frame(width: .infinity, height: 408)
                     .opacity(colorScheme == .dark ? 0.7 : 0.9)
-                HighlightedText(text: tutoTopText, highlighted: tutoTopHighlighted, color: .whisprYellow)
+                HighlightedText(text: Strings.tutoOne, highlighted: Strings.highlightsTutoOne, color: .whisprYellow)
                     .foregroundColor(Color.TutorialText)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(.top, 120)
-                    .offset(x: makeTutoAppear && contentManager.tutorialStep == 6 ? 0 : -380)
-                    .opacity(makeTutoAppear && contentManager.tutorialStep == 6 ? 1 : 0)
-                HighlightedText(text: tutoBotText, highlighted: tutoBotHighlighted, color: .whisprYellow)
+                    .offset(x: makeTutoAppear && contentManager.tutorialStep == 5 ? 0 : -380)
+                    .opacity(makeTutoAppear && contentManager.tutorialStep == 5 ? 1 : 0)
+                HighlightedText(text: Strings.tutoTwo, highlighted: Strings.highlightsTutoTwo, color: .whisprYellow)
                     .foregroundColor(Color.TutorialText)
                     .primaryFont(size: .L, weight: .medium)
                     .padding(10)
                     .padding(.top, 310)
-                    .offset(x: contentManager.tutorialStep == 7 ? 0 : -380)
-                    .opacity(contentManager.tutorialStep == 7 ? 1 : 0)
+                    .offset(x: contentManager.tutorialStep == 6 ? 0 : -380)
+                    .opacity(contentManager.tutorialStep == 6 ? 1 : 0)
             }
             Rectangle()
                 .fill(Color.black)
                 .frame(width: .infinity, height: 72)
-                .opacity(contentManager.tutorialStep == 7 ? 0 : (colorScheme == .dark ? 0.7 : 0.9))
+                .opacity(contentManager.tutorialStep == 6 ? 0 : (colorScheme == .dark ? 0.7 : 0.9))
             Rectangle()
                 .fill(Color.black)
                 .frame(width: .infinity, height: .infinity)
                 .opacity(colorScheme == .dark ? 0.7 : 0.9)
         }
         .onTapGesture {
-            if contentManager.tutorialStep == 6 {
+            if contentManager.tutorialStep == 5 {
                 withAnimation(Animation.linear(duration: 0.2)) {
                     // go to step 7
                     contentManager.saveTutorial()
@@ -158,6 +153,20 @@ struct TutoThree: View {
         }
         .ignoresSafeArea()
     }
+}
+
+private struct Strings {
+    static let nameLabel = NSLocalizedString("Nom", comment: "Views / SpeakerView / name cell label")
+    static let namePlaceholder = NSLocalizedString("Mon enceinte", comment: "Views / SpeakerView / name cell placeholder")
+    static let volumeLabel = NSLocalizedString("Volume", comment: "Views / SpeakerView / volume cell label")
+    static let noiseCancelingLabel = NSLocalizedString("Reduction du bruit", comment: "Views / SpeakerView / noise canceling cell placeholder")
+    static let configHeaderLabel = NSLocalizedString("Mes configurations", comment: "Views / SpeakerView / config section header")
+
+    static let tutoOne = NSLocalizedString("Ici, vous pouvez modifier les configurations de vos enceintes Whispr", comment: "Views / SpeakerView / tuto 1")
+    static let highlightsTutoOne = [NSLocalizedString("modifier", comment: "Views / SpeakerView / highlights tuto 1"), NSLocalizedString("Whispr", comment: "Views / SpeakerView / highlights tuto 1")]
+    
+    static let tutoTwo = NSLocalizedString("Clickez sur le bouton pour ajouter une nouvelle configuration !", comment: "Views / SpeakerView / tuto 2")
+    static let highlightsTutoTwo = [NSLocalizedString("bouton", comment: "Views / SpeakerView / highlights tuto 1"), NSLocalizedString("configuration", comment: "Views / SpeakerView / highlights tuto 2")]
 }
 
 struct SpeakerView_Previews: PreviewProvider {

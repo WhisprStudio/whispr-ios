@@ -32,9 +32,9 @@ struct SpeakersListView: View {
                                             action: {
                                                 // if the tutorial is on -> turn it of for this
                                                 // view after the transition to the new view
-                                                if contentManager.tutorialStep <= 5 {
+                                                if contentManager.tutorialStep <= 4 {
 //                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                                        // go to step 3
+                                                        // go to step 5
                                                         contentManager.saveTutorial()
 //                                                    }
                                                 }
@@ -51,9 +51,9 @@ struct SpeakersListView: View {
                             AnyView(AddSpeakerCell(action: {
                                 // if the tutorial is on -> preset the text for the next step
                                 // (after the speaker has been added)
-                                if contentManager.tutorialStep < 5 {
+                                if contentManager.tutorialStep < 2 {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        // go to step 2
+                                        // go to step 3
                                         contentManager.saveTutorial()
                                     }
                                 }
@@ -65,14 +65,14 @@ struct SpeakersListView: View {
                     .primaryColor(Color.primaryText)
                     .backgroundColor(Color.fieldBackground)
                 }
-                .navigationTitle("Your speakers")
+                .navigationTitle(Strings.title)
                 .background(NavigationConfigurator())
                 
                 // -------- TUTORIAL VIEW --------
                 if contentManager.tutorialStep < 2 {
                     TutoOne()
                         .environmentObject(contentManager)
-                } else if contentManager.tutorialStep == 5 {
+                } else if contentManager.tutorialStep == 4 {
                     TutoTwo()
 //                        .environmentObject(contentManager)
                 }
@@ -84,8 +84,8 @@ struct SpeakersListView: View {
 struct TutoOne: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var contentManager: ContentManager
-    @State var tutoText = "Here you will find all your registered Whispr speakers"
-    @State var tutoHighlighted = ["all", "Whispr"]
+    @State var tutoText = Strings.tutoOne
+    @State var tutoHighlighted = Strings.highlightsTutoOne
     
     var body: some View {
         VStack(spacing: 0) {
@@ -113,8 +113,8 @@ struct TutoOne: View {
                 withAnimation(Animation.linear(duration: 0.2)) {
                     // go to step 1 (starting at 0)
                     contentManager.saveTutorial()
-                    tutoText = "Click on the button to add a new speaker"
-                    tutoHighlighted = ["button", "speaker"]
+                    tutoText = Strings.tutoOneBtn
+                    tutoHighlighted = Strings.highlightstutoOneBtn
                 }
             }
         }
@@ -124,8 +124,8 @@ struct TutoOne: View {
 
 struct TutoTwo: View {
     @Environment(\.colorScheme) var colorScheme
-    @State var tutoText = "Click on your new speaker to see its details"
-    @State var tutoHighlighted = ["speaker"]
+    @State var tutoText = Strings.tutoTwo
+    @State var tutoHighlighted = Strings.highlightsTutoTwo
     
     var body: some View {
         VStack(spacing: 0) {
@@ -152,9 +152,19 @@ struct TutoTwo: View {
     }
 }
 
+private struct Strings {
+    static let title = NSLocalizedString("Mes Enceintes", comment: "Views / SpeakerListView / navTitle")
+    static let tutoOne = NSLocalizedString("Ici, retrouvez toutes les enceintes Whispr que vous avez enregistrées", comment: "Views / SpeakerListView / tuto 1")
+    static let highlightsTutoOne = [NSLocalizedString("toutes", comment: "Views / SpeakerListView / highlights tuto 1"), NSLocalizedString("Whispr", comment: "Views / SpeakerListView / highlights tuto 1")]
+    static let tutoOneBtn = NSLocalizedString("Clickez sur le bouton pour ajouter une enceinte", comment: "Views / SpeakerListView / tuto 1 btn")
+    static let highlightstutoOneBtn = [NSLocalizedString("bouton", comment: "Views / SpeakerListView / highlights tuto 1 btn"), NSLocalizedString("enceinte", comment: "Views / SpeakerListView / highlights tuto 1 btn")]
+    static let tutoTwo = NSLocalizedString("Clickez sur votre nouvelle enceinte pour afficher ses détails", comment: "Views / SpeakerListView / tuto 2")
+    static let highlightsTutoTwo = [NSLocalizedString("enceinte", comment: "Views / SpeakerListView / highlights tuto 2")]
+}
+
 struct SpeakersListView_Previews: PreviewProvider {
     static var previews: some View {
         SpeakersListView()
-//            .preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
     }
 }

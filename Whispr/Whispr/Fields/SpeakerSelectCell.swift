@@ -21,7 +21,7 @@ struct SpeakerSelectCell: View {
     init(speaker: Speaker, action: @escaping (() -> ()), isConnected: Bool = true) {
         self.speaker = speaker
         self.action = action
-        self.subLabel = isConnected ? "Connected" : "Offline"
+        self.subLabel = isConnected ? Strings.connected : Strings.disconnected
         self.subLabelColor = isConnected ? .LED : .error
         self.speakerName = speaker.name
     }
@@ -59,6 +59,11 @@ struct SpeakerSelectCell: View {
 //            isNavigationTriggered = false
 //        })
     }
+}
+
+private struct Strings {
+    static let connected = NSLocalizedString("Connecté", comment: "Fields / SpeakerSelectCell / connected")
+    static let disconnected = NSLocalizedString("Déconnecté", comment: "Fields / SpeakerSelectCell / disconnected")
 }
 
 struct SpeakerSelectCell_Previews: PreviewProvider {

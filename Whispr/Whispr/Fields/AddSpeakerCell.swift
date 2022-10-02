@@ -22,7 +22,7 @@ struct AddSpeakerCell: View {
         NavigationLink(destination: AddSpeakerView()
                         .environmentObject(contentManager),
                        isActive: $isNavigationTriggered) {
-            ButtonCell(label: "New speaker",
+            ButtonCell(label: Strings.new,
                    action: {
                     isClicked.toggle()
                     isNavigationTriggered = true
@@ -42,6 +42,10 @@ struct AddSpeakerCell: View {
             .clickedColor(Color.success)
         }
     }
+}
+
+private struct Strings {
+    static let new = NSLocalizedString("Nouvelle enceinte", comment: "Fields / AddSpeakerCell / add")
 }
 
 struct AddSpeakerCell_Previews: PreviewProvider {

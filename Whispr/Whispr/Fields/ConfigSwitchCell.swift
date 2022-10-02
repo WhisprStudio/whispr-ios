@@ -19,15 +19,15 @@ struct ConfigSwitchCell: View {
     }
     
     var body: some View {
-        SwitchCell(label: "Periodicity", value: $hasPeriodicActivation, onValueChanged: onValueChanged)
+        SwitchCell(label: Strings.periodicity, value: $hasPeriodicActivation, onValueChanged: onValueChanged)
             .primaryColor(Color.yellow)
     }
 }
 
-/// un commentaire
-/// - Note: une note
-/// - Warning: un warning
-/// - Important: un message important
+private struct Strings {
+    static let periodicity = NSLocalizedString("Activation Périodique", comment: "Fields / ConfigSwitchCell / periodicity")
+}
+
 struct ConfigSwitchCellPreviewContainer: View {
     @State var hasPeriodicActivation: Bool = false
 

@@ -69,14 +69,14 @@ struct SpeakerConfigurationView: View {
     var body: some View {
         ListView(sections: [
             Section(items: [
-                AnyView(TextFieldCell(text: $configName, label: "Name", placeholder: "My configuration", onEditingChange: self.onNameChange)),
-                AnyView(SliderCell(value: $volumeValue, onValueChanged: onVolumeChanged, label: "Volume")
+                AnyView(TextFieldCell(text: $configName, label: Strings.nameLabel, placeholder: Strings.namePlaceholder, onEditingChange: self.onNameChange)),
+                AnyView(SliderCell(value: $volumeValue, onValueChanged: onVolumeChanged, label: Strings.volumeLabel)
                             .secondaryColor(.whisprYellow)),
-                AnyView(SliderCell(value: $noiseCancelingValue, onValueChanged: onNoiseCancelingChanged, label: "Noise canceling")
+                AnyView(SliderCell(value: $noiseCancelingValue, onValueChanged: onNoiseCancelingChanged, label: Strings.noiseCancelingLabel)
                             .secondaryColor(.whisprYellow))
             ]),
             Section(items: timeTriggerSection,
-                    header: "Time trigger", footer: "If activated, triggers this configuration on the connected speaker(s) between the specified time period."),
+                    header: Strings.timeTriggerHeader, footer: Strings.timeTriggerFooter),
             Section(items: [
                 AnyView(DeleteCell(action: {
                     contentManager.delete(configId: config.id, speakerId: speakerId)
@@ -85,8 +85,8 @@ struct SpeakerConfigurationView: View {
         ], style: .plain)
         .onAppear(perform: {
             self.timeTriggerFields = [
-                AnyView(DatePickerCell(date: $startTime, label: "Activation", onValueChange: onStartTimeChanged)),
-                AnyView(DatePickerCell(date: $endTime, label: "Deactivation", onValueChange: onEndTimeChanged))
+                AnyView(DatePickerCell(date: $startTime, label: Strings.startTimeLabel, onValueChange: onStartTimeChanged)),
+                AnyView(DatePickerCell(date: $endTime, label: Strings.endTimeLabel, onValueChange: onEndTimeChanged))
             ]
             self.timeTriggerSection = [
                 AnyView(ConfigSwitchCell(state: $hasPeriodicActivation, onValueChanged: toggleTimeTrigger))
@@ -102,6 +102,20 @@ struct SpeakerConfigurationView: View {
         .navigationBarTitleDisplayMode(.inline)
         .background(NavigationConfigurator())
     }
+}
+
+private struct Strings {
+    static let nameLabel = NSLocalizedString("Nom", comment: "Views / AddConfigView / name cell label")
+    static let namePlaceholder = NSLocalizedString("Ma config", comment: "Views / AddConfigView / name cell placeholder")
+    static let volumeLabel = NSLocalizedString("Volume", comment: "Views / AddConfigView / volume cell label")
+    static let noiseCancelingLabel = NSLocalizedString("Reduction du bruit", comment: "Views / AddConfigView / noise canceling cell placeholder")
+    static let title = NSLocalizedString("Nouvelle configurations", comment: "Views / AddConfigView / config section header")
+    
+    static let timeTriggerHeader = NSLocalizedString("Répétition", comment: "Views / AddConfigView / time trigger header")
+    static let timeTriggerFooter = NSLocalizedString("Si activé, la configuration s'activera automatiquement pendant les heures choisies", comment: "Views / AddConfigView / time trigger footer")
+    
+    static let startTimeLabel = NSLocalizedString("Activation", comment: "Views / AddConfigView / start time")
+    static let endTimeLabel = NSLocalizedString("Jusqu'a", comment: "Views / AddConfigView / end time")
 }
 
 struct SpeakerConfigurationView_Previews: PreviewProvider {
