@@ -26,6 +26,12 @@ public struct Section: Identifiable {
     var items: [AnyView]
     var header: String
     var footer: String
+    
+    var isEmpty: Bool {
+        get {
+            return items.isEmpty && header == "" && footer == ""
+        }
+    }
 
     /// Default initializer
     ///
@@ -58,6 +64,8 @@ public struct Section: Identifiable {
         self.footer = footer
     }
 }
+
+public typealias Sections = [Section]
 /// A container that presents rows of data arranged in a single column, optionally providing the ability
 /// to select one or more members.
 ///
@@ -159,21 +167,29 @@ public struct ListView: View {
                 ForEach( Array(sections.enumerated()), id: \.offset) { index, section in
                     if style == .rounded {
                         if index == 0 {
-                            RoundedListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
-                                .padding(.bottom)
+                            if !section.isEmpty {
+                                RoundedListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
+                                    .padding(.bottom)
+                            }
                         } else {
-                            RoundedListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
-                                .padding(.bottom)
-                                .padding(.top)
+                            if !section.isEmpty {
+                                RoundedListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
+                                    .padding(.bottom)
+                                    .padding(.top)
+                            }
                         }
                     } else {
                         if index == 0 {
-                            PlainListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
-                                .padding(.bottom)
+                            if !section.isEmpty {
+                                PlainListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
+                                    .padding(.bottom)
+                            }
                         } else {
-                            PlainListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
-                                .padding(.bottom)
-                                .padding(.top)
+                            if !section.isEmpty {
+                                PlainListView(section: section, primaryColor: primaryColor, backgroundColor: backgroundColor, separatorColor: separatorColor)
+                                    .padding(.bottom)
+                                    .padding(.top)
+                            }
                         }
                     }
                 }

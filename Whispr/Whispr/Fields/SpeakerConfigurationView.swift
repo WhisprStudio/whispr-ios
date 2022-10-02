@@ -25,6 +25,9 @@ struct SpeakerConfigurationView: View {
     @State var hasPeriodicActivation: Bool
     @State private var timeTriggerFields: [AnyView] = []
     @State private var timeTriggerSection: [AnyView] = []
+    @State private var activateCellSection: [AnyView] = []
+    @State private var activateCellLabel: String = Strings.activateLabel
+    @State private var isActive: Bool = false //needed to reload the view
 
     init(config: SpeakerConfig, speakerId: UUID) {
         self.config = config
@@ -56,6 +59,11 @@ struct SpeakerConfigurationView: View {
     func onEndTimeChanged(value: Date) {
         contentManager.saveConfig(property: .endTime, value: endTime.timeIntervalSince1970.description, speakerId: speakerId, configId: config.id)
     }
+    
+    func toggleConfigActivation() {
+        activateCellLabel = activateCellLabel == Strings.activateLabel ? Strings.deactivateLabel : Strings.activateLabel
+        contentManager.saveConfig(property: .isActive, value: (!config.isActive).description, speakerId: speakerId, configId: config.id)
+    }
 
     func toggleTimeTrigger(newValue: Bool) {
         if (newValue && timeTriggerSection.count < 3) {
@@ -69,7 +77,7 @@ struct SpeakerConfigurationView: View {
     var body: some View {
         ListView(sections: [
             Section(items: [
-                AnyView(TextFieldCell(text: $configName, label: Strings.nameLabel, placeholder: Strings.namePlaceholder, onEditingChange: self.onNameChange)),
+                AnyView(TextFieldCell(text: $configName, label: Strings.nameLabel, placeholder: Strings.namePlaceholder, onEditingChange: onNameChange)),
                 AnyView(SliderCell(value: $volumeValue, onValueChanged: onVolumeChanged, label: Strings.volumeLabel)
                             .secondaryColor(.whisprYellow)),
                 AnyView(SliderCell(value: $noiseCancelingValue, onValueChanged: onNoiseCancelingChanged, label: Strings.noiseCancelingLabel)
@@ -77,6 +85,7 @@ struct SpeakerConfigurationView: View {
             ]),
             Section(items: timeTriggerSection,
                     header: Strings.timeTriggerHeader, footer: Strings.timeTriggerFooter),
+            Section(items: activateCellSection),
             Section(items: [
                 AnyView(DeleteCell(action: {
                     contentManager.delete(configId: config.id, speakerId: speakerId)
@@ -84,6 +93,7 @@ struct SpeakerConfigurationView: View {
             ])
         ], style: .plain)
         .onAppear(perform: {
+            activateCellLabel = !config.isActive ? Strings.activateLabel : Strings.deactivateLabel
             self.timeTriggerFields = [
                 AnyView(DatePickerCell(date: $startTime, label: Strings.startTimeLabel, onValueChange: onStartTimeChanged)),
                 AnyView(DatePickerCell(date: $endTime, label: Strings.endTimeLabel, onValueChange: onEndTimeChanged))
@@ -93,6 +103,14 @@ struct SpeakerConfigurationView: View {
             ]
             if (hasPeriodicActivation) {
                 timeTriggerSection.append(contentsOf: timeTriggerFields)
+                activateCellSection = []
+            }
+            if !hasPeriodicActivation {
+                activateCellSection = [
+                    AnyView(ActionCell(action: {
+                        toggleConfigActivation()
+                    }, label: $activateCellLabel))
+                ]
             }
         })
         .separatorColor(Color.separator)
@@ -105,17 +123,20 @@ struct SpeakerConfigurationView: View {
 }
 
 private struct Strings {
-    static let nameLabel = NSLocalizedString("Nom", comment: "Views / AddConfigView / name cell label")
-    static let namePlaceholder = NSLocalizedString("Ma config", comment: "Views / AddConfigView / name cell placeholder")
-    static let volumeLabel = NSLocalizedString("Volume", comment: "Views / AddConfigView / volume cell label")
-    static let noiseCancelingLabel = NSLocalizedString("Reduction du bruit", comment: "Views / AddConfigView / noise canceling cell placeholder")
-    static let title = NSLocalizedString("Nouvelle configurations", comment: "Views / AddConfigView / config section header")
+    static let nameLabel = NSLocalizedString("Nom", comment: "Views / SpeakerConfigurationView / name cell label")
+    static let namePlaceholder = NSLocalizedString("Ma config", comment: "Views / SpeakerConfigurationView / name cell placeholder")
+    static let volumeLabel = NSLocalizedString("Volume", comment: "Views / SpeakerConfigurationView / volume cell label")
+    static let noiseCancelingLabel = NSLocalizedString("Reduction du bruit", comment: "Views / SpeakerConfigurationView / noise canceling cell placeholder")
+    static let title = NSLocalizedString("Nouvelle configurations", comment: "Views / SpeakerConfigurationView / config section header")
     
-    static let timeTriggerHeader = NSLocalizedString("Répétition", comment: "Views / AddConfigView / time trigger header")
-    static let timeTriggerFooter = NSLocalizedString("Si activé, la configuration s'activera automatiquement pendant les heures choisies", comment: "Views / AddConfigView / time trigger footer")
+    static let timeTriggerHeader = NSLocalizedString("Répétition", comment: "Views / SpeakerConfigurationView / time trigger header")
+    static let timeTriggerFooter = NSLocalizedString("Si activé, la configuration s'activera automatiquement pendant les heures choisies", comment: "Views / SpeakerConfigurationView / time trigger footer")
     
-    static let startTimeLabel = NSLocalizedString("Activation", comment: "Views / AddConfigView / start time")
-    static let endTimeLabel = NSLocalizedString("Jusqu'a", comment: "Views / AddConfigView / end time")
+    static let startTimeLabel = NSLocalizedString("Activation", comment: "Views / SpeakerConfigurationView / start time")
+    static let endTimeLabel = NSLocalizedString("Jusqu'a", comment: "Views / SpeakerConfigurationView / end time")
+    
+    static let deactivateLabel = NSLocalizedString("Désactiver", comment: "Views / SpeakerConfigurationView / deactivate config")
+    static let activateLabel = NSLocalizedString("Activer", comment: "Views / SpeakerConfigurationView / activate config")
 }
 
 struct SpeakerConfigurationView_Previews: PreviewProvider {

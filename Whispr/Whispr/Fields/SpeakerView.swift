@@ -52,8 +52,27 @@ struct SpeakerView: View {
                 Section(items:
                             { () -> [AnyView] in
                                 var configViews: [AnyView] = []
-                                for (index, item) in speaker.configs.enumerated() {
-                                    let isActive = index == 0 ? true : false
+                                let calendar = Calendar.current
+                                var isActive = false
+                                for item in speaker.configs {
+                                    if item.hasTimeTrigger {
+                                        var startTime = Date(timeIntervalSinceReferenceDate: TimeInterval.zero)
+                                        var endTime = Date(timeIntervalSinceReferenceDate: TimeInterval.zero)
+                                        var currentTime = Date(timeIntervalSinceReferenceDate: TimeInterval.zero)
+
+                                        let startDateComponents = calendar.dateComponents([.hour, .minute], from: item.startTime)
+                                        let endTimeComponents = calendar.dateComponents([.hour, .minute], from: item.endTime)
+                                        let currentTimeComponents = calendar.dateComponents([.hour, .minute], from: Date())
+
+                                        startTime = calendar.date(byAdding: startDateComponents, to: startTime)!
+                                        endTime = calendar.date(byAdding: endTimeComponents, to: endTime)!
+                                        currentTime = calendar.date(byAdding: currentTimeComponents, to: currentTime)!
+                                        
+                                        isActive = (startTime < currentTime && endTime > currentTime) ? true : false
+                                    } else {
+                                        isActive = item.isActive
+                                    }
+                                    
                                     configViews.append(AnyView(
                                         SpeakerConfigButtonCell(
                                             config: item,

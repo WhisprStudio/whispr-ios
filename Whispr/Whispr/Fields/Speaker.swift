@@ -44,7 +44,8 @@ class ContentManager: ObservableObject {
              noiseCanceling,
              timeTrigger,
              startTime,
-             endTime
+             endTime,
+             isActive
     }
 
     private var saveProperty = [Property: (String, UUID)->Void]()
@@ -64,6 +65,7 @@ class ContentManager: ObservableObject {
         saveConfigProperty.updateValue(saveTimeTriggerSwitch, forKey: .timeTrigger)
         saveConfigProperty.updateValue(saveStartTime, forKey: .startTime)
         saveConfigProperty.updateValue(saveEndTime, forKey: .endTime)
+        saveConfigProperty.updateValue(saveIsActive, forKey: .isActive)
         if let data = UserDefaults.standard.data(forKey: Self.speakersKey) {
             if let decoded = try? JSONDecoder().decode([Speaker].self, from: data) {
                 self.speakers = decoded
@@ -134,6 +136,23 @@ class ContentManager: ObservableObject {
         })?.configs.first(where: {
             $0.id == configId
         })?.volume = volume
+        save()
+        // need to manually trigger the observedObject since Speaker.configs cannot be of type @Published
+        objectWillChange.send()
+    }
+    
+    private func saveIsActive(value: String, speakerId: UUID, configId: UUID) {
+        guard value == "true" || value == "false" else {
+            print("error: expected true of false but got \(value) (Speaker.swift)")
+            return
+        }
+        let isActive = value == "true" ? true : false
+        
+        speakers.first(where: {
+            $0.id == speakerId
+        })?.configs.first(where: {
+            $0.id == configId
+        })?.isActive = isActive
         save()
         // need to manually trigger the observedObject since Speaker.configs cannot be of type @Published
         objectWillChange.send()

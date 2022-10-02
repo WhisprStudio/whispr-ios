@@ -28,6 +28,7 @@ class SpeakerConfig: Identifiable, Codable {
     var name: String = ""
     var volume: Double = 50.0
     var noiseCanceling: Double = 50.0
+    var isActive: Bool = false
     var hasTimeTrigger: Bool = false
     var startTime: Date = Calendar.autoupdatingCurrent.date(bySettingHour: 8, minute: 0, second: 0, of: Date())!
     var endTime: Date = Calendar.autoupdatingCurrent.date(bySettingHour: 18, minute: 0, second: 0, of: Date())!
