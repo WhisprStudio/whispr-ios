@@ -7,19 +7,31 @@
 
 import SwiftUI
 
-public struct PlaceholderDetectedSpeackersCell: View {
+public struct DetectedSpeackersCell: View {
     public init() {}
     
     public var body: some View {
-        VStack {
-            DeviceList()
-        }//.frame(height: 200)
+        VStack(alignment: .leading) {
+            // TMP before real detection fo connected speaker
+            Text("Connection")
+                .primaryFont(size: .XL, weight: .semiBold)
+            HStack (spacing: 16) {
+                Text("Connecté à : ")
+                    .primaryFont(size: .M, weight: .regular)
+                Text("...")
+                    .primaryFont(size: .L, weight: .thin)
+                Spacer()
+            }
+            // !TMP
+//            DeviceList()
+        }
+        //.frame(height: 200)
     }
 }
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceholderDetectedSpeackersCell()
-            .preferredColorScheme(.dark)
+        DetectedSpeackersCell()
+//            .preferredColorScheme(.dark)
     }
 }

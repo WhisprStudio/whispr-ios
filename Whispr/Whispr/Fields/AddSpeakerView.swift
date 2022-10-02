@@ -18,7 +18,7 @@ struct AddSpeakerView: View {
         ZStack {
             ListView(sections: [
                 Section(items: [
-                    AnyView(PlaceholderDetectedSpeackersCell()),
+                    AnyView(DetectedSpeackersCell()),
                     AnyView(TextFieldCell(text: $speakerName, label: "Name", placeholder: "My speaker")),
                 ]),
                 Section(items: [
@@ -38,18 +38,18 @@ struct AddSpeakerView: View {
             .navigationBarTitleDisplayMode(.inline)
             .background(NavigationConfigurator())
             
-            if contentManager.tutorialStep == 2 {
-                Tuto()
-                    .environmentObject(contentManager)
-            }
-            else if contentManager.tutorialStep == 3 {
-                TutorialTwo()
-                    .environmentObject(contentManager)
-            }
-            else if contentManager.tutorialStep == 4 {
-                TutorialThree()
-                    .environmentObject(contentManager)
-            }
+//            if contentManager.tutorialStep == 2 {
+//                Tuto()
+//                    .environmentObject(contentManager)
+//            }
+//            else if contentManager.tutorialStep == 3 {
+//                TutorialTwo()
+//                    .environmentObject(contentManager)
+//            }
+//            else if contentManager.tutorialStep == 4 {
+//                TutorialThree()
+//                    .environmentObject(contentManager)
+//            }
         }
     }
 }
@@ -187,7 +187,7 @@ struct AddSpeakerView_Previews: PreviewProvider {
         NavigationView {
             AddSpeakerView()
                 .environmentObject(content)
-//                .preferredColorScheme(.dark)
+                .preferredColorScheme(.dark)
         }
     }
 }
